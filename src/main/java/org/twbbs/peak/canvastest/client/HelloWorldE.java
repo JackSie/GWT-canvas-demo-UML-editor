@@ -7,6 +7,8 @@ import com.google.gwt.dom.client.CanvasElement;
 import com.google.gwt.dom.client.ImageElement;
 import com.google.gwt.event.dom.client.LoadEvent;
 import com.google.gwt.event.dom.client.LoadHandler;
+import com.google.gwt.event.dom.client.MouseMoveEvent;
+import com.google.gwt.event.dom.client.MouseMoveHandler;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
@@ -64,6 +66,16 @@ public class HelloWorldE implements EntryPoint {
 		ctx.setStrokeStyle("#000000");
 		ctx.strokeRect(5, 5, 1014, 758);
 
+		
+		canvas.addMouseMoveHandler(new MouseMoveHandler() {
+			
+			public void onMouseMove(MouseMoveEvent event) {
+				int x=event.getClientX();
+				int y=event.getClientY();
+				ctx.drawImage(im, x-100, y-100);
+				
+			}
+		});
 	}
 
 }
