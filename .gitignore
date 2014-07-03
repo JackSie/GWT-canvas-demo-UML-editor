@@ -1,0 +1,9 @@
+# Eclipse project files
+.settings
+.classpath
+.project
+.metadata
+
+# Always ignore these directories/files
+target
+*.log
