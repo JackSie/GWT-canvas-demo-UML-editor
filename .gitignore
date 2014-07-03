@@ -3,6 +3,7 @@
 .classpath
 .project
 .metadata
+*.launch
 
 # Always ignore these directories/files
 target
