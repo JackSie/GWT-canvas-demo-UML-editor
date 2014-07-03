@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<module>
-  <!-- Inherit our applications main module.                      -->
-  <inherits name='org.twbbs.peak.canvastest.firstcanvas' />
-
-  <!-- Specify the path to any remote services.                   -->
-  <servlet path="/firstcanvas/greet" class="org.twbbs.peak.canvastest.server.GreetingServiceImpl" />
-
-</module>
