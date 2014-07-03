@@ -8,6 +8,7 @@
 # Always ignore these directories/files
 target
 *.log
+WEB-INF/classes/
 
 #compilation logs
 .gwt/
@@ -16,3 +17,9 @@ target
 gwt-unitCache/
 
 org.twbbs.peak.canvastest.canvasm/
+
+*.class
+
+# Package Files #
+*.jar
+*.war
