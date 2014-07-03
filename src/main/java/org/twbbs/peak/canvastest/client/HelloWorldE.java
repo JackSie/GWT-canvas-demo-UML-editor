@@ -7,6 +7,7 @@ import com.google.gwt.dom.client.CanvasElement;
 import com.google.gwt.dom.client.ImageElement;
 import com.google.gwt.event.dom.client.LoadEvent;
 import com.google.gwt.event.dom.client.LoadHandler;
+import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
@@ -14,6 +15,7 @@ import com.google.gwt.user.client.ui.RootPanel;
 public class HelloWorldE implements EntryPoint {
 
 	public void onModuleLoad() {
+		
 		Label greetingwords = new Label("hello Canvas");
 		RootPanel.get().add(greetingwords);
 		Canvas canvas = Canvas.createIfSupported();
@@ -33,10 +35,34 @@ public class HelloWorldE implements EntryPoint {
 		
 		Image image = new Image("images/ab.png");
 		final ImageElement im = ImageElement.as(image.getElement());
+		image.addLoadHandler(new LoadHandler() {
+			
+			public void onLoad(LoadEvent event) {
+				ctx.drawImage(im, 50.0, 50.0);
+				 Timer t = new Timer() {
+					int i=0;
+					public void run() {
+						ctx.drawImage(im, 2*i , 50.0);
+						i++;
+						if(i>500){
+							i=0;
+						}
+//						try { Thread.sleep(100); } catch (InterruptedException e) { e.printStackTrace(); }
+					}
+				};
+				t.scheduleRepeating(10);;
+			}
+		});
+		
+		image.setVisible(false);
+		RootPanel.get().add(image);
 		
 		
 		ctx.fillText("hwwwwwwwwwwwwwwwwwww", 100, 100);
 		ctx.drawImage(im, 50.0, 50.0);
+		
+		ctx.setStrokeStyle("#000000");
+		ctx.strokeRect(5, 5, 1014, 758);
 
 	}
 
