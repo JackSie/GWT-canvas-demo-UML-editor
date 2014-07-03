@@ -8,3 +8,11 @@
 # Always ignore these directories/files
 target
 *.log
+
+#compilation logs
+.gwt/
+
+#caching for already compiled files
+gwt-unitCache/
+
+org.twbbs.peak.canvastest.canvasm/
