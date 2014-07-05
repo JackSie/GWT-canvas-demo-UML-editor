@@ -9,6 +9,8 @@
 target
 *.log
 WEB-INF/classes
+WEB-INF/deploy
+
 
 #compilation logs
 .gwt/
