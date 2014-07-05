@@ -8,7 +8,7 @@
 # Always ignore these directories/files
 target
 *.log
-WEB-INF/classes
+WEB-INF/classes/
 
 #compilation logs
 .gwt/
