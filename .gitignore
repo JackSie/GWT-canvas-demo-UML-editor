@@ -8,22 +8,20 @@
 # Always ignore these directories/files
 target
 *.log
-<<<<<<< HEAD
 WEB-INF/classes
 WEB-INF/deploy
 
-=======
-WEB-INF/classes/
->>>>>>> 9a1eab41b88e983b06e01728a6bcd40c073c74a3
 
 #compilation logs
 .gwt/
 
 #caching for already compiled files
 gwt-unitCache/
+www-test/
 
 org.twbbs.peak.canvastest.canvasm/
 org.twbbs.peak.canvastest.canvasmJUnit/
+
 
 *.class
 
