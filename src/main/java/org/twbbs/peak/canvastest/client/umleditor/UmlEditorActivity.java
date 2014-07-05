@@ -41,7 +41,7 @@ public class UmlEditorActivity {
 		
 		umlClass = new UmlClass(200,200,graphicCenter);
 		initHandler(canvas);
-		
+		doUpdate();
 	}
 	
 	void doUpdate(){

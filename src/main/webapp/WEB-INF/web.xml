@@ -6,6 +6,7 @@
 <web-app>
 
 	<!-- Servlets -->
+	
 	<servlet>
 		<servlet-name>HelloServlet</servlet-name>
 		<servlet-class>org.twbbs.peak.canvastest.server.HelloServlet</servlet-class>
