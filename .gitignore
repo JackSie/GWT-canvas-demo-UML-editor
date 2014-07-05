@@ -19,6 +19,7 @@ WEB-INF/deploy
 gwt-unitCache/
 
 org.twbbs.peak.canvastest.canvasm/
+org.twbbs.peak.canvastest.canvasmJUnit/
 
 *.class
 
