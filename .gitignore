@@ -8,9 +8,13 @@
 # Always ignore these directories/files
 target
 *.log
+<<<<<<< HEAD
 WEB-INF/classes
 WEB-INF/deploy
 
+=======
+WEB-INF/classes/
+>>>>>>> 9a1eab41b88e983b06e01728a6bcd40c073c74a3
 
 #compilation logs
 .gwt/
