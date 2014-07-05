@@ -8,8 +8,8 @@
 # Always ignore these directories/files
 target
 *.log
-WEB-INF/classes
-WEB-INF/deploy
+src/main/webapp/WEB-INF/classes/
+src/main/webapp/WEB-INF/deploy/
 
 
 #compilation logs
