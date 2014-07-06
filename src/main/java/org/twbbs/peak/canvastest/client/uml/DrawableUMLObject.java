@@ -8,12 +8,10 @@ import com.google.gwt.canvas.dom.client.Context2d;
 
 public abstract class DrawableUMLObject implements CanvasDrawable<Context2d>{
 	
-	protected int x;
-	protected int y;
 	private ObjectState objectState;
 	
-	public DrawableUMLObject(int x,int y) {
-		moving(x, y);
+	public DrawableUMLObject(ObjectState objectState) {
+		this.objectState=objectState;
 	}
 
 	
@@ -26,23 +24,23 @@ public abstract class DrawableUMLObject implements CanvasDrawable<Context2d>{
 	}
 
 	public void moving(int x, int y) {
-		this.x=x;
-		this.y=y;
+		setX(x);
+		setY(y);
 	}
 
 	public int getX() {
-		return x;
+		return objectState.getY();
 	}
 
 	public void setX(int x) {
-		this.x = x;
+		objectState.setX(x);
 	}
 
 	public int getY() {
-		return y;
+		return objectState.getY();
 	}
 
 	public void setY(int y) {
-		this.y = y;
+		objectState.setY(y);
 	}
 }
