@@ -1,6 +1,5 @@
 package org.twbbs.peak.canvastest.client.uml;
 
-import java.awt.Point;
 
 import org.twbbs.peak.canvastest.client.objects.CanvasDrawable;
 import org.twbbs.peak.canvastest.client.objects.ObjectState;
@@ -28,10 +27,6 @@ public abstract class DrawableUMLObject implements CanvasDrawable<Context2d>{
 	public void moving(int x, int y) {
 		this.x=x;
 		this.y=y;
-	}
-
-	public Point getPosition() {
-		return new Point(x,y);
 	}
 
 	public int getX() {

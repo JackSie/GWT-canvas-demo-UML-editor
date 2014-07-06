@@ -1,9 +1,8 @@
 package org.twbbs.peak.canvastest.client.objects;
 
-import java.awt.Point;
+
 
 import com.google.gwt.canvas.dom.client.Context2d;
-import com.google.gwt.canvas.dom.client.FillStrokeStyle;
 
 public class ShinyFrame implements CanvasDrawable<Context2d> {
 	int color = 0;
@@ -34,10 +33,6 @@ public class ShinyFrame implements CanvasDrawable<Context2d> {
 	public void moving(int x, int y) {
 		// TODO Auto-generated method stub
 		
-	}
-	public Point getPosition() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 }

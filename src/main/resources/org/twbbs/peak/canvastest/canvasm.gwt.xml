@@ -4,6 +4,7 @@
 	<inherits name="com.google.gwt.user.User" />
 	<inherits name="com.google.gwt.junit.JUnit" />
 	<inherits name='com.google.gwt.user.theme.standard.Standard' />
+	<inherits name="org.twbbs.peak.uml" />
 	<source path="client" />
 	<source path='shared' />
 	<entry-point class="org.twbbs.peak.canvastest.client.HelloWorldE"></entry-point>
