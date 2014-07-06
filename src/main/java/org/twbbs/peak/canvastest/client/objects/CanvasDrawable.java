@@ -5,6 +5,9 @@ public interface CanvasDrawable<T> {
 	void draw(T context);
 	void setState(ObjectState state);
 	ObjectState getState();
-	void moving(int x,int y);
+	void setX(int x);
+	int getX();
+	void setY(int y);
+	int getY();
 	
 }

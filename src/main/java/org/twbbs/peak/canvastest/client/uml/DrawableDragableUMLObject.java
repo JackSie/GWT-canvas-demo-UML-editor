@@ -7,6 +7,8 @@ public abstract class DrawableDragableUMLObject extends DrawableUMLObject implem
 	private boolean isSelected = false;
 	protected int sizeW;
 	protected int siezH;
+	private int offsetX;
+	private int offsetY;
 	
 	public DrawableDragableUMLObject(int x,int y) {
 		super(x,y);
@@ -22,12 +24,19 @@ public abstract class DrawableDragableUMLObject extends DrawableUMLObject implem
 	}
 	public void setSelected(boolean isSelected, int x, int y) {
 		this.isSelected=isSelected;
+		offsetX=x-getX();
+		offsetY=y-getY();
 	}
 	public boolean isIn(int x, int y) {
 		if(x>=getX()&&x<=getX()+sizeW && y>=getY()&&y<=getY()+siezH){
 			return true;
 		}
 		return false;
+	}
+	@Override
+	public void moving(int x, int y) {
+		setX(x-offsetX);
+		setY(y-offsetY);
 	}
 	protected abstract void calculateSize(); 
 }
