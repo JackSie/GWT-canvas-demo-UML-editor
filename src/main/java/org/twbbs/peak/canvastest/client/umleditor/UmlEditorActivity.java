@@ -37,7 +37,7 @@ public class UmlEditorActivity {
 		
 		graphicCenter = new GraphicCenterImpl();
 		
-		ShinyFrame shinyFrame= new ShinyFrame(graphicCenter);
+		new ShinyFrame(graphicCenter);
 		
 		umlClass = new UmlClass(200,200);
 		graphicCenter.regist(umlClass);

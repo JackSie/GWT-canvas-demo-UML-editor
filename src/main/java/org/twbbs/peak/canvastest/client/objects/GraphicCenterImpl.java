@@ -6,29 +6,29 @@ import java.util.List;
 import com.google.gwt.canvas.dom.client.Context2d;
 
 public class GraphicCenterImpl implements GraphicCenter<Context2d>{
-	List<CanvasDrawable> lists= new ArrayList<CanvasDrawable>();
-	public void regist(CanvasDrawable canvasDrawable) {
+	List<CanvasDrawable<Context2d>> lists= new ArrayList<CanvasDrawable<Context2d>>();
+	public void regist(CanvasDrawable<Context2d> canvasDrawable) {
 		lists.add(canvasDrawable);
 		
 	}
 
-	public void remove(CanvasDrawable canvasDrawable) {
+	public void remove(CanvasDrawable<Context2d> canvasDrawable) {
 		lists.remove(canvasDrawable);
 		
 	}
 
-	public void regist(CanvasDrawable canvasDrawable, int level) {
+	public void regist(CanvasDrawable<Context2d> canvasDrawable, int level) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	public void remove(CanvasDrawable canvasDrawable, int level) {
+	public void remove(CanvasDrawable<Context2d> canvasDrawable, int level) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	public void draw(Context2d context) {
-		for(CanvasDrawable d:lists){
+		for(CanvasDrawable<Context2d> d:lists){
 			d.draw(context);
 		}
 		

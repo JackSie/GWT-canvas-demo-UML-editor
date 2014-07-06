@@ -4,7 +4,6 @@ import com.google.gwt.canvas.client.Canvas;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.Label;
-import com.google.gwt.user.client.ui.LayoutPanel;
 import com.google.gwt.user.client.ui.Widget;
 
 public class UmlEditorViewImpl implements UmlEditorView{
