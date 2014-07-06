@@ -3,7 +3,7 @@ package org.twbbs.peak.canvastest.client.umleditor;
 import org.twbbs.peak.canvastest.client.ClientFactory;
 import org.twbbs.peak.canvastest.client.objects.GraphicCenterImpl;
 import org.twbbs.peak.canvastest.client.objects.ShinyFrame;
-import org.twbbs.peak.canvastest.client.objects.UmlClass;
+import org.twbbs.peak.canvastest.client.uml.UmlClass;
 
 import com.google.gwt.canvas.client.Canvas;
 import com.google.gwt.canvas.dom.client.Context2d;
@@ -39,7 +39,8 @@ public class UmlEditorActivity {
 		
 		ShinyFrame shinyFrame= new ShinyFrame(graphicCenter);
 		
-		umlClass = new UmlClass(200,200,graphicCenter);
+		umlClass = new UmlClass(200,200);
+		graphicCenter.regist(umlClass);
 		initHandler(canvas);
 		doUpdate();
 	}
