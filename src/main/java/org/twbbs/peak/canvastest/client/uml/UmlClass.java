@@ -49,7 +49,8 @@ public class UmlClass extends DrawableDragableUMLObject{
 		drawMember(context);
 		drawMethod(context);
 		
-		context.strokeRect(x, y, sizeW, siezH);
+		
+		
 		
 		if(isDraged()||isSelected()){  //TODO change to only Selected
 			drawSpot(context);
@@ -60,17 +61,37 @@ public class UmlClass extends DrawableDragableUMLObject{
 	
 	private void drawBlackground(Context2d context){
 		context.save();
-		context.setShadowOffsetX(4);
-		context.setShadowOffsetY(4);
+		context.setShadowOffsetX(10);
+		context.setShadowOffsetY(10);
 		context.setShadowColor("black");
 		context.setShadowBlur(4);
 		
-		CanvasGradient canvasGradient= context.createLinearGradient(x, y, x, siezH);
-		canvasGradient.addColorStop(0, "rgb(0,0,255)");
-		canvasGradient.addColorStop(0.1, "rgb(0,255,0)");
-		canvasGradient.addColorStop(1, "rgb(0,0,255)");
+		context.setLineWidth(1);
+		
+		CanvasGradient canvasGradient= context.createLinearGradient(0, y, 0, y+siezH);
+		canvasGradient.addColorStop(0, "#fff");
+		canvasGradient.addColorStop(1, "#66CC00");
 		context.setFillStyle(canvasGradient);
-		context.fillRect(x, y, sizeW, siezH);
+		
+		
+//		context.fillRect(x, y, sizeW, siezH);
+//		context.strokeRect(x, y, sizeW, siezH);
+		
+		int r = 10;
+		
+		if (sizeW < 2 * r) r = sizeW / 2;
+		if (siezH < 2 * r) r = siezH / 2;
+		context.beginPath();
+		context.moveTo(x+r, y);
+		context.arcTo(x+sizeW, y, x+sizeW, y+siezH, r);
+		context.arcTo(x+sizeW, y+siezH, x, y+siezH, r);
+		context.arcTo(x, y+siezH, x, y, r);
+		context.arcTo(x, y, x+sizeW, y, r);
+		// this.arcTo(x+r, y);
+		context.fill();
+		context.stroke();
+		context.closePath();
+		
 		
 		
 		context.restore();

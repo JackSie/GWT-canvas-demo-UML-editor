@@ -50,7 +50,7 @@ public class UmlEditorActivity {
 	}
 	
 	void doUpdate(){
-		bufferedContext.setFillStyle("#eee");
+		bufferedContext.setFillStyle("#FFFFFF");
 		bufferedContext.fillRect(0, 0, 1024, 768);
 		graphicCenter.draw(bufferedContext);
 		context.drawImage(bufferedContext.getCanvas(), 0, 0);
