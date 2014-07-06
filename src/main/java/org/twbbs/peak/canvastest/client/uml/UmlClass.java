@@ -9,7 +9,9 @@ import com.google.gwt.canvas.dom.client.Context2d;
 
 public class UmlClass extends DrawableDragableUMLObject{
 	private ClassObject classObject;
-
+	double shadowOffsetNormal=5;
+	double shadowOffsetUp=10;
+	
 	public UmlClass(int x,int y) {
 		this(x,y,new DefaultClassObject());
 	}
@@ -60,9 +62,15 @@ public class UmlClass extends DrawableDragableUMLObject{
 	}
 	
 	private void drawBlackground(Context2d context){
+		double offset=shadowOffsetNormal;
+		if(isDraged()||isSelected()){
+			offset=shadowOffsetUp;
+		}
+		
+		
 		context.save();
-		context.setShadowOffsetX(10);
-		context.setShadowOffsetY(10);
+		context.setShadowOffsetX(offset);
+		context.setShadowOffsetY(offset);
 		context.setShadowColor("black");
 		context.setShadowBlur(4);
 		
