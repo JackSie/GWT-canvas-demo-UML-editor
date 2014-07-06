@@ -4,6 +4,7 @@ package org.twbbs.peak.canvastest.client.uml;
 import org.twbbs.peak.uml.object.ClassObject;
 import org.twbbs.peak.uml.object.DefaultClassObject;
 
+import com.google.gwt.canvas.dom.client.CanvasGradient;
 import com.google.gwt.canvas.dom.client.Context2d;
 
 public class UmlClass extends DrawableDragableUMLObject{
@@ -40,6 +41,8 @@ public class UmlClass extends DrawableDragableUMLObject{
 			context.setFillStyle(black);
 		}
 		
+		drawBlackground(context);
+		
 		context.setFont("normal lighter 12px serif");
 		context.fillText(classObject.getName(), x+20, y+20);
 		
@@ -54,6 +57,25 @@ public class UmlClass extends DrawableDragableUMLObject{
 		
 		context.restore();
 	}
+	
+	private void drawBlackground(Context2d context){
+		context.save();
+		context.setShadowOffsetX(4);
+		context.setShadowOffsetY(4);
+		context.setShadowColor("black");
+		context.setShadowBlur(4);
+		
+		CanvasGradient canvasGradient= context.createLinearGradient(x, y, x, siezH);
+		canvasGradient.addColorStop(0, "rgb(0,0,255)");
+		canvasGradient.addColorStop(0.1, "rgb(0,255,0)");
+		canvasGradient.addColorStop(1, "rgb(0,0,255)");
+		context.setFillStyle(canvasGradient);
+		context.fillRect(x, y, sizeW, siezH);
+		
+		
+		context.restore();
+	}
+	
 	private void drawMember(Context2d context){
 		//TODO not finished just prototype
 		drawLine(context,40);
