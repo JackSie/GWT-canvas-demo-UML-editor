@@ -16,6 +16,7 @@ public abstract class DrawableUMLObject implements CanvasDrawable<Context2d>{
 		moving(x, y);
 	}
 
+	
 	public void setState(ObjectState state) {
 		this.objectState=state;
 	}
@@ -44,5 +45,4 @@ public abstract class DrawableUMLObject implements CanvasDrawable<Context2d>{
 	public void setY(int y) {
 		this.y = y;
 	}
-
 }

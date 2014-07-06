@@ -25,6 +25,7 @@ public class UmlClass extends DrawableDragableUMLObject{
 	public void setClassObject(ClassObject classObject) {
 		this.classObject = classObject;
 	}
+
 	
 	public void draw(Context2d context) {
 		context.save();
@@ -40,4 +41,6 @@ public class UmlClass extends DrawableDragableUMLObject{
 		context.strokeRect(x, y, 20, 50);
 		context.restore();
 	}
+	
+
 }
