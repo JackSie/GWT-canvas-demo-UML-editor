@@ -16,6 +16,7 @@ public class UmlClass extends DrawableDragableUMLObject{
 	public UmlClass(int x,int y,ClassObject classObject) {
 		super(x,y);
 		this.classObject=classObject;
+		calculateSize();
 	}
 	
 
@@ -24,6 +25,7 @@ public class UmlClass extends DrawableDragableUMLObject{
 	}
 	public void setClassObject(ClassObject classObject) {
 		this.classObject = classObject;
+		calculateSize();
 	}
 
 	
@@ -32,14 +34,59 @@ public class UmlClass extends DrawableDragableUMLObject{
 		
 		if(isSelected()){
 			context.setStrokeStyle(red);
+			context.setFillStyle(red);
 		}else{
 			context.setStrokeStyle(black);
+			context.setFillStyle(black);
 		}
 		
-		context.strokeText("ClassA", x+5, y+5);
+		context.setFont("normal lighter 12px serif");
+		context.fillText(classObject.getName(), x+20, y+20);
 		
-		context.strokeRect(x, y, 20, 50);
+		drawMember(context);
+		drawMethod(context);
+		
+		context.strokeRect(x, y, sizeW, siezH);
+		
+		if(isSelected()){
+			drawSpot(context);
+		}
+		
 		context.restore();
+	}
+	private void drawMember(Context2d context){
+		//TODO not finished just prototype
+		drawLine(context,40);
+	}
+	
+	private void drawMethod(Context2d context){
+		drawLine(context,80);
+	}
+	
+	private void drawLine(Context2d context,int fromtop){
+		context.save();
+		context.beginPath();
+	    context.moveTo(x, y+fromtop);
+	    context.lineTo(x+sizeW, y+fromtop);
+	    context.setLineWidth(2);
+	    context.stroke();
+	    context.restore();
+	}
+	private void drawSpot(Context2d context){
+		context.save();
+		context.setFillStyle(blue);
+		context.fillRect(x-8, y+siezH/2, 10 , 10);
+		context.fillRect(x+sizeW/2-5, y-8, 10 , 10);
+		context.fillRect(x+sizeW/2-5, y+siezH, 10 , 10);
+		context.fillRect(x+sizeW, y+siezH/2, 10 , 10);
+		
+		context.restore();
+	}
+	
+
+	@Override
+	protected void calculateSize() {
+		//TODO temperately not needed
 	}
 	
 

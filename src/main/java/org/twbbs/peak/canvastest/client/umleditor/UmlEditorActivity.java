@@ -57,7 +57,7 @@ public class UmlEditorActivity {
 			public void onMouseDown(MouseDownEvent event){
 				int x=event.getX();
 				int y=event.getY();				
-				if(x>=umlClass.getX()&&x<=umlClass.getX()+20 && y>=umlClass.getY()&&y<=umlClass.getY()+50){
+				if(umlClass.isIn(x, y)){
 						umlClass.setSelected(true,x,y);
 				}else{
 					umlClass.setSelected(false);
