@@ -1,5 +1,7 @@
 package org.twbbs.peak.canvastest.client.umleditor;
 
+import java.io.Console;
+
 import org.twbbs.peak.canvastest.client.ClientFactory;
 import org.twbbs.peak.canvastest.client.objects.GraphicCenterImpl;
 import org.twbbs.peak.canvastest.client.objects.ShinyFrame;
@@ -7,6 +9,8 @@ import org.twbbs.peak.canvastest.client.uml.UmlClass;
 
 import com.google.gwt.canvas.client.Canvas;
 import com.google.gwt.canvas.dom.client.Context2d;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.MouseDownEvent;
 import com.google.gwt.event.dom.client.MouseDownHandler;
 import com.google.gwt.event.dom.client.MouseMoveEvent;
@@ -58,11 +62,12 @@ public class UmlEditorActivity {
 				int x=event.getX();
 				int y=event.getY();				
 				if(umlClass.isIn(x, y)){
-						umlClass.setSelected(true,x,y);
+						umlClass.setDraged(true,x,y);
 				}else{
-					umlClass.setSelected(false);
+					umlClass.setDraged(false);
 				}
 				doUpdate();
+				System.out.println("down: "+x+" , "+y);
 			}
 		});
 	
@@ -71,7 +76,7 @@ public class UmlEditorActivity {
 				int x=event.getX();
 				int y=event.getY();
 				movePostion.setText(x+" , "+y);
-				if(umlClass.isSelected()){
+				if(umlClass.isDraged()){
 					umlClass.moving(x, y);
 					doUpdate();
 				}
@@ -82,13 +87,14 @@ public class UmlEditorActivity {
 			public void onMouseUp(MouseUpEvent event) {
 				int x=event.getX();
 				int y=event.getY();
-				if(umlClass.isSelected()){
+				if(umlClass.isDraged()){
 					umlClass.moving(x, y);					
 				}
-				umlClass.setSelected(false);
+				umlClass.setDraged(false);
 				doUpdate();
+				System.out.println("up: "+x+" , "+y);
 			}
 		});
-
+		
 	}
 }

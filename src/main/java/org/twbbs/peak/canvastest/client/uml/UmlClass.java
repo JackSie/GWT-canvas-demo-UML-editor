@@ -32,7 +32,7 @@ public class UmlClass extends DrawableDragableUMLObject{
 	public void draw(Context2d context) {
 		context.save();
 		
-		if(isSelected()){
+		if(isDraged()){
 			context.setStrokeStyle(red);
 			context.setFillStyle(red);
 		}else{
@@ -48,7 +48,7 @@ public class UmlClass extends DrawableDragableUMLObject{
 		
 		context.strokeRect(x, y, sizeW, siezH);
 		
-		if(isSelected()){
+		if(isDraged()||isSelected()){  //TODO change to only Selected
 			drawSpot(context);
 		}
 		
