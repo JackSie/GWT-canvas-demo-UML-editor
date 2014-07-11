@@ -67,7 +67,7 @@ public class UmlEditorActivity {
 					umlClass.setDraged(false);
 				}
 				doUpdate();
-				System.out.println("down: "+x+" , "+y);
+//				System.out.println("down: "+x+" , "+y);
 			}
 		});
 	
@@ -75,7 +75,7 @@ public class UmlEditorActivity {
 			public void onMouseMove(MouseMoveEvent event) {
 				int x=event.getX();
 				int y=event.getY();
-				movePostion.setText(x+" , "+y);
+//				movePostion.setText(x+" , "+y);
 				if(umlClass.isDraged()){
 					umlClass.moving(x, y);
 					doUpdate();
@@ -92,7 +92,7 @@ public class UmlEditorActivity {
 				}
 				umlClass.setDraged(false);
 				doUpdate();
-				System.out.println("up: "+x+" , "+y);
+//				System.out.println("up: "+x+" , "+y);
 			}
 		});
 		

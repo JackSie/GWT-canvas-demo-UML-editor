@@ -10,6 +10,11 @@ public abstract class DrawableUMLObject implements CanvasDrawable<Context2d>{
 	
 	private ObjectState objectState;
 	
+	//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	//is every level's ObjectState is Right?
+	//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	public DrawableUMLObject(ObjectState objectState) {
 		this.objectState=objectState;
 	}

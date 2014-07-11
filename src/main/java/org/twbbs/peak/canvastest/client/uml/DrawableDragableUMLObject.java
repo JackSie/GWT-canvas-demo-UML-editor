@@ -3,7 +3,6 @@ package org.twbbs.peak.canvastest.client.uml;
 import org.twbbs.peak.canvastest.client.objects.CanvasDragable;
 import org.twbbs.peak.canvastest.client.objects.CanvasSelectable;
 import org.twbbs.peak.canvastest.client.objects.ClassState;
-import org.twbbs.peak.canvastest.client.objects.ObjectState;
 
 
 public abstract class DrawableDragableUMLObject extends DrawableUMLObject implements CanvasDragable,CanvasSelectable{
@@ -39,6 +38,9 @@ public abstract class DrawableDragableUMLObject extends DrawableUMLObject implem
 		classState.setDraged(isDraged);
 		offsetX=x-classState.getX();
 		offsetY=y-classState.getY();
+		
+		System.out.println("GETX: "+getX());
+		System.out.println("XETX: "+classState.getX());
 	}
 	public boolean isIn(int x, int y) {
 		int nowX=classState.getX();
