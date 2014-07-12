@@ -1,8 +1,14 @@
 package org.twbbs.peak.uml.portal;
 
 import java.util.List;
-
+import org.twbbs.peak.uml.modes.AssociationLineMode;
+import org.twbbs.peak.uml.modes.ClassMode;
+import org.twbbs.peak.uml.modes.CompositionLineMode;
+import org.twbbs.peak.uml.modes.GeneralizationLineMode;
+import org.twbbs.peak.uml.modes.SelectionMode;
 import org.twbbs.peak.uml.modes.UmlMode;
+import org.twbbs.peak.uml.modes.UseCaseMode;
+import org.twbbs.peak.uml.object.UMLObjectManager;
 
 public class UMLCorePortalImpl implements UMLCorePortal,UMLModeHandler,UMLModeSubject{
 
@@ -14,6 +20,15 @@ public class UMLCorePortalImpl implements UMLCorePortal,UMLModeHandler,UMLModeSu
 	private UmlMode useCaseMode;	
 	private UmlMode nowMode;
 	private List<UMLModeObserver> list;
+	public UMLCorePortalImpl(UMLObjectManager manager) {
+		selectionMode=new SelectionMode(manager);
+		assocaitionMode=new AssociationLineMode(manager);
+		generalizationMode=new GeneralizationLineMode(manager);
+		compostionMode=new CompositionLineMode(manager);
+		classMode=new ClassMode(manager);
+		useCaseMode=new UseCaseMode(manager);
+		nowMode=selectionMode;
+	}
 	
 	public void onClick(int x, int y) {
 		nowMode.onClick(x, y);

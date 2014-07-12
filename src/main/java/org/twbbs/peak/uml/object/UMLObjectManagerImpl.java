@@ -8,6 +8,9 @@ import org.twbbs.peak.uml.connection.UMLConnection;
 
 public class UMLObjectManagerImpl implements UMLObjectManager{
 	private UMLCore umlCore;
+	public UMLObjectManagerImpl(UMLCore core) {
+		this.umlCore=core;
+	}
 	
 	public void createClassObject(int x, int y) {
 		umlCore.addUMLObject(new DefaultClassObject(x,y));

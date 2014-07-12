@@ -13,6 +13,9 @@ public class SelectionMode implements UmlMode{
 	private int offsetY;
 	UMLObject object;
 	List<UMLObject> selectedList;
+	public SelectionMode(UMLObjectManager manager) {
+		this.manager=manager;
+	}
 	public void onClick(int x, int y) {
 		modeChanged();
 		UMLObject object=manager.getUMLObject(x, y);

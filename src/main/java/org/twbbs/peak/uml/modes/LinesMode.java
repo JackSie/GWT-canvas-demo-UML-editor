@@ -4,15 +4,17 @@ import org.twbbs.peak.uml.object.UMLObject;
 import org.twbbs.peak.uml.object.UMLObjectManager;
 
 public abstract class LinesMode implements UmlMode{
-	protected UMLObjectManager umlObjectManager;
-	private UMLObject nowObject;
-
+	protected UMLObjectManager manager;
+	protected UMLObject nowObject;
+	public LinesMode(UMLObjectManager manager) {
+		this.manager=manager;
+	}
 	public void startDrag(int x, int y) {
-		nowObject=umlObjectManager.getUMLObject(x, y);	
+		nowObject=manager.getUMLObject(x, y);	
 	}
 
 	public void stopDrag(int x, int y) {
-		UMLObject object=umlObjectManager.getUMLObject(x, y);
+		UMLObject object=manager.getUMLObject(x, y);
 		if(nowObject!=null && object!=null && nowObject!=object){
 			createLine(nowObject,object);
 		}
