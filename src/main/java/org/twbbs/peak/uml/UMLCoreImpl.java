@@ -5,14 +5,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.apache.commons.lang3.ArrayUtils;
 import org.twbbs.peak.uml.object.UMLObject;
 import org.twbbs.peak.uml.object.UMLObjectReader;
 import org.twbbs.peak.uml.object.state.ObjectState;
 import org.twbbs.peak.uml.portal.UMLCoreObserver;
 import org.twbbs.peak.uml.portal.UMLCoreSubject;
-import org.twbbs.peak.uml.portal.UMLModeObserver;
-import org.twbbs.peak.uml.portal.UMLModeSubject;
 
 public class UMLCoreImpl implements UMLCore,UMLCoreSubject{
 	final static int DEPTH=99;
@@ -35,7 +32,10 @@ public class UMLCoreImpl implements UMLCore,UMLCoreSubject{
 	public int[] getNotEmptyLayers() {
 		Set<Integer> set=objectLayers.keySet();
 		Integer[] array =set.toArray(new Integer[set.size()]);
-		int [] intArray=ArrayUtils.toPrimitive(array);
+		int [] intArray=new int[array.length];
+		for(int i=0;i<array.length;i++){
+			intArray[i]=array[i].intValue();
+		}
 		return intArray;
 	}
 

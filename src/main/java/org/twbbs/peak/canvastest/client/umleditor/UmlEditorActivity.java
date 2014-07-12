@@ -7,7 +7,6 @@ import org.twbbs.peak.canvastest.client.connector.PortalConnector;
 import org.twbbs.peak.canvastest.client.objects.GraphicCenterImpl;
 import org.twbbs.peak.canvastest.client.objects.ShinyFrame;
 import org.twbbs.peak.canvastest.client.uml.UmlClass;
-import org.twbbs.peak.uml.UMLCoreImpl;
 import org.twbbs.peak.uml.portal.UMLCoreObserver;
 import org.twbbs.peak.uml.portal.UMLCoreSubject;
 import org.twbbs.peak.uml.portal.UMLModeObserver;
