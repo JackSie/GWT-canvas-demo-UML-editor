@@ -1,25 +1,73 @@
 package org.twbbs.peak.uml.modes;
 
-public class SelectionMode implements UmlMode{
+import java.util.List;
 
+import org.twbbs.peak.uml.object.UMLObject;
+import org.twbbs.peak.uml.object.UMLObjectManager;
+
+public class SelectionMode implements UmlMode{
+	private UMLObjectManager manager;
+	int originX;
+	int originY;
+	private int offsetX;
+	private int offsetY;
+	UMLObject object;
+	List<UMLObject> selectedList;
 	public void onClick(int x, int y) {
-		// TODO Auto-generated method stub
-		
+		modeChanged();
+		UMLObject object=manager.getUMLObject(x, y);
+		if(object!=null){
+			object.getObjectState().setSelected(true);
+			manager.update();
+		}
 	}
 
 	public void startDrag(int x, int y) {
-		// TODO Auto-generated method stub
-		
+		modeChanged();
+		object=manager.getUMLObject(x, y);
+		if(object==null){
+			this.originX=x;
+			this.originY=y;
+		}else{
+			object.getObjectState().setDraged(true);
+			offsetX=x-object.getObjectState().getX();
+			offsetY=y-object.getObjectState().getY();
+		}
+		manager.update();
 	}
 
 	public void onDrag(int x, int y) {
-		// TODO Auto-generated method stub
-		
+		if(object!=null){
+			object.getObjectState().setX(x-offsetX);
+			object.getObjectState().setY(y-offsetY);
+			manager.update();
+		}
 	}
 
 	public void stopDrag(int x, int y) {
-		// TODO Auto-generated method stub
-		
+		if(object!=null){
+			onDrag(x,y);
+			object.getObjectState().setDraged(false);
+		}else{
+			calcauteZone(x,y);
+		}
+		manager.update();
+	}
+
+	private void calcauteZone(int x,int y){
+		//TODO math here
+	}
+	
+	public void modeChanged() {
+		for(UMLObject object:selectedList){
+			object.getObjectState().setSelected(false);
+			selectedList.remove(object);
+		}
+		if(object!=null){
+			object.getObjectState().setSelected(false);
+			object=null;
+		}
+		manager.update();
 	}
 
 }

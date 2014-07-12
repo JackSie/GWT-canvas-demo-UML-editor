@@ -3,25 +3,18 @@ package org.twbbs.peak.uml.connection;
 import org.twbbs.peak.uml.object.UMLObject;
 
 public abstract class UMLAbstractConnection implements UMLConnection{
-	private int postition;
+	private int headPostition;
+	private int tailPostition;
 	private int type;
 	private UMLObject head;
 	private UMLObject tail;
 	
-	public UMLAbstractConnection(UMLObject head,UMLObject tail,int postion,int type) {
+	public UMLAbstractConnection(UMLObject head,UMLObject tail,int headPostition,int tailPostition,int type) {
 		this.setHead(head);
 		this.setTail(tail);
-		this.setPosition(postion);
+		this.setHeadPosition(headPostition);
+		this.setTailPostion(tailPostition);
 		this.setType(type);
-	}
-	
-	public int getPosition() {
-		return postition;
-	}
-	public void setPosition(int postion) {
-		if(postion<=4 && postion>=0){
-			this.postition=postion;
-		}
 	}
 	public int getType() {
 		return type;
@@ -40,6 +33,23 @@ public abstract class UMLAbstractConnection implements UMLConnection{
 	}
 	public void setTail(UMLObject object) {
 		this.tail=object;
+	}
+
+	public int getHeadPosition() {
+		return headPostition;
+	}
+	public void setHeadPosition(int postion) {
+		if(postion<=4 && postion>=0){
+			this.headPostition=postion;
+		}
+	}
+	public int getTailPostion() {
+		return tailPostition;
+	}
+	public void setTailPostion(int postion) {
+		if(postion<=4 && postion>=0){
+			this.tailPostition=postion;
+		}
 	}
 	
 }

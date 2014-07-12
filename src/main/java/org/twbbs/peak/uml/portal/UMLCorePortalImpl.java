@@ -1,8 +1,10 @@
-package org.twbbs.peak.uml;
+package org.twbbs.peak.uml.portal;
+
+import java.util.List;
 
 import org.twbbs.peak.uml.modes.UmlMode;
 
-public class UMLCorePortalImpl implements UMLCorePortal,UMLModeHandler{
+public class UMLCorePortalImpl implements UMLCorePortal,UMLModeHandler,UMLModeSubject{
 
 	private UmlMode selectionMode;
 	private UmlMode assocaitionMode;
@@ -11,6 +13,7 @@ public class UMLCorePortalImpl implements UMLCorePortal,UMLModeHandler{
 	private UmlMode classMode;
 	private UmlMode useCaseMode;	
 	private UmlMode nowMode;
+	private List<UMLModeObserver> list;
 	
 	public void onClick(int x, int y) {
 		nowMode.onClick(x, y);
@@ -28,6 +31,7 @@ public class UMLCorePortalImpl implements UMLCorePortal,UMLModeHandler{
 		nowMode.stopDrag(x, y);
 	}
 	public void changeMode(int mode) {
+		nowMode.modeChanged();
 		switch(mode){
 			case SELECTION_MODE:
 				nowMode=selectionMode;break;
@@ -42,6 +46,13 @@ public class UMLCorePortalImpl implements UMLCorePortal,UMLModeHandler{
 			case USECASE_MODE:
 				nowMode=useCaseMode;break;
 		}
+	}
+	public void regist(UMLModeObserver observer) {
+		list.add(observer);
+	}
+
+	public void remove(UMLModeObserver observer) {
+		list.remove(observer);		
 	}
 	
 	public UmlMode getSelectionMode() {return selectionMode;}

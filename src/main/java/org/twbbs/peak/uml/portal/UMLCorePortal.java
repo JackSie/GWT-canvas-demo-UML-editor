@@ -1,4 +1,4 @@
-package org.twbbs.peak.uml;
+package org.twbbs.peak.uml.portal;
 
 public interface UMLCorePortal {
 	void onClick(int x, int y);

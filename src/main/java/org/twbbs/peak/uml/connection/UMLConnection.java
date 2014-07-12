@@ -10,8 +10,10 @@ public interface UMLConnection {
 	static int ASSOCIATION=0;
 	static int GENERALIZATION=1;
 	static int COMPOSITION=2;
-	int getPosition();
-	void setPosition(int postion);
+	int getHeadPosition();
+	void setHeadPosition(int postion);
+	int getTailPostion();
+	void setTailPostion(int postion);
 	int getType();
 	void setType(int type);
 	UMLObject getHead();

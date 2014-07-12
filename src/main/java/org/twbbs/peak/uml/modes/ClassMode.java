@@ -1,7 +1,10 @@
 package org.twbbs.peak.uml.modes;
 
+import org.twbbs.peak.uml.object.UMLObjectManager;
+
 public class ClassMode extends ObjectsMode{
+	private UMLObjectManager manager;
 	public void onClick(int x, int y) {
-		// TODO Auto-generated method stub
+		manager.createClassObject(x, y);
 	}
 }

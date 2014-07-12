@@ -10,11 +10,10 @@ import org.twbbs.peak.uml.object.DefaultClassObject;
 import com.google.gwt.canvas.dom.client.Context2d;
 
 public class UmlClass extends DrawableDragableUMLObject{
-	private ClassState classState;
 	private DrawBehavior drawBehavior;
 	
 	public UmlClass(int x,int y) {
-		this(x,y,new DefaultClassObject());
+		this(x,y,new DefaultClassObject(x,y));
 	}
 	
 	

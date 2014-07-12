@@ -1,24 +1,25 @@
 package org.twbbs.peak.uml.modes;
 
 import org.twbbs.peak.uml.object.UMLObject;
+import org.twbbs.peak.uml.object.UMLObjectManager;
 
 public abstract class LinesMode implements UmlMode{
-
-	public void onClick(int x, int y) {}
+	protected UMLObjectManager umlObjectManager;
+	private UMLObject nowObject;
 
 	public void startDrag(int x, int y) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void onDrag(int x, int y) {
-		// TODO Auto-generated method stub
-		
+		nowObject=umlObjectManager.getUMLObject(x, y);	
 	}
 
 	public void stopDrag(int x, int y) {
-		// TODO Auto-generated method stub
-		
+		UMLObject object=umlObjectManager.getUMLObject(x, y);
+		if(nowObject!=null && object!=null && nowObject!=object){
+			createLine(nowObject,object);
+		}
+		nowObject=null;
 	}
+	public void onClick(int x, int y) {}
+	public void onDrag(int x, int y) {}
+	public void modeChanged(){}
 	protected abstract void createLine(UMLObject objectA,UMLObject objectB);
 }
