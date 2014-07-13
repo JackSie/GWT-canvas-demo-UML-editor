@@ -1,5 +1,6 @@
 package org.twbbs.peak.uml.object;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.twbbs.peak.uml.connection.UMLConnection;
@@ -15,6 +16,7 @@ public abstract class UmlAbstractObject implements UMLObject{
 		this.setName(name);
 		this.setType(type);
 		this.objectState=objectState;
+		list =new ArrayList<UMLConnection>();
 	}
 	public void setConnection(UMLConnection umlConnection){
 		list.add(umlConnection);
