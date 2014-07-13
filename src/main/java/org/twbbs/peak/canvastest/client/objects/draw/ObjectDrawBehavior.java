@@ -21,9 +21,12 @@ public abstract class ObjectDrawBehavior implements DrawBehavior{
 		String name=umlObjectReader.getName();
 		int x=umlObjectReader.getObjectState().getX();
 		int y=umlObjectReader.getObjectState().getY();
+		int sizeW=umlObjectReader.getObjectState().getSizeW();
+		int sizeH=umlObjectReader.getObjectState().getSizeH();
+		int nameSize=name.length();
 		context.setFillStyle(black);
 		context.setFont("normal lighter 12px serif");
-		context.fillText(name, x+20, y+20);
+		context.fillText(name, x+sizeW/2-nameSize*4, y+20);
 	}
 	protected void drawLine(Context2d context,int fromtop){
 		int x=umlObjectReader.getObjectState().getX();

@@ -24,7 +24,7 @@ public class HelloWorldE implements EntryPoint {
 		UMLCorePortalImpl umlCorePortal=new UMLCorePortalImpl(manager);
 
 		manager.createClassObject(100, 100);
-		manager.createClassObject(400, 100);
+		manager.createUseCaseObject(400, 100);
 		
 		ModeConnector modeConnector=new ModeConnectorImpl(umlCorePortal);
 		PortalConnector portalConnector=new PortalConnectorImpl(umlCorePortal);

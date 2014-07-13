@@ -94,11 +94,11 @@ public class UMLCoreImpl implements UMLCore,UMLCoreSubject{
 
 	public UMLObject getUmlObject(int x, int y) {
 		int [] keys=getNotEmptyLayers();
-		for(int key:keys){
-			List<UMLObject> list=objectLayers.get(key);
-			for(UMLObject object:list){
-				if(isInit(x,y, object.getObjectState()))
-					return object;
+		for(int i=keys.length-1;i>=0;i--){
+			List<UMLObject> list=objectLayers.get(keys[i]);
+			for(int j=list.size()-1;j>=0;j--){
+				if(isInit(x,y, list.get(j).getObjectState()))
+					return list.get(j);
 			}
 		}
 		return null;
@@ -109,7 +109,6 @@ public class UMLCoreImpl implements UMLCore,UMLCoreSubject{
 		int sizeW=classState.getSizeW();
 		int sizeH=classState.getSizeH();
 		if(x>=nowX&&x<=nowX+sizeW && y>=nowY&&y<=nowY+sizeH){
-			System.out.println("inin");
 			return true;
 		}
 		return false;

@@ -16,6 +16,7 @@ public class CanvasCenter implements UMLCoreObserver{
 	private Context2d bufferedcContext2d;
 	private UMLCoreSubject coreSubject;
 	private ClassDrawBehavior classDrawBehavior;
+	private UseCaseDrawBehavior useCaseDrawBehavior;
 	public CanvasCenter(Canvas canvas,Canvas bufferedCanvas,UMLCoreSubject coreSubject) {
 		this.canvas=canvas;
 		this.bufferedCanvas=bufferedCanvas;
@@ -26,6 +27,7 @@ public class CanvasCenter implements UMLCoreObserver{
 		
 		
 		classDrawBehavior=new ClassDrawBehavior(null);
+		useCaseDrawBehavior=new UseCaseDrawBehavior(null);
 	}
 	
 	private void canvasInit(){
@@ -49,8 +51,11 @@ public class CanvasCenter implements UMLCoreObserver{
 	
 	private void paintObject(UMLObjectReader object){
 		DrawBehavior drawBehavior=null;
-		if(object.getType().equals(UMLObjectReader.CLASS)){
+		String type=object.getType();
+		if(type.equals(UMLObjectReader.CLASS)){
 			drawBehavior=classDrawBehavior;
+		}else if(type.equals(UMLObjectReader.INTERFACE)){
+			drawBehavior=useCaseDrawBehavior;
 		}
 		if(drawBehavior!=null && object!=null){
 			drawBehavior.setObject(object);

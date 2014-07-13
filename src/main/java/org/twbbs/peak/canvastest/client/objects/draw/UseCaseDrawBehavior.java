@@ -1,16 +1,18 @@
 package org.twbbs.peak.canvastest.client.objects.draw;
 
-
 import org.twbbs.peak.uml.object.UMLObjectReader;
+
 import com.google.gwt.canvas.dom.client.CanvasGradient;
 import com.google.gwt.canvas.dom.client.Context2d;
 
-public class ClassDrawBehavior extends ObjectDrawBehavior{
-	public static final int radiusInit=10;
-	
-	public ClassDrawBehavior(UMLObjectReader UMLObjectReader) {
-		super(UMLObjectReader);
+public class UseCaseDrawBehavior extends ObjectDrawBehavior{
+	private static final double VAR = 0.5522848;
+
+	public UseCaseDrawBehavior(UMLObjectReader umlObjectReader) {
+		super(umlObjectReader);
 	}
+
+	@Override
 	protected void drawBlackground(Context2d context) {
 		int x=umlObjectReader.getObjectState().getX();
 		int y=umlObjectReader.getObjectState().getY();
@@ -26,6 +28,8 @@ public class ClassDrawBehavior extends ObjectDrawBehavior{
 		}
 		
 		
+		
+		
 		context.save();
 		context.setShadowOffsetX(offset);
 		context.setShadowOffsetY(offset);
@@ -36,38 +40,37 @@ public class ClassDrawBehavior extends ObjectDrawBehavior{
 		
 		CanvasGradient canvasGradient= context.createLinearGradient(0, y, 0, y+sizeH);
 		canvasGradient.addColorStop(0, "#fff");
-		canvasGradient.addColorStop(1, "#66CC00");
+		canvasGradient.addColorStop(1, "#1E90FF");
 		context.setFillStyle(canvasGradient);
-
-		int radius=radiusInit;
-		if (sizeW < 2 * radius) radius = sizeW / 2;
-		if (sizeH < 2 * radius) radius = sizeH / 2;
+		
+		sizeH/=2;
+		sizeW/=2;
+		x=x+sizeW;
+		y=y+sizeH;
+		double ox= sizeW * VAR;
+		double oy= sizeH * VAR;
 		context.beginPath();
-		context.moveTo(x+radius, y);
-		context.arcTo(x+sizeW, y, x+sizeW, y+sizeH, radius);
-		context.arcTo(x+sizeW, y+sizeH, x, y+sizeH, radius);
-		context.arcTo(x, y+sizeH, x, y, radius);
-		context.arcTo(x, y, x+sizeW, y, radius);
+		context.moveTo(x-sizeW, y);
+		context.bezierCurveTo(x-sizeW, y-oy, x-ox, y-sizeH, x, y-sizeH);
+		context.bezierCurveTo(x+ox, y-sizeH, x+sizeW, y-oy, x+sizeW, y);
+		context.bezierCurveTo(x+sizeW, y+oy, x+ox, y+sizeH, x, y+sizeH);
+		context.bezierCurveTo(x-ox, y+sizeH, x-sizeW, y+oy, x-sizeW, y);
+		context.closePath();
 		context.fill();
 		context.stroke();
-		context.closePath();
+		
 		
 		context.restore();
 	}
+
+	@Override
+	protected void drawLine(Context2d context, int fromtop) {}
 	@Override
 	protected void cumstomDraw(Context2d context) {
 		super.cumstomDraw(context);
 		boolean isSelected=umlObjectReader.getObjectState().isSelected();
-		drawMember(context);
-		drawMethod(context);
 		if(isSelected){  
 			drawSpot(context,blue);
 		}
 	}
-	private void drawMember(Context2d context){}
-	
-	private void drawMethod(Context2d context){
-		drawLine(context,80);
-	}
-
 }

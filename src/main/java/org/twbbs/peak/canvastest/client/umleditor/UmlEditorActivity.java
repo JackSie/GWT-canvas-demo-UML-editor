@@ -4,11 +4,7 @@ package org.twbbs.peak.canvastest.client.umleditor;
 import org.twbbs.peak.canvastest.client.ClientFactory;
 import org.twbbs.peak.canvastest.client.connector.ModeConnector;
 import org.twbbs.peak.canvastest.client.connector.PortalConnector;
-import org.twbbs.peak.canvastest.client.objects.GraphicCenterImpl;
-import org.twbbs.peak.canvastest.client.objects.ShinyFrame;
 import org.twbbs.peak.canvastest.client.objects.draw.CanvasCenter;
-import org.twbbs.peak.canvastest.client.uml.UmlClass;
-import org.twbbs.peak.uml.portal.UMLCoreObserver;
 import org.twbbs.peak.uml.portal.UMLCoreSubject;
 import org.twbbs.peak.uml.portal.UMLModeObserver;
 import org.twbbs.peak.uml.portal.UMLModeSubject;
@@ -30,8 +26,6 @@ import com.google.gwt.user.client.ui.RootPanel;
 
 public class UmlEditorActivity implements UMLModeObserver{
 	private UmlEditorView umlEditorView;
-	private GraphicCenterImpl graphicCenter;
-	private UmlClass umlClass;
 	private Canvas canvas;
 	private Canvas bufferedCanvas;
 	private Context2d context;
@@ -51,7 +45,6 @@ public class UmlEditorActivity implements UMLModeObserver{
 		canvas=umlEditorView.getCanvas();
 		bufferedCanvas=umlEditorView.getBufferedCanvas();
 		this.canvasCenter=new CanvasCenter(canvas,bufferedCanvas,umlCore);
-		graphicCenter = new GraphicCenterImpl();
 	}
 	public void start(RootPanel panel){
 		panel.add(umlEditorView.asWidget());
@@ -61,12 +54,6 @@ public class UmlEditorActivity implements UMLModeObserver{
 	}
 	void doUpdate(){
 		canvasCenter.update();
-	}
-	void doUpdate2(){
-		bufferedContext.setFillStyle("#FFFFFF");
-		bufferedContext.fillRect(0, 0, 1024, 768);
-		graphicCenter.draw(bufferedContext);
-		context.drawImage(bufferedContext.getCanvas(), 0, 0);
 	}
 	
 	private void initHandler(){
@@ -128,47 +115,6 @@ public class UmlEditorActivity implements UMLModeObserver{
 		});
 	}
 	
-	private void initHandler(Canvas canvas){
-		canvas.addMouseDownHandler(new MouseDownHandler() {			
-			public void onMouseDown(MouseDownEvent event){
-				int x=event.getX();
-				int y=event.getY();				
-				if(umlClass.isIn(x, y)){
-						umlClass.setDraged(true,x,y);
-				}else{
-					umlClass.setDraged(false);
-				}
-				doUpdate();
-			}
-		});
-	
-		canvas.addMouseMoveHandler(new MouseMoveHandler() {
-			public void onMouseMove(MouseMoveEvent event) {
-				int x=event.getX();
-				int y=event.getY();
-				movePostion.setText(x+" , "+y);
-				if(umlClass.isDraged()){
-					umlClass.moving(x, y);
-					doUpdate();
-				}
-			}
-		});
-		
-		canvas.addMouseUpHandler(new MouseUpHandler() {			
-			public void onMouseUp(MouseUpEvent event) {
-				int x=event.getX();
-				int y=event.getY();
-				if(umlClass.isDraged()){
-					umlClass.moving(x, y);					
-				}
-				umlClass.setDraged(false);
-				doUpdate();
-//				System.out.println("up: "+x+" , "+y);
-			}
-		});
-		
-		
-	}
 	public void modeChanged(int mode) {
 		// TODO Auto-generated method stub
 		
