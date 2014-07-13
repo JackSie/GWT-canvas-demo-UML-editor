@@ -36,10 +36,9 @@ public class CanvasCenter implements UMLCoreObserver{
 	
 	
 	public void update() {
-//		System.out.println("repaint");
 		canvasInit();
 		int[] layers=coreSubject.getNotEmptyLayers();
-		for(int i=layers.length-1;i>=0;i--){
+		for(int i=0;i<layers.length;i++){
 			List<UMLObjectReader> list=coreSubject.getObjects(layers[i]);
 			for(UMLObjectReader object:list){
 				paintObject(object);
