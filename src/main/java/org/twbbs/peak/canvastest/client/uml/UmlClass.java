@@ -26,7 +26,7 @@ public class UmlClass extends DrawableDragableUMLObject{
 		calculateSize();
 		//TODO change to factory
 		//TODO useStateObject
-		drawBehavior= new ClassDrawBehavior(classState);
+//		drawBehavior= new ClassDrawBehavior(classState);
 		this.classState=classState;
 	}
 	

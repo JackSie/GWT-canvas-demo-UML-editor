@@ -1,25 +1,25 @@
 package org.twbbs.peak.canvastest.client.objects.draw;
 
-import org.twbbs.peak.canvastest.client.objects.ClassState;
 
+import org.twbbs.peak.uml.object.UMLObjectReader;
 import com.google.gwt.canvas.dom.client.CanvasGradient;
 import com.google.gwt.canvas.dom.client.Context2d;
 
 public class ClassDrawBehavior extends ObjectDrawBehavior{
 	public static final int radiusInit=10;
-	ClassState classState;
+	UMLObjectReader UMLObjectReader;
 	
-	public ClassDrawBehavior(ClassState classState) {
-		super(classState);
-		this.classState=classState;
+	public ClassDrawBehavior(UMLObjectReader UMLObjectReader) {
+		super(UMLObjectReader);
+		this.UMLObjectReader=UMLObjectReader;
 	}
 	protected void drawBlackground(Context2d context) {
-		int x=classState.getX();
-		int y=classState.getY();
-		int sizeW=classState.getSizeW();
-		int sizeH=classState.getSizeH();
-		boolean isDraged=classState.isDraged();
-		boolean isSelected=classState.isSelected();
+		int x=umlObjectReader.getObjectState().getX();
+		int y=umlObjectReader.getObjectState().getY();
+		int sizeW=umlObjectReader.getObjectState().getSizeW();
+		int sizeH=umlObjectReader.getObjectState().getSizeH();
+		boolean isDraged=umlObjectReader.getObjectState().isDraged();
+		boolean isSelected=umlObjectReader.getObjectState().isSelected();
 		double offset=shadowOffsetNormal;
 		context.setStrokeStyle(black);
 		if(isDraged||isSelected){
@@ -59,11 +59,11 @@ public class ClassDrawBehavior extends ObjectDrawBehavior{
 	@Override
 	protected void cumstomDraw(Context2d context) {
 		super.cumstomDraw(context);
-		boolean isDraged=classState.isDraged();
-		boolean isSelected=classState.isSelected();
+		boolean isDraged=umlObjectReader.getObjectState().isDraged();
+		boolean isSelected=umlObjectReader.getObjectState().isSelected();
 		drawMember(context);
 		drawMethod(context);
-		if(isDraged||isSelected){  //TODO change to only Selected
+		if(isSelected){  
 			drawSpot(context,blue);
 		}
 	}

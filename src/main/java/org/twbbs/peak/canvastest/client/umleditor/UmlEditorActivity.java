@@ -6,6 +6,7 @@ import org.twbbs.peak.canvastest.client.connector.ModeConnector;
 import org.twbbs.peak.canvastest.client.connector.PortalConnector;
 import org.twbbs.peak.canvastest.client.objects.GraphicCenterImpl;
 import org.twbbs.peak.canvastest.client.objects.ShinyFrame;
+import org.twbbs.peak.canvastest.client.objects.draw.CanvasCenter;
 import org.twbbs.peak.canvastest.client.uml.UmlClass;
 import org.twbbs.peak.uml.portal.UMLCoreObserver;
 import org.twbbs.peak.uml.portal.UMLCoreSubject;
@@ -27,11 +28,12 @@ import com.google.gwt.event.dom.client.MouseUpHandler;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
 
-public class UmlEditorActivity implements UMLCoreObserver,UMLModeObserver{
+public class UmlEditorActivity implements UMLModeObserver{
 	private UmlEditorView umlEditorView;
 	private GraphicCenterImpl graphicCenter;
 	private UmlClass umlClass;
 	private Canvas canvas;
+	private Canvas bufferedCanvas;
 	private Context2d context;
 	private Context2d bufferedContext;
 	private Label movePostion;
@@ -39,32 +41,28 @@ public class UmlEditorActivity implements UMLCoreObserver,UMLModeObserver{
 	PortalConnector portalConnector;
 	UMLCoreSubject umlCore;
 	UMLModeSubject modeSubject;
+	private CanvasCenter canvasCenter;
 	public UmlEditorActivity(ClientFactory clientFactory,ModeConnector modeConnector,PortalConnector portalConnector,UMLCoreSubject umlCore,UMLModeSubject modeSubject) {
 		umlEditorView =clientFactory.getUmlEditorView();
 		this.modeConnector=modeConnector;
 		this.portalConnector=portalConnector;
 		this.umlCore=umlCore;
 		this.modeSubject=modeSubject;
+		canvas=umlEditorView.getCanvas();
+		bufferedCanvas=umlEditorView.getBufferedCanvas();
+		this.canvasCenter=new CanvasCenter(canvas,bufferedCanvas,umlCore);
 		graphicCenter = new GraphicCenterImpl();
 	}
 	public void start(RootPanel panel){
 		panel.add(umlEditorView.asWidget());
 		
-		movePostion=umlEditorView.getMousePostitionRight();
-		canvas=umlEditorView.getCanvas();
-		context=canvas.getContext2d();
-		bufferedContext=umlEditorView.getBufferedCanvas().getContext2d();
-				
-		
-		new ShinyFrame(graphicCenter);
-		
-		umlClass = new UmlClass(200,200);
-		graphicCenter.regist(umlClass);
-		initHandler(canvas);
+		initHandler();
 		doUpdate();
 	}
-	
 	void doUpdate(){
+		canvasCenter.update();
+	}
+	void doUpdate2(){
 		bufferedContext.setFillStyle("#FFFFFF");
 		bufferedContext.fillRect(0, 0, 1024, 768);
 		graphicCenter.draw(bufferedContext);
@@ -172,10 +170,6 @@ public class UmlEditorActivity implements UMLCoreObserver,UMLModeObserver{
 		
 	}
 	public void modeChanged(int mode) {
-		// TODO Auto-generated method stub
-		
-	}
-	public void update() {
 		// TODO Auto-generated method stub
 		
 	}

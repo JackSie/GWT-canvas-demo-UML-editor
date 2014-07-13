@@ -1,6 +1,8 @@
 package org.twbbs.peak.uml.portal;
 
+import java.util.ArrayList;
 import java.util.List;
+
 import org.twbbs.peak.uml.modes.AssociationLineMode;
 import org.twbbs.peak.uml.modes.ClassMode;
 import org.twbbs.peak.uml.modes.CompositionLineMode;
@@ -21,6 +23,7 @@ public class UMLCorePortalImpl implements UMLCorePortal,UMLModeHandler,UMLModeSu
 	private UmlMode nowMode;
 	private List<UMLModeObserver> list;
 	public UMLCorePortalImpl(UMLObjectManager manager) {
+		list=new ArrayList<UMLModeObserver>();
 		selectionMode=new SelectionMode(manager);
 		assocaitionMode=new AssociationLineMode(manager);
 		generalizationMode=new GeneralizationLineMode(manager);
@@ -31,18 +34,22 @@ public class UMLCorePortalImpl implements UMLCorePortal,UMLModeHandler,UMLModeSu
 	}
 	
 	public void onClick(int x, int y) {
+		System.out.println("onClick: "+x+","+y);
 		nowMode.onClick(x, y);
 	}
 
 	public void startDrag(int x, int y) {
+		System.out.println("startDrag: "+x+","+y);
 		nowMode.startDrag(x, y);
 	}
 
 	public void onDrag(int x, int y) {
+		System.out.println("onDrag: "+x+","+y);
 		nowMode.onDrag(x, y);
 	}
 
 	public void stopDrag(int x, int y) {
+		System.out.println("stopDrag: "+x+","+y);
 		nowMode.stopDrag(x, y);
 	}
 	public void changeMode(int mode) {

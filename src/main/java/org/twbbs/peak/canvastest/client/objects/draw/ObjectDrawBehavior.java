@@ -1,14 +1,13 @@
 package org.twbbs.peak.canvastest.client.objects.draw;
 
 
-import org.twbbs.peak.canvastest.client.objects.ClassState;
-
+import org.twbbs.peak.uml.object.UMLObjectReader;
 import com.google.gwt.canvas.dom.client.Context2d;
 
 public abstract class ObjectDrawBehavior implements DrawBehavior{
-	ClassState classState;
-	public ObjectDrawBehavior(ClassState classState) {
-		this.classState=classState;
+	protected UMLObjectReader umlObjectReader;
+	public ObjectDrawBehavior(UMLObjectReader umlObjectReader) {
+		this.umlObjectReader=umlObjectReader;
 	}
 	public final void toDraw(Context2d context) {
 		context.save();
@@ -19,17 +18,17 @@ public abstract class ObjectDrawBehavior implements DrawBehavior{
 		context.restore();
 	}
 	protected void drawName(Context2d context){
-		String name=classState.getClassObject().getName();
-		int x=classState.getX();
-		int y=classState.getY();
+		String name=umlObjectReader.getName();
+		int x=umlObjectReader.getObjectState().getX();
+		int y=umlObjectReader.getObjectState().getY();
 		context.setFillStyle(black);
 		context.setFont("normal lighter 12px serif");
 		context.fillText(name, x+20, y+20);
 	}
 	protected void drawLine(Context2d context,int fromtop){
-		int x=classState.getX();
-		int y=classState.getY();
-		int sizeW=classState.getSizeW();
+		int x=umlObjectReader.getObjectState().getX();
+		int y=umlObjectReader.getObjectState().getY();
+		int sizeW=umlObjectReader.getObjectState().getSizeW();
 		context.save();
 		context.beginPath();
 	    context.moveTo(x, y+fromtop);
@@ -39,10 +38,10 @@ public abstract class ObjectDrawBehavior implements DrawBehavior{
 	    context.restore();
 	}
 	protected void drawSpot(Context2d context,String blue){
-		int x=classState.getX();
-		int y=classState.getY();
-		int sizeW=classState.getSizeW();
-		int sizeH=classState.getSizeH();
+		int x=umlObjectReader.getObjectState().getX();
+		int y=umlObjectReader.getObjectState().getY();
+		int sizeW=umlObjectReader.getObjectState().getSizeW();
+		int sizeH=umlObjectReader.getObjectState().getSizeH();
 		context.save();
 		context.setFillStyle(blue);
 		context.fillRect(x-8, y+sizeH/2, 10 , 10);
@@ -51,6 +50,9 @@ public abstract class ObjectDrawBehavior implements DrawBehavior{
 		context.fillRect(x+sizeW, y+sizeH/2, 10 , 10);
 		
 		context.restore();
+	}
+	public void setObject(UMLObjectReader object){
+		this.umlObjectReader=object;
 	}
 	
 	protected abstract void drawBlackground(Context2d context);

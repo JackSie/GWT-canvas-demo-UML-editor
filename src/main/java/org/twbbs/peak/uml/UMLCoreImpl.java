@@ -1,6 +1,9 @@
 package org.twbbs.peak.uml;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -12,10 +15,14 @@ import org.twbbs.peak.uml.portal.UMLCoreObserver;
 import org.twbbs.peak.uml.portal.UMLCoreSubject;
 
 public class UMLCoreImpl implements UMLCore,UMLCoreSubject{
-	final static int DEPTH=99;
+	final static int DEPTH=100;
 	List<UMLCoreObserver> observersList;
 	Map<Integer,List<UMLObject>> objectLayers;
 	int nowDepth=DEPTH;
+	public UMLCoreImpl() {
+		observersList=new ArrayList<UMLCoreObserver>();
+		objectLayers=new HashMap<Integer, List<UMLObject>>();
+	}
 	
 	public void regist(UMLCoreObserver observer) {
 		observersList.add(observer);
@@ -32,6 +39,7 @@ public class UMLCoreImpl implements UMLCore,UMLCoreSubject{
 	public int[] getNotEmptyLayers() {
 		Set<Integer> set=objectLayers.keySet();
 		Integer[] array =set.toArray(new Integer[set.size()]);
+		Arrays.sort(array,Collections.reverseOrder());
 		int [] intArray=new int[array.length];
 		for(int i=0;i<array.length;i++){
 			intArray[i]=array[i].intValue();

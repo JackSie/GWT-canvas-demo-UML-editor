@@ -1,5 +1,6 @@
 package org.twbbs.peak.uml.modes;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.twbbs.peak.uml.object.UMLObject;
@@ -15,6 +16,7 @@ public class SelectionMode implements UmlMode{
 	List<UMLObject> selectedList;
 	public SelectionMode(UMLObjectManager manager) {
 		this.manager=manager;
+		selectedList=new ArrayList<UMLObject>();
 	}
 	public void onClick(int x, int y) {
 		modeChanged();
