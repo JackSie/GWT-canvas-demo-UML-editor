@@ -34,22 +34,22 @@ public class UMLCorePortalImpl implements UMLCorePortal,UMLModeHandler,UMLModeSu
 	}
 	
 	public void onClick(int x, int y) {
-		System.out.println("onClick: "+x+","+y);
+//		System.out.println("onClick: "+x+","+y);
 		nowMode.onClick(x, y);
 	}
 
 	public void startDrag(int x, int y) {
-		System.out.println("startDrag: "+x+","+y);
+//		System.out.println("startDrag: "+x+","+y);
 		nowMode.startDrag(x, y);
 	}
 
 	public void onDrag(int x, int y) {
-		System.out.println("onDrag: "+x+","+y);
+//		System.out.println("onDrag: "+x+","+y);
 		nowMode.onDrag(x, y);
 	}
 
 	public void stopDrag(int x, int y) {
-		System.out.println("stopDrag: "+x+","+y);
+//		System.out.println("stopDrag: "+x+","+y);
 		nowMode.stopDrag(x, y);
 	}
 	public void changeMode(int mode) {

@@ -36,7 +36,7 @@ public class CanvasCenter implements UMLCoreObserver{
 	
 	
 	public void update() {
-		System.out.println("repaint");
+//		System.out.println("repaint");
 		canvasInit();
 		int[] layers=coreSubject.getNotEmptyLayers();
 		for(int i=layers.length-1;i>=0;i--){

@@ -20,7 +20,7 @@ public class SelectionMode implements UmlMode{
 	}
 	public void onClick(int x, int y) {
 		modeChanged();
-		UMLObject object=manager.getUMLObject(x, y);
+		object=manager.getUMLObject(x, y);
 		if(object!=null){
 			object.getObjectState().setSelected(true);
 			manager.update();
@@ -66,10 +66,12 @@ public class SelectionMode implements UmlMode{
 	public void modeChanged() {
 		for(UMLObject object:selectedList){
 			object.getObjectState().setSelected(false);
+			object.getObjectState().setDraged(false);
 			selectedList.remove(object);
 		}
 		if(object!=null){
 			object.getObjectState().setSelected(false);
+			object.getObjectState().setDraged(false);
 			object=null;
 		}
 		manager.update();
