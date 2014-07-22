@@ -3,11 +3,12 @@ package org.twbbs.peak.canvastest.client.umleditor;
 import com.google.gwt.canvas.client.Canvas;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HTMLPanel;
+import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.PushButton;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.user.client.ui.DockPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
-import com.google.gwt.user.client.ui.Button;
 
 public class UmlEditorViewImpl implements UmlEditorView{
 
@@ -20,12 +21,12 @@ public class UmlEditorViewImpl implements UmlEditorView{
 	private Canvas bufferedCanvas;
 	private DockPanel dockPanel;
 	private VerticalPanel verticalPanel;
-	private Button btnSelection;
-	private Button btnNewButton;
-	private Button btnCompostion;
-	private Button btnGerenalization;
-	private Button btnClass;
-	private Button btnUsecase;
+	private PushButton btnSelection;
+	private PushButton btnNewButton;
+	private PushButton btnCompostion;
+	private PushButton btnGerenalization;
+	private PushButton btnClass;
+	private PushButton btnUsecase;
 	
 	public UmlEditorViewImpl() {
 		panel = new FlowPanel();
@@ -60,22 +61,22 @@ public class UmlEditorViewImpl implements UmlEditorView{
 		verticalPanel = new VerticalPanel();
 		dockPanel.add(verticalPanel, DockPanel.WEST);
 		
-		btnSelection = new Button("Selection");
+		btnSelection = new PushButton(new Image("images/select_mode.png"),new Image("images/select_mode2.png"));
 		verticalPanel.add(btnSelection);
 		
-		btnNewButton = new Button("Asscoiation");
+		btnNewButton = new PushButton(new Image("images/association_mode.png"),new Image("images/association_mode2.png"));
 		verticalPanel.add(btnNewButton);
 		
-		btnCompostion = new Button("Compostion");
+		btnCompostion = new PushButton(new Image("images/composition_mode.png"),new Image("images/composition_mode2.png"));
 		verticalPanel.add(btnCompostion);
 		
-		btnGerenalization = new Button("Gerenalization");
+		btnGerenalization = new PushButton(new Image("images/generalization_mode.png"),new Image("images/generalization_mode2.png"));
 		verticalPanel.add(btnGerenalization);
 		
-		btnClass = new Button("Class");
+		btnClass = new PushButton(new Image("images/class_mode.png"),new Image("images/class_mode2.png"));
 		verticalPanel.add(btnClass);
 		
-		btnUsecase = new Button("UseCase");
+		btnUsecase = new PushButton(new Image("images/usecase_mode.png"),new Image("images/usecase_mode2.png"));
 		verticalPanel.add(btnUsecase);
 	}
 	
@@ -84,11 +85,11 @@ public class UmlEditorViewImpl implements UmlEditorView{
 	public Canvas getCanvas() {return canvas;}
 	public Canvas getBufferedCanvas() {return bufferedCanvas;}
 	public Widget asWidget() {return panel;}
-	public Button getBtnSelection() {return btnSelection;}
-	public Button getBtnNewButton() {return btnNewButton;}
-	public Button getBtnCompostion() {return btnCompostion;}
-	public Button getBtnGerenalization() {return btnGerenalization;}
-	public Button getBtnClass() {return btnClass;}
-	public Button getBtnUsecase() {return btnUsecase;}
+	public PushButton getBtnSelection() {return btnSelection;}
+	public PushButton getBtnNewButton() {return btnNewButton;}
+	public PushButton getBtnCompostion() {return btnCompostion;}
+	public PushButton getBtnGerenalization() {return btnGerenalization;}
+	public PushButton getBtnClass() {return btnClass;}
+	public PushButton getBtnUsecase() {return btnUsecase;}
 
 }

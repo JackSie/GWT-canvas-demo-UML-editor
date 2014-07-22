@@ -11,33 +11,19 @@ public class UseCaseDrawBehavior extends ObjectDrawBehavior{
 	public UseCaseDrawBehavior(UMLObjectReader umlObjectReader) {
 		super(umlObjectReader);
 	}
-
 	@Override
-	protected void drawBlackground(Context2d context) {
-		int x=umlObjectReader.getObjectState().getX();
-		int y=umlObjectReader.getObjectState().getY();
-		int sizeW=umlObjectReader.getObjectState().getSizeW();
-		int sizeH=umlObjectReader.getObjectState().getSizeH();
-		boolean isDraged=umlObjectReader.getObjectState().isDraged();
+	protected void drawLine(Context2d context, int fromtop) {}
+	@Override
+	protected void cumstomDraw(Context2d context) {
+		super.cumstomDraw(context);
 		boolean isSelected=umlObjectReader.getObjectState().isSelected();
-		double offset=shadowOffsetNormal;
-		context.setStrokeStyle(black);
-		if(isDraged||isSelected){
-			offset=shadowOffsetUp;
-			context.setStrokeStyle(red);
+		if(isSelected){  
+			drawSpot(context,blue);
 		}
-		
-		
-		
-		
-		context.save();
-		context.setShadowOffsetX(offset);
-		context.setShadowOffsetY(offset);
-		context.setShadowColor("black");
-		context.setShadowBlur(4);
-		
-		context.setLineWidth(1);
-		
+	}
+	@Override
+	protected void drawShape(Context2d context, int x, int y, int sizeW,
+			int sizeH) {
 		CanvasGradient canvasGradient= context.createLinearGradient(0, y, 0, y+sizeH);
 		canvasGradient.addColorStop(0, "#fff");
 		canvasGradient.addColorStop(1, "#1E90FF");
@@ -58,19 +44,5 @@ public class UseCaseDrawBehavior extends ObjectDrawBehavior{
 		context.closePath();
 		context.fill();
 		context.stroke();
-		
-		
-		context.restore();
-	}
-
-	@Override
-	protected void drawLine(Context2d context, int fromtop) {}
-	@Override
-	protected void cumstomDraw(Context2d context) {
-		super.cumstomDraw(context);
-		boolean isSelected=umlObjectReader.getObjectState().isSelected();
-		if(isSelected){  
-			drawSpot(context,blue);
-		}
 	}
 }

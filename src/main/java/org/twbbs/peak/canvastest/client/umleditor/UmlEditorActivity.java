@@ -22,6 +22,7 @@ import com.google.gwt.event.dom.client.MouseOutHandler;
 import com.google.gwt.event.dom.client.MouseUpEvent;
 import com.google.gwt.event.dom.client.MouseUpHandler;
 import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.PushButton;
 import com.google.gwt.user.client.ui.RootPanel;
 
 public class UmlEditorActivity implements UMLModeObserver{
@@ -36,6 +37,7 @@ public class UmlEditorActivity implements UMLModeObserver{
 	UMLCoreSubject umlCore;
 	UMLModeSubject modeSubject;
 	private CanvasCenter canvasCenter;
+	private PushButton buttonIsEnable;
 	public UmlEditorActivity(ClientFactory clientFactory,ModeConnector modeConnector,PortalConnector portalConnector,UMLCoreSubject umlCore,UMLModeSubject modeSubject) {
 		umlEditorView =clientFactory.getUmlEditorView();
 		this.modeConnector=modeConnector;
@@ -85,38 +87,52 @@ public class UmlEditorActivity implements UMLModeObserver{
 		});
 		umlEditorView.getBtnSelection().addClickHandler(new ClickHandler() {			
 			public void onClick(ClickEvent event) {
-				modeConnector.chageToSelection();				
+				modeConnector.chageToSelection();
+				buttonDisable(umlEditorView.getBtnSelection());
 			}
 		});
+		buttonDisable(umlEditorView.getBtnSelection());
 		umlEditorView.getBtnNewButton().addClickHandler(new ClickHandler() {			
 			public void onClick(ClickEvent event) {
 				modeConnector.chageToAssocaition();
+				buttonDisable(umlEditorView.getBtnNewButton());
 			}
 		});
 		umlEditorView.getBtnCompostion().addClickHandler(new ClickHandler() {			
 			public void onClick(ClickEvent event) {
-				modeConnector.chageToCompostion();				
+				modeConnector.chageToCompostion();
+				buttonDisable(umlEditorView.getBtnCompostion());
 			}
 		});
 		umlEditorView.getBtnGerenalization().addClickHandler(new ClickHandler() {			
 			public void onClick(ClickEvent event) {
-				modeConnector.chageToGeneralization();				
+				modeConnector.chageToGeneralization();
+				buttonDisable(umlEditorView.getBtnGerenalization());
 			}
 		});
 		umlEditorView.getBtnClass().addClickHandler(new ClickHandler() {			
 			public void onClick(ClickEvent event) {
-				modeConnector.chageToClassMode();				
+				modeConnector.chageToClassMode();
+				buttonDisable(umlEditorView.getBtnClass());
 			}
 		});
 		umlEditorView.getBtnUsecase().addClickHandler(new ClickHandler() {			
 			public void onClick(ClickEvent event) {
-				modeConnector.chageToUseCaseMode();				
+				modeConnector.chageToUseCaseMode();
+				buttonDisable(umlEditorView.getBtnUsecase());
 			}
 		});
 	}
 	
+	private void buttonDisable(PushButton button){
+		if(buttonIsEnable!=null){
+			buttonIsEnable.setEnabled(true);
+		}
+		buttonIsEnable=button;
+		buttonIsEnable.setEnabled(false);
+	}
+	
 	public void modeChanged(int mode) {
 		// TODO Auto-generated method stub
-		
 	}
 }
