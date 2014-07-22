@@ -1,5 +1,6 @@
 package org.twbbs.peak.uml.object;
 
+import java.util.List;
 
 public interface UMLObjectManager {
 	void createClassObject(int x,int y);
@@ -8,5 +9,6 @@ public interface UMLObjectManager {
 	void compositeObjects(UMLObject objectA,UMLObject objectB);
 	void generalizeObjects(UMLObject objectA,UMLObject objectB);
 	UMLObject getUMLObject(int x,int y);
+	List<UMLObject> getAllObjects();
 	void update();
 }

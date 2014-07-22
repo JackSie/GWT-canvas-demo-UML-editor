@@ -60,14 +60,34 @@ public class SelectionMode implements UmlMode{
 	}
 
 	private void calcauteZone(int x,int y){
-		//TODO math here
+		int xLeft= x < originX ? x :originX;
+		int yLeft= y < originY ? y :originY;
+		int xRight= x > originX ? x :originX;
+		int yRight= y > originY ? y :originY;
+		List<UMLObject> objectList = manager.getAllObjects();
+		List<UMLObject> newList = new ArrayList<UMLObject>();
+		if(objectList==null)
+			return;
+		for(UMLObject object:objectList){
+			int ox= object.getObjectState().getX();
+			int oy= object.getObjectState().getY();
+			int owx= object.getObjectState().getSizeW()+ox;
+			int ohy= object.getObjectState().getSizeH()+oy;
+			if(ox<xLeft || oy < yLeft || owx> xRight || ohy > yRight)
+				continue;
+			newList.add(object);
+			object.getObjectState().setSelected(true);
+		}
+		this.selectedList=newList;
 	}
 	
 	public void modeChanged() {
-		for(UMLObject object:selectedList){
-			object.getObjectState().setSelected(false);
-			object.getObjectState().setDraged(false);
-			selectedList.remove(object);
+		if(selectedList!=null){
+			for(UMLObject object:selectedList){
+				object.getObjectState().setSelected(false);
+				object.getObjectState().setDraged(false);
+			}
+			selectedList=null;
 		}
 		if(object!=null){
 			object.getObjectState().setSelected(false);

@@ -10,7 +10,6 @@ import org.twbbs.peak.uml.portal.UMLModeObserver;
 import org.twbbs.peak.uml.portal.UMLModeSubject;
 
 import com.google.gwt.canvas.client.Canvas;
-import com.google.gwt.canvas.dom.client.Context2d;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.MouseDownEvent;
@@ -21,7 +20,6 @@ import com.google.gwt.event.dom.client.MouseOutEvent;
 import com.google.gwt.event.dom.client.MouseOutHandler;
 import com.google.gwt.event.dom.client.MouseUpEvent;
 import com.google.gwt.event.dom.client.MouseUpHandler;
-import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.PushButton;
 import com.google.gwt.user.client.ui.RootPanel;
 
@@ -29,9 +27,6 @@ public class UmlEditorActivity implements UMLModeObserver{
 	private UmlEditorView umlEditorView;
 	private Canvas canvas;
 	private Canvas bufferedCanvas;
-	private Context2d context;
-	private Context2d bufferedContext;
-	private Label movePostion;
 	ModeConnector modeConnector;
 	PortalConnector portalConnector;
 	UMLCoreSubject umlCore;

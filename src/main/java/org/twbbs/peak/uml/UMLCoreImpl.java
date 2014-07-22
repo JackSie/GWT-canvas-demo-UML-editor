@@ -35,6 +35,9 @@ public class UMLCoreImpl implements UMLCore,UMLCoreSubject{
 	public List<UMLObjectReader> getObjects(int layer) {
 		return (List<UMLObjectReader>)(List) objectLayers.get(layer);
 	}
+	public List<UMLObject> getRealObjects(int layer) {
+		return objectLayers.get(layer);
+	}
 
 	public int[] getNotEmptyLayers() {
 		Set<Integer> set=objectLayers.keySet();
@@ -70,22 +73,6 @@ public class UMLCoreImpl implements UMLCore,UMLCoreSubject{
 			return nowDepth;
 		}
 	}
-	private int calucateLayer(){
-		Set<Integer> set=objectLayers.keySet();
-		int size=set.size();
-		if(size==0){
-			return DEPTH;
-		}else{
-			int lastDepth=(Integer) set.toArray()[size+1];
-			lastDepth-=1;
-			if(lastDepth>=0){
-				return lastDepth;
-			}else{
-				return 0;
-			}
-		}
-	}
-
 	public void update(){
 		for(UMLCoreObserver observer:observersList){
 			observer.update();
