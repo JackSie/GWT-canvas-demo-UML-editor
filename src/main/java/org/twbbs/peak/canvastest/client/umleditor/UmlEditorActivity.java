@@ -10,6 +10,7 @@ import org.twbbs.peak.uml.portal.UMLModeObserver;
 import org.twbbs.peak.uml.portal.UMLModeSubject;
 
 import com.google.gwt.canvas.client.Canvas;
+import com.google.gwt.core.client.Scheduler.ScheduledCommand;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.MouseDownEvent;
@@ -33,6 +34,7 @@ public class UmlEditorActivity implements UMLModeObserver{
 	UMLModeSubject modeSubject;
 	private CanvasCenter canvasCenter;
 	private PushButton buttonIsEnable;
+	private ChangeNameDialogBox changeNameDialogBox;
 	public UmlEditorActivity(ClientFactory clientFactory,ModeConnector modeConnector,PortalConnector portalConnector,UMLCoreSubject umlCore,UMLModeSubject modeSubject) {
 		umlEditorView =clientFactory.getUmlEditorView();
 		this.modeConnector=modeConnector;
@@ -42,6 +44,8 @@ public class UmlEditorActivity implements UMLModeObserver{
 		canvas=umlEditorView.getCanvas();
 		bufferedCanvas=umlEditorView.getBufferedCanvas();
 		this.canvasCenter=new CanvasCenter(canvas,bufferedCanvas,umlCore);
+		this.changeNameDialogBox=new ChangeNameDialogBox();
+		modeSubject.regist(this);
 	}
 	public void start(RootPanel panel){
 		panel.add(umlEditorView.asWidget());
@@ -117,6 +121,17 @@ public class UmlEditorActivity implements UMLModeObserver{
 				buttonDisable(umlEditorView.getBtnUsecase());
 			}
 		});
+		umlEditorView.getMntmChangeObjectName().setScheduledCommand(new ScheduledCommand() {
+			public void execute() {
+				modeConnector.changeName(null);
+			}
+		});
+		changeNameDialogBox.getButtonOK().addClickHandler(new ClickHandler() {
+			public void onClick(ClickEvent event) {
+				modeConnector.changeName(changeNameDialogBox.getTextBox().getText());
+				changeNameDialogBox.hide();
+			}
+		});
 	}
 	
 	private void buttonDisable(PushButton button){
@@ -129,5 +144,8 @@ public class UmlEditorActivity implements UMLModeObserver{
 	
 	public void modeChanged(int mode) {
 		// TODO Auto-generated method stub
+	}
+	public void changeName() {
+		changeNameDialogBox.center();
 	}
 }

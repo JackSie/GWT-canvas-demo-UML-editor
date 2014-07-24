@@ -7,5 +7,7 @@ public interface ModeConnector {
 	void chageToCompostion();
 	void chageToClassMode();
 	void chageToUseCaseMode();
+	void toChangeName();
+	void changeName(String name);
 	
 }

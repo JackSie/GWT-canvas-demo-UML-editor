@@ -11,6 +11,8 @@ public abstract class ObjectsMode implements UmlMode{
 	public void startDrag(int x, int y) {}
 	public void onDrag(int x, int y) {}
 	public void modeChanged() {}
+	public void changeName(String name) {}
+	public void group(boolean isGroup) {}
 	public void stopDrag(int x, int y) {
 		onClick(x, y);
 	}

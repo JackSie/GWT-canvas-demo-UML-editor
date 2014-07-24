@@ -25,4 +25,10 @@ public class ModeConnectorImpl implements ModeConnector{
 	public void chageToUseCaseMode() {
 		modeHandler.changeMode(UMLModeHandler.USECASE_MODE);
 	}
+	public void toChangeName() {
+		modeHandler.changeName(null);
+	}
+	public void changeName(String name) {
+		modeHandler.changeName(name);
+	}
 }

@@ -24,7 +24,7 @@ public class UMLCorePortalImpl implements UMLCorePortal,UMLModeHandler,UMLModeSu
 	private List<UMLModeObserver> list;
 	public UMLCorePortalImpl(UMLObjectManager manager) {
 		list=new ArrayList<UMLModeObserver>();
-		selectionMode=new SelectionMode(manager);
+		selectionMode=new SelectionMode(manager,this);
 		assocaitionMode=new AssociationLineMode(manager);
 		generalizationMode=new GeneralizationLineMode(manager);
 		compostionMode=new CompositionLineMode(manager);
@@ -34,23 +34,26 @@ public class UMLCorePortalImpl implements UMLCorePortal,UMLModeHandler,UMLModeSu
 	}
 	
 	public void onClick(int x, int y) {
-//		System.out.println("onClick: "+x+","+y);
 		nowMode.onClick(x, y);
 	}
 
 	public void startDrag(int x, int y) {
-//		System.out.println("startDrag: "+x+","+y);
 		nowMode.startDrag(x, y);
 	}
 
 	public void onDrag(int x, int y) {
-//		System.out.println("onDrag: "+x+","+y);
 		nowMode.onDrag(x, y);
 	}
 
 	public void stopDrag(int x, int y) {
-//		System.out.println("stopDrag: "+x+","+y);
 		nowMode.stopDrag(x, y);
+	}
+	public void changeName(String name) {
+		nowMode.changeName(name);
+	}
+
+	public void group(boolean isGroup) {
+		nowMode.group(isGroup);
 	}
 	public void changeMode(int mode) {
 		nowMode.modeChanged();
@@ -77,6 +80,11 @@ public class UMLCorePortalImpl implements UMLCorePortal,UMLModeHandler,UMLModeSu
 		list.remove(observer);		
 	}
 	
+	public void modifyToChaneName(){
+		for(UMLModeObserver observer:list){
+			observer.changeName();
+		}
+	}
 	public UmlMode getSelectionMode() {return selectionMode;}
 	public void setSelectionMode(UmlMode selectionMode) {this.selectionMode = selectionMode;}
 	public UmlMode getClassMode() {return classMode;}

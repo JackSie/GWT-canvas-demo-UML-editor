@@ -6,4 +6,6 @@ public interface UmlMode {
 	void onDrag(int x,int y);
 	void stopDrag(int x,int y);
 	void modeChanged();
+	void changeName(String name);
+	void group(boolean isGroup);
 }

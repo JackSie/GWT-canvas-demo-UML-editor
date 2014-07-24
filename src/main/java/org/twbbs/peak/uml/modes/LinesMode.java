@@ -23,5 +23,7 @@ public abstract class LinesMode implements UmlMode{
 	public void onClick(int x, int y) {}
 	public void onDrag(int x, int y) {}
 	public void modeChanged(){}
+	public void changeName(String name){}
+	public void group(boolean isGroup) {}
 	protected abstract void createLine(UMLObject objectA,UMLObject objectB);
 }

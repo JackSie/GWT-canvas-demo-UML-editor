@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.twbbs.peak.uml.object.UMLObject;
 import org.twbbs.peak.uml.object.UMLObjectManager;
+import org.twbbs.peak.uml.portal.UMLCorePortal;
 
 public class SelectionMode implements UmlMode{
 	private UMLObjectManager manager;
@@ -14,8 +15,10 @@ public class SelectionMode implements UmlMode{
 	private int offsetY;
 	UMLObject object;
 	List<UMLObject> selectedList;
-	public SelectionMode(UMLObjectManager manager) {
+	UMLCorePortal corePortal;
+	public SelectionMode(UMLObjectManager manager,UMLCorePortal corePortal) {
 		this.manager=manager;
+		this.corePortal=corePortal;
 		selectedList=new ArrayList<UMLObject>();
 	}
 	public void onClick(int x, int y) {
@@ -53,6 +56,7 @@ public class SelectionMode implements UmlMode{
 		if(object!=null){
 			onDrag(x,y);
 			object.getObjectState().setDraged(false);
+			object=null;
 		}else{
 			calcauteZone(x,y);
 		}
@@ -95,6 +99,28 @@ public class SelectionMode implements UmlMode{
 			object=null;
 		}
 		manager.update();
+	}
+	public void changeName(String name) {
+		if(name==null){
+			changeNameCheck();
+		}else{
+			changeNameWithName(name);
+		}
+	}
+	private void changeNameCheck(){
+		if(object!=null){
+			corePortal.modifyToChaneName();
+		}
+	}
+	private void changeNameWithName(String name){
+		if(object!=null){
+			object.setName(name);
+			manager.update();
+		}
+	}
+	public void group(boolean isGroup) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
