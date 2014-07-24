@@ -3,10 +3,16 @@ package org.twbbs.peak.uml.object;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.twbbs.peak.uml.Point;
 import org.twbbs.peak.uml.UMLCore;
 import org.twbbs.peak.uml.connection.AssociationConnection;
 import org.twbbs.peak.uml.connection.CompositionConnection;
 import org.twbbs.peak.uml.connection.GeneralizationConnection;
+import org.twbbs.peak.uml.object.basic.UMLBasicObject;
+import org.twbbs.peak.uml.object.composite.GroupObject;
+import org.twbbs.peak.uml.object.defaults.DefaultClassObject;
+import org.twbbs.peak.uml.object.defaults.DefaultGroupObject;
+import org.twbbs.peak.uml.object.defaults.DefaultInterfaceObject;
 
 public class UMLObjectManagerImpl implements UMLObjectManager{
 	private UMLCore umlCore;
@@ -22,24 +28,24 @@ public class UMLObjectManagerImpl implements UMLObjectManager{
 		umlCore.addUMLObject(new DefaultInterfaceObject(x, y));	
 	}
 
-	public void associateObjects(UMLObject objectA, UMLObject objectB) {
+	public void associateObjects(UMLBasicObject objectA, UMLBasicObject objectB) {
 		Point point = calc(objectA, objectB);		
 		objectA.setConnection(new AssociationConnection(objectA, objectB, point.x,point.y));
 		update();
 	}
 
-	public void compositeObjects(UMLObject objectA, UMLObject objectB) {
+	public void compositeObjects(UMLBasicObject objectA, UMLBasicObject objectB) {
 		Point point = calc(objectA, objectB);	
 		objectA.setConnection(new CompositionConnection(objectA, objectB, point.x,point.y));
 		update();
 	}
 
-	public void generalizeObjects(UMLObject objectA, UMLObject objectB) {
+	public void generalizeObjects(UMLBasicObject objectA, UMLBasicObject objectB) {
 		Point point = calc(objectA, objectB);	
 		objectA.setConnection(new GeneralizationConnection(objectA, objectB, point.x,point.y));
 		update();
 	}
-	protected Point calc(UMLObject objectA, UMLObject objectB){
+	protected Point calc(UMLBasicObject objectA, UMLBasicObject objectB){
 		int ax=objectA.getObjectState().getX();
 		int ay=objectA.getObjectState().getY();
 		int bx=objectB.getObjectState().getX();
@@ -88,4 +94,20 @@ public class UMLObjectManagerImpl implements UMLObjectManager{
 		return outList;
 	}
 
+	public void group(List<UMLObject> list) {
+		for(UMLObject object : list){
+			object.getObjectState().setSelected(false);
+			umlCore.removeUMLObject(object);
+		}
+		UMLObject groupObject = new DefaultGroupObject(list);
+		umlCore.addUMLObject(groupObject);
+	}
+
+	public void unGroup(GroupObject object) {
+		umlCore.removeUMLObject(object);
+		List<UMLObject> list = object.getObjectList();
+		for(UMLObject object2:list){
+			umlCore.addUMLObject(object2);
+		}
+	}
 }

@@ -1,15 +1,18 @@
-package org.twbbs.peak.canvastest.client.objects.draw;
+package org.twbbs.peak.canvastest.client.objects.draw.behavior;
 
 import java.util.List;
+
 import org.twbbs.peak.uml.connection.UMLConnection;
-import org.twbbs.peak.uml.object.UMLObjectReader;
+import org.twbbs.peak.uml.object.UMLObject;
+import org.twbbs.peak.uml.object.basic.UMLBasicObject;
+
 import com.google.gwt.canvas.dom.client.Context2d;
 
 public abstract class ObjectDrawBehavior implements DrawBehavior{
-	protected UMLObjectReader umlObjectReader;
+	protected UMLBasicObject umlBasicObject;
 	protected ConnectionDrawBehavior connectionDrawBehavior;
-	public ObjectDrawBehavior(UMLObjectReader umlObjectReader) {
-		this.umlObjectReader=umlObjectReader;
+	public ObjectDrawBehavior(UMLBasicObject umlBasicObject) {
+		this.umlBasicObject=umlBasicObject;
 		connectionDrawBehavior=new ConnectionDrawBehaviorImpl();
 	}
 	public final void toDraw(Context2d context) {
@@ -22,19 +25,19 @@ public abstract class ObjectDrawBehavior implements DrawBehavior{
 		context.restore();
 	}
 	protected void drawName(Context2d context){
-		String name=umlObjectReader.getName();
-		int x=umlObjectReader.getObjectState().getX();
-		int y=umlObjectReader.getObjectState().getY();
-		int sizeW=umlObjectReader.getObjectState().getSizeW();
+		String name=umlBasicObject.getName();
+		int x=umlBasicObject.getObjectState().getX();
+		int y=umlBasicObject.getObjectState().getY();
+		int sizeW=umlBasicObject.getObjectState().getSizeW();
 		int nameSize=name.length();
 		context.setFillStyle(black);
 		context.setFont("normal lighter 12px serif");
 		context.fillText(name, x+sizeW/2-nameSize*4, y+20);
 	}
 	protected void drawLine(Context2d context,int fromtop){
-		int x=umlObjectReader.getObjectState().getX();
-		int y=umlObjectReader.getObjectState().getY();
-		int sizeW=umlObjectReader.getObjectState().getSizeW();
+		int x=umlBasicObject.getObjectState().getX();
+		int y=umlBasicObject.getObjectState().getY();
+		int sizeW=umlBasicObject.getObjectState().getSizeW();
 		context.save();
 		context.beginPath();
 	    context.moveTo(x, y+fromtop);
@@ -44,10 +47,10 @@ public abstract class ObjectDrawBehavior implements DrawBehavior{
 	    context.restore();
 	}
 	protected void drawSpot(Context2d context,String blue){
-		int x=umlObjectReader.getObjectState().getX();
-		int y=umlObjectReader.getObjectState().getY();
-		int sizeW=umlObjectReader.getObjectState().getSizeW();
-		int sizeH=umlObjectReader.getObjectState().getSizeH();
+		int x=umlBasicObject.getObjectState().getX();
+		int y=umlBasicObject.getObjectState().getY();
+		int sizeW=umlBasicObject.getObjectState().getSizeW();
+		int sizeH=umlBasicObject.getObjectState().getSizeH();
 		context.save();
 		context.setFillStyle(blue);
 		context.fillRect(x-8, y+sizeH/2, 10 , 10);
@@ -57,7 +60,7 @@ public abstract class ObjectDrawBehavior implements DrawBehavior{
 		context.restore();
 	}
 	private void drawConnections(Context2d context) {
-		List<UMLConnection> list =umlObjectReader.getConnections();
+		List<UMLConnection> list =umlBasicObject.getConnections();
 		if(list ==null || list.size()==0){
 			return;
 		}
@@ -67,17 +70,17 @@ public abstract class ObjectDrawBehavior implements DrawBehavior{
 		}
 	}
 	
-	public void setObject(UMLObjectReader object){
-		this.umlObjectReader=object;
+	public void setObject(UMLObject object){
+		this.umlBasicObject=(UMLBasicObject)object;
 	}
 	
 	protected void drawBlackground(Context2d context){
-		int x=umlObjectReader.getObjectState().getX();
-		int y=umlObjectReader.getObjectState().getY();
-		int sizeW=umlObjectReader.getObjectState().getSizeW();
-		int sizeH=umlObjectReader.getObjectState().getSizeH();
-		boolean isDraged=umlObjectReader.getObjectState().isDraged();
-		boolean isSelected=umlObjectReader.getObjectState().isSelected();
+		int x=umlBasicObject.getObjectState().getX();
+		int y=umlBasicObject.getObjectState().getY();
+		int sizeW=umlBasicObject.getObjectState().getSizeW();
+		int sizeH=umlBasicObject.getObjectState().getSizeH();
+		boolean isDraged=umlBasicObject.getObjectState().isDraged();
+		boolean isSelected=umlBasicObject.getObjectState().isSelected();
 		double offset=shadowOffsetNormal;
 		context.setStrokeStyle(black);
 		if(isDraged||isSelected){

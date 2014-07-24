@@ -1,6 +1,6 @@
-package org.twbbs.peak.canvastest.client.objects.draw;
+package org.twbbs.peak.canvastest.client.objects.draw.behavior;
 
-import org.twbbs.peak.uml.object.UMLObjectReader;
+import org.twbbs.peak.uml.object.basic.UMLBasicObject;
 
 import com.google.gwt.canvas.dom.client.CanvasGradient;
 import com.google.gwt.canvas.dom.client.Context2d;
@@ -8,15 +8,15 @@ import com.google.gwt.canvas.dom.client.Context2d;
 public class UseCaseDrawBehavior extends ObjectDrawBehavior{
 	private static final double VAR = 0.5522848;
 
-	public UseCaseDrawBehavior(UMLObjectReader umlObjectReader) {
-		super(umlObjectReader);
+	public UseCaseDrawBehavior(UMLBasicObject umlBasicObject) {
+		super(umlBasicObject);
 	}
 	@Override
 	protected void drawLine(Context2d context, int fromtop) {}
 	@Override
 	protected void cumstomDraw(Context2d context) {
 		super.cumstomDraw(context);
-		boolean isSelected=umlObjectReader.getObjectState().isSelected();
+		boolean isSelected=umlBasicObject.getObjectState().isSelected();
 		if(isSelected){  
 			drawSpot(context,blue);
 		}

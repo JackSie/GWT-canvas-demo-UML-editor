@@ -1,6 +1,7 @@
-package org.twbbs.peak.uml.object;
+package org.twbbs.peak.uml.object.defaults;
 
 
+import org.twbbs.peak.uml.object.basic.InterfaceObject;
 import org.twbbs.peak.uml.object.state.DefaultInterfaceState;
 
 public class DefaultInterfaceObject extends InterfaceObject{

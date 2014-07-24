@@ -126,6 +126,16 @@ public class UmlEditorActivity implements UMLModeObserver{
 				modeConnector.changeName(null);
 			}
 		});
+		umlEditorView.getMntmGroup().setScheduledCommand(new ScheduledCommand() {			
+			public void execute() {
+				modeConnector.group();
+			}
+		});
+		umlEditorView.getMntmUngroup().setScheduledCommand(new ScheduledCommand() {			
+			public void execute() {
+				modeConnector.upGroup();
+			}
+		});
 		changeNameDialogBox.getButtonOK().addClickHandler(new ClickHandler() {
 			public void onClick(ClickEvent event) {
 				modeConnector.changeName(changeNameDialogBox.getTextBox().getText());

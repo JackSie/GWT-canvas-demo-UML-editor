@@ -1,4 +1,4 @@
-package org.twbbs.peak.uml.object;
+package org.twbbs.peak.uml;
 
 public class Point {
 	public int x;

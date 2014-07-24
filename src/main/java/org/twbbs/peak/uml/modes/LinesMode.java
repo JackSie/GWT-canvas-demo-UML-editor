@@ -2,19 +2,27 @@ package org.twbbs.peak.uml.modes;
 
 import org.twbbs.peak.uml.object.UMLObject;
 import org.twbbs.peak.uml.object.UMLObjectManager;
+import org.twbbs.peak.uml.object.basic.UMLBasicObject;
 
 public abstract class LinesMode implements UmlMode{
 	protected UMLObjectManager manager;
-	protected UMLObject nowObject;
+	protected UMLBasicObject nowObject;
 	public LinesMode(UMLObjectManager manager) {
 		this.manager=manager;
 	}
 	public void startDrag(int x, int y) {
-		nowObject=manager.getUMLObject(x, y);	
+		UMLObject object=manager.getUMLObject(x, y);
+		if(object!=null && object instanceof UMLBasicObject){
+			nowObject=(UMLBasicObject)object;
+		}
 	}
 
 	public void stopDrag(int x, int y) {
-		UMLObject object=manager.getUMLObject(x, y);
+		UMLBasicObject object=null;
+		UMLObject umlObject=manager.getUMLObject(x, y);
+		if(umlObject!=null && umlObject instanceof UMLBasicObject){
+			object=(UMLBasicObject)umlObject;
+		}
 		if(nowObject!=null && object!=null && nowObject!=object){
 			createLine(nowObject,object);
 		}
@@ -25,5 +33,5 @@ public abstract class LinesMode implements UmlMode{
 	public void modeChanged(){}
 	public void changeName(String name){}
 	public void group(boolean isGroup) {}
-	protected abstract void createLine(UMLObject objectA,UMLObject objectB);
+	protected abstract void createLine(UMLBasicObject objectA,UMLBasicObject objectB);
 }

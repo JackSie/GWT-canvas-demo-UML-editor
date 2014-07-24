@@ -85,16 +85,4 @@ public class UMLCorePortalImpl implements UMLCorePortal,UMLModeHandler,UMLModeSu
 			observer.changeName();
 		}
 	}
-	public UmlMode getSelectionMode() {return selectionMode;}
-	public void setSelectionMode(UmlMode selectionMode) {this.selectionMode = selectionMode;}
-	public UmlMode getClassMode() {return classMode;}
-	public void setClassMode(UmlMode classMode) {this.classMode = classMode;}
-	public UmlMode getUseCaseMode() {return useCaseMode;}
-	public void setUseCaseMode(UmlMode useCaseMode) {this.useCaseMode = useCaseMode;}
-	public UmlMode getCompostionMode() {return compostionMode;}
-	public void setCompostionMode(UmlMode compostionMode) {this.compostionMode = compostionMode;}
-	public UmlMode getGeneralizationMode() {return generalizationMode;}
-	public void setGeneralizationMode(UmlMode generalizationMode) {this.generalizationMode = generalizationMode;}
-	public UmlMode getAssocaitionMode() {return assocaitionMode;}
-	public void setAssocaitionMode(UmlMode assocaitionMode) {this.assocaitionMode = assocaitionMode;}
 }

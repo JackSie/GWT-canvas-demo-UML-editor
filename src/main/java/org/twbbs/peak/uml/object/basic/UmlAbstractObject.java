@@ -1,4 +1,4 @@
-package org.twbbs.peak.uml.object;
+package org.twbbs.peak.uml.object.basic;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,7 +6,7 @@ import java.util.List;
 import org.twbbs.peak.uml.connection.UMLConnection;
 import org.twbbs.peak.uml.object.state.ObjectState;
 
-public abstract class UmlAbstractObject implements UMLObject{
+public abstract class UmlAbstractObject implements UMLBasicObject{
 	private String name;
 	private String type;
 	private List<UMLConnection> list;

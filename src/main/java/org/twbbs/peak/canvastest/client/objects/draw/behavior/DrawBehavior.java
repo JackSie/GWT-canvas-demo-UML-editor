@@ -1,6 +1,7 @@
-package org.twbbs.peak.canvastest.client.objects.draw;
+package org.twbbs.peak.canvastest.client.objects.draw.behavior;
 
-import org.twbbs.peak.uml.object.UMLObjectReader;
+import org.twbbs.peak.uml.object.UMLObject;
+
 import com.google.gwt.canvas.dom.client.Context2d;
 
 public interface DrawBehavior {
@@ -10,5 +11,5 @@ public interface DrawBehavior {
 	static String black = "#000000";
 	static String red = "#FF0000";
 	void toDraw(Context2d context);
-	void setObject(UMLObjectReader object);
+	void setObject(UMLObject object);
 }

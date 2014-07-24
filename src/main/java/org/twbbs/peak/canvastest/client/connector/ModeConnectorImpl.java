@@ -31,4 +31,10 @@ public class ModeConnectorImpl implements ModeConnector{
 	public void changeName(String name) {
 		modeHandler.changeName(name);
 	}
+	public void group() {
+		modeHandler.group(true);
+	}
+	public void upGroup() {
+		modeHandler.group(false);
+	}
 }

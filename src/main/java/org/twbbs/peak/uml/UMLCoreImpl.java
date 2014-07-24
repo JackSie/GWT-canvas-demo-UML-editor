@@ -9,7 +9,6 @@ import java.util.Map;
 import java.util.Set;
 
 import org.twbbs.peak.uml.object.UMLObject;
-import org.twbbs.peak.uml.object.UMLObjectReader;
 import org.twbbs.peak.uml.object.state.ObjectState;
 import org.twbbs.peak.uml.portal.UMLCoreObserver;
 import org.twbbs.peak.uml.portal.UMLCoreSubject;
@@ -32,8 +31,8 @@ public class UMLCoreImpl implements UMLCore,UMLCoreSubject{
 		observersList.remove(observer);
 	}
 
-	public List<UMLObjectReader> getObjects(int layer) {
-		return (List<UMLObjectReader>)(List) objectLayers.get(layer);
+	public List<UMLObject> getObjects(int layer) {
+		return  objectLayers.get(layer);
 	}
 	public List<UMLObject> getRealObjects(int layer) {
 		return objectLayers.get(layer);
@@ -99,5 +98,12 @@ public class UMLCoreImpl implements UMLCore,UMLCoreSubject{
 			return true;
 		}
 		return false;
+	}
+	public void removeUMLObject(UMLObject umlObject) {
+		int [] keys=getNotEmptyLayers();
+		for(int i=keys.length-1;i>=0;i--){
+			List<UMLObject> list=objectLayers.get(keys[i]);
+			list.remove(umlObject);
+		}
 	}
 }

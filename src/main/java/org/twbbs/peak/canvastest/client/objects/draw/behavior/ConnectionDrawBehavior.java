@@ -1,4 +1,4 @@
-package org.twbbs.peak.canvastest.client.objects.draw;
+package org.twbbs.peak.canvastest.client.objects.draw.behavior;
 
 import org.twbbs.peak.uml.connection.UMLConnection;
 

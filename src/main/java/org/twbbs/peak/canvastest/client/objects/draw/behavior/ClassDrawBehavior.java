@@ -1,20 +1,20 @@
-package org.twbbs.peak.canvastest.client.objects.draw;
+package org.twbbs.peak.canvastest.client.objects.draw.behavior;
 
+import org.twbbs.peak.uml.object.basic.UMLBasicObject;
 
-import org.twbbs.peak.uml.object.UMLObjectReader;
 import com.google.gwt.canvas.dom.client.CanvasGradient;
 import com.google.gwt.canvas.dom.client.Context2d;
 
 public class ClassDrawBehavior extends ObjectDrawBehavior{
 	public static final int radiusInit=10;
 	
-	public ClassDrawBehavior(UMLObjectReader UMLObjectReader) {
-		super(UMLObjectReader);
+	public ClassDrawBehavior(UMLBasicObject umlBasicObject) {
+		super(umlBasicObject);
 	}
 	@Override
 	protected void cumstomDraw(Context2d context) {
 		super.cumstomDraw(context);
-		boolean isSelected=umlObjectReader.getObjectState().isSelected();
+		boolean isSelected=umlBasicObject.getObjectState().isSelected();
 		drawMember(context);
 		drawMethod(context);
 		if(isSelected){  

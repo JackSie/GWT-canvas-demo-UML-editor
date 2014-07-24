@@ -1,7 +1,8 @@
-package org.twbbs.peak.canvastest.client.objects.draw;
+package org.twbbs.peak.canvastest.client.objects.draw.behavior;
 
 import org.twbbs.peak.uml.connection.UMLConnection;
-import org.twbbs.peak.uml.object.UMLObjectReader;
+import org.twbbs.peak.uml.object.UMLObject;
+
 import com.google.gwt.canvas.dom.client.Context2d;
 
 public class ConnectionDrawBehaviorImpl implements ConnectionDrawBehavior{
@@ -77,7 +78,7 @@ public class ConnectionDrawBehaviorImpl implements ConnectionDrawBehavior{
 		}
 		context.restore();
 	}
-	private int calculateX(UMLObjectReader reader,int position){
+	private int calculateX(UMLObject reader,int position){
 		int x=reader.getObjectState().getX();		
 		int wide=reader.getObjectState().getSizeW();		
 		int newX=0;
@@ -95,7 +96,7 @@ public class ConnectionDrawBehaviorImpl implements ConnectionDrawBehavior{
 		}
 		return newX;
 	}
-	private int calculateY(UMLObjectReader reader,int position){
+	private int calculateY(UMLObject reader,int position){
 		int y=reader.getObjectState().getY();
 		int height=reader.getObjectState().getSizeH();
 		int newY=0;

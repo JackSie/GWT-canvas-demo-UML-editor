@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.twbbs.peak.uml.object.UMLObject;
 import org.twbbs.peak.uml.object.UMLObjectManager;
+import org.twbbs.peak.uml.object.basic.UMLBasicObject;
+import org.twbbs.peak.uml.object.composite.GroupObject;
 import org.twbbs.peak.uml.portal.UMLCorePortal;
 
 public class SelectionMode implements UmlMode{
@@ -46,8 +48,12 @@ public class SelectionMode implements UmlMode{
 
 	public void onDrag(int x, int y) {
 		if(object!=null){
+			if(object instanceof UMLBasicObject){
 			object.getObjectState().setX(x-offsetX);
 			object.getObjectState().setY(y-offsetY);
+			}else if(object instanceof GroupObject){
+				((GroupObject)object).move(x-offsetX, y-offsetY);
+			}
 			manager.update();
 		}
 	}
@@ -108,7 +114,7 @@ public class SelectionMode implements UmlMode{
 		}
 	}
 	private void changeNameCheck(){
-		if(object!=null){
+		if(object!=null && object instanceof UMLBasicObject){
 			corePortal.modifyToChaneName();
 		}
 	}
@@ -119,8 +125,19 @@ public class SelectionMode implements UmlMode{
 		}
 	}
 	public void group(boolean isGroup) {
-		// TODO Auto-generated method stub
-		
+		if(isGroup){
+			if(selectedList!=null && selectedList.size()>=2){
+				manager.group(selectedList);
+				modeChanged();
+				manager.update();
+			}
+		}else{
+			if(object!=null && object instanceof GroupObject){
+				manager.unGroup((GroupObject)object);
+				modeChanged();
+				manager.update();
+			}
+		}
 	}
 
 }

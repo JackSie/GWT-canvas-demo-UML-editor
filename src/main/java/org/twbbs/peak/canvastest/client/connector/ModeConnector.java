@@ -9,5 +9,6 @@ public interface ModeConnector {
 	void chageToUseCaseMode();
 	void toChangeName();
 	void changeName(String name);
-	
+	void group();
+	void upGroup();
 }

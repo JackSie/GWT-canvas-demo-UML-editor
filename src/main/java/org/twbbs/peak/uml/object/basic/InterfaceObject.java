@@ -1,4 +1,4 @@
-package org.twbbs.peak.uml.object;
+package org.twbbs.peak.uml.object.basic;
 
 import org.twbbs.peak.uml.object.state.ObjectState;
 

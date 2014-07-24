@@ -1,9 +1,9 @@
 package org.twbbs.peak.uml.connection;
 
-import org.twbbs.peak.uml.object.UMLObject;
+import org.twbbs.peak.uml.object.basic.UMLBasicObject;
 
 public class GeneralizationConnection extends UMLAbstractConnection{
-	public GeneralizationConnection(UMLObject head, UMLObject tail,int headPostition,int tailPostition) {
+	public GeneralizationConnection(UMLBasicObject head, UMLBasicObject tail,int headPostition,int tailPostition) {
 		super(head, tail, headPostition, tailPostition,GENERALIZATION);
 	}
 }

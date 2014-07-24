@@ -1,7 +1,7 @@
 package org.twbbs.peak.uml.object.state;
 
 
-public class ClassState implements ObjectState{
+public class ObjectStateImpl implements ObjectState{
 	int x;
 	int y;
 	int sizeW;
@@ -9,13 +9,13 @@ public class ClassState implements ObjectState{
 	boolean isDraged=false;
 	boolean isSelected=false;
 	
-	public ClassState(int x,int y, int sizeW, int sizeH) {
+	public ObjectStateImpl(int x,int y, int sizeW, int sizeH) {
 		this.x=x;
 		this.y=y;
 		this.sizeW=sizeW;
 		this.sizeH=sizeH;
 	}
-	public ClassState(int x,int y) {
+	public ObjectStateImpl(int x,int y) {
 		this.x=x;
 		this.y=y;
 	}

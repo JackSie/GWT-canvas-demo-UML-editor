@@ -1,4 +1,4 @@
-package org.twbbs.peak.uml.object;
+package org.twbbs.peak.uml.object.basic;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,16 +6,16 @@ import java.util.List;
 import org.twbbs.peak.uml.object.detail.HasUMLDetail;
 import org.twbbs.peak.uml.object.detail.UMLDetailMember;
 import org.twbbs.peak.uml.object.detail.UMLDetailMethod;
-import org.twbbs.peak.uml.object.state.ClassState;
+import org.twbbs.peak.uml.object.state.ObjectStateImpl;
 import org.twbbs.peak.uml.object.state.ObjectState;
 
 public class ClassObject extends UmlAbstractObject implements HasUMLDetail{
 
 	List<UMLDetailMember> members;
 	List<UMLDetailMethod> methods;
-	ClassState classState;
+	ObjectStateImpl classState;
 	
-	public ClassObject(String name,ClassState classState) {
+	public ClassObject(String name,ObjectStateImpl classState) {
 		super(name,CLASS,classState);
 		members=new ArrayList<UMLDetailMember>();
 		methods=new ArrayList<UMLDetailMethod>();
@@ -39,7 +39,7 @@ public class ClassObject extends UmlAbstractObject implements HasUMLDetail{
 	}
 
 	public void setObjectState(ObjectState objectState) {
-		this.classState=(ClassState) objectState;
+		this.classState=(ObjectStateImpl) objectState;
 	}
 
 	public ObjectState getObjectState() {
