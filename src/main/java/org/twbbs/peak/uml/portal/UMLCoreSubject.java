@@ -1,6 +1,8 @@
 package org.twbbs.peak.uml.portal;
 
 import java.util.List;
+
+import org.twbbs.peak.uml.UMLCoreObserver;
 import org.twbbs.peak.uml.object.UMLObject;
 
 public interface UMLCoreSubject {

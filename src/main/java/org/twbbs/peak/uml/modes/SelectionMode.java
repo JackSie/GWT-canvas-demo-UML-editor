@@ -11,13 +11,13 @@ import org.twbbs.peak.uml.portal.UMLCorePortal;
 
 public class SelectionMode implements UmlMode{
 	private UMLObjectManager manager;
-	int originX;
-	int originY;
+	private int originX;
+	private int originY;
 	private int offsetX;
 	private int offsetY;
-	UMLObject object;
-	List<UMLObject> selectedList;
-	UMLCorePortal corePortal;
+	private UMLObject object;
+	private List<UMLObject> selectedList;
+	private UMLCorePortal corePortal;
 	public SelectionMode(UMLObjectManager manager,UMLCorePortal corePortal) {
 		this.manager=manager;
 		this.corePortal=corePortal;
@@ -139,5 +139,4 @@ public class SelectionMode implements UmlMode{
 			}
 		}
 	}
-
 }

@@ -1,9 +1,8 @@
-package org.twbbs.peak.uml.object.detail;
+package org.twbbs.peak.uml.object.basic.detail;
 
-public class UMLDetailMethod {
+public class UMLDetailMember {
 	private int scope;
 	private String name;
-	private String[] parameters;
 	private String type;
 	public int getScope() {
 		return scope;
@@ -16,12 +15,6 @@ public class UMLDetailMethod {
 	}
 	public void setName(String name) {
 		this.name = name;
-	}
-	public String[] getParameters() {
-		return parameters;
-	}
-	public void setParameters(String[] parameters) {
-		this.parameters = parameters;
 	}
 	public String getType() {
 		return type;

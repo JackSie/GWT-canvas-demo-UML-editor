@@ -1,4 +1,4 @@
-package org.twbbs.peak.uml.portal;
+package org.twbbs.peak.uml;
 
 public interface UMLCoreObserver {
 	void update();

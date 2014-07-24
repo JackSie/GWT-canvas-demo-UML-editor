@@ -2,28 +2,22 @@ package org.twbbs.peak.canvastest.client.objects.draw;
 
 import java.util.List;
 
-import org.twbbs.peak.canvastest.client.objects.draw.behavior.DrawBehavior;
 import org.twbbs.peak.canvastest.client.objects.draw.painter.ObjectPainter;
 import org.twbbs.peak.canvastest.client.objects.draw.painter.ObjectPainterImpl;
+import org.twbbs.peak.uml.UMLCoreObserver;
 import org.twbbs.peak.uml.object.UMLObject;
-import org.twbbs.peak.uml.object.basic.UMLBasicObject;
-import org.twbbs.peak.uml.portal.UMLCoreObserver;
 import org.twbbs.peak.uml.portal.UMLCoreSubject;
 
 import com.google.gwt.canvas.client.Canvas;
 import com.google.gwt.canvas.dom.client.Context2d;
 
 public class CanvasCenter implements UMLCoreObserver{
-	private Canvas canvas;
-	private Canvas bufferedCanvas;
 	private Context2d context2d;
 	private Context2d bufferedcContext2d;
 	private UMLCoreSubject coreSubject;
 	private ObjectPainter objectPainter;
 	
 	public CanvasCenter(Canvas canvas,Canvas bufferedCanvas,UMLCoreSubject coreSubject) {
-		this.canvas=canvas;
-		this.bufferedCanvas=bufferedCanvas;
 		this.context2d=canvas.getContext2d();
 		this.bufferedcContext2d=bufferedCanvas.getContext2d();
 		this.coreSubject=coreSubject;

@@ -6,18 +6,16 @@ import org.twbbs.peak.uml.object.UMLObject;
 import com.google.gwt.canvas.dom.client.Context2d;
 
 public class ConnectionDrawBehaviorImpl implements ConnectionDrawBehavior{
-	int x1;
-	int y1;
-	int x2; 
-	int y2;
-	int type;
-	UMLConnection connection;
+	private int x1;
+	private int y1;
+	private int x2; 
+	private int y2;
+	private int type;
 	public void toDraw(Context2d context) {
 		drawConnectionLine(context);
 	}
 
 	public void setConnection(UMLConnection connection) {
-		this.connection=connection;
 		x1=calculateX(connection.getHead(), connection.getHeadPosition());
 		y1=calculateY(connection.getHead(), connection.getHeadPosition());
 		x2=calculateX(connection.getTail(), connection.getTailPostion()); 

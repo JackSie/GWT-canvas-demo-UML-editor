@@ -2,12 +2,12 @@ package org.twbbs.peak.uml.object.state;
 
 
 public class ObjectStateImpl implements ObjectState{
-	int x;
-	int y;
-	int sizeW;
-	int sizeH;
-	boolean isDraged=false;
-	boolean isSelected=false;
+	private int x;
+	private int y;
+	private int sizeW;
+	private int sizeH;
+	private boolean isDraged=false;
+	private boolean isSelected=false;
 	
 	public ObjectStateImpl(int x,int y, int sizeW, int sizeH) {
 		this.x=x;

@@ -10,8 +10,8 @@ import org.twbbs.peak.uml.object.composite.GroupObject;
 import com.google.gwt.canvas.dom.client.Context2d;
 
 public class GroupObjectPainter implements ObjectPainter{
-	BasicObjectPainter basicObjectPainter;
-	GroupDrawBehavior groupDrawBehavior;
+	private BasicObjectPainter basicObjectPainter;
+	private GroupDrawBehavior groupDrawBehavior;
 	public GroupObjectPainter(BasicObjectPainter basicObjectPainter) {
 		this.basicObjectPainter=basicObjectPainter;
 		groupDrawBehavior=new GroupDrawBehavior();

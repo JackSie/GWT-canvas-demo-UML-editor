@@ -3,13 +3,13 @@ package org.twbbs.peak.uml.portal;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.twbbs.peak.uml.modes.AssociationLineMode;
-import org.twbbs.peak.uml.modes.ClassMode;
-import org.twbbs.peak.uml.modes.CompositionLineMode;
-import org.twbbs.peak.uml.modes.GeneralizationLineMode;
 import org.twbbs.peak.uml.modes.SelectionMode;
 import org.twbbs.peak.uml.modes.UmlMode;
-import org.twbbs.peak.uml.modes.UseCaseMode;
+import org.twbbs.peak.uml.modes.line.AssociationLineMode;
+import org.twbbs.peak.uml.modes.line.CompositionLineMode;
+import org.twbbs.peak.uml.modes.line.GeneralizationLineMode;
+import org.twbbs.peak.uml.modes.object.ClassMode;
+import org.twbbs.peak.uml.modes.object.UseCaseMode;
 import org.twbbs.peak.uml.object.UMLObjectManager;
 
 public class UMLCorePortalImpl implements UMLCorePortal,UMLModeHandler,UMLModeSubject{

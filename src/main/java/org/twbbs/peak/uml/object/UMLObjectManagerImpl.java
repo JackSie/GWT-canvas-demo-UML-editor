@@ -1,113 +1,58 @@
 package org.twbbs.peak.uml.object;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import org.twbbs.peak.uml.Point;
 import org.twbbs.peak.uml.UMLCore;
-import org.twbbs.peak.uml.connection.AssociationConnection;
-import org.twbbs.peak.uml.connection.CompositionConnection;
-import org.twbbs.peak.uml.connection.GeneralizationConnection;
 import org.twbbs.peak.uml.object.basic.UMLBasicObject;
 import org.twbbs.peak.uml.object.composite.GroupObject;
-import org.twbbs.peak.uml.object.defaults.DefaultClassObject;
-import org.twbbs.peak.uml.object.defaults.DefaultGroupObject;
-import org.twbbs.peak.uml.object.defaults.DefaultInterfaceObject;
 
 public class UMLObjectManagerImpl implements UMLObjectManager{
 	private UMLCore umlCore;
+	private LineHandler lineHandler;
+	private ObjectHandler objectHandler;
+	private GroupHandler groupHandler;
 	public UMLObjectManagerImpl(UMLCore core) {
 		this.umlCore=core;
+		this.lineHandler=new LineHandler();
+		this.objectHandler=new ObjectHandler(umlCore);
+		this.groupHandler=new GroupHandler(core);
 	}
 	
 	public void createClassObject(int x, int y) {
-		umlCore.addUMLObject(new DefaultClassObject(x,y));
+		objectHandler.createClassObject(x, y);
 	}
 
 	public void createUseCaseObject(int x, int y) {
-		umlCore.addUMLObject(new DefaultInterfaceObject(x, y));	
+		objectHandler.createUseCaseObject(x, y);
 	}
 
 	public void associateObjects(UMLBasicObject objectA, UMLBasicObject objectB) {
-		Point point = calc(objectA, objectB);		
-		objectA.setConnection(new AssociationConnection(objectA, objectB, point.x,point.y));
+		lineHandler.associateObjects(objectA, objectB);
 		update();
 	}
 
 	public void compositeObjects(UMLBasicObject objectA, UMLBasicObject objectB) {
-		Point point = calc(objectA, objectB);	
-		objectA.setConnection(new CompositionConnection(objectA, objectB, point.x,point.y));
+		lineHandler.compositeObjects(objectA, objectB);
 		update();
 	}
 
 	public void generalizeObjects(UMLBasicObject objectA, UMLBasicObject objectB) {
-		Point point = calc(objectA, objectB);	
-		objectA.setConnection(new GeneralizationConnection(objectA, objectB, point.x,point.y));
+		lineHandler.generalizeObjects(objectA, objectB);
 		update();
 	}
-	protected Point calc(UMLBasicObject objectA, UMLBasicObject objectB){
-		int ax=objectA.getObjectState().getX();
-		int ay=objectA.getObjectState().getY();
-		int bx=objectB.getObjectState().getX();
-		int by=objectB.getObjectState().getY();
-		int aw=objectA.getObjectState().getSizeW();
-		int ah=objectA.getObjectState().getSizeH();
-		int bw=objectB.getObjectState().getSizeW();
-		int bh=objectB.getObjectState().getSizeH();
-		
-		int ansOne=0,ansTwo=0;
-		double length=Double.MAX_VALUE;
-		int oneX[]={ax+ aw/2,ax+ aw,ax+ aw/2,ax};
-		int oneY[]={ay,ay+ah/2,ay+ah,ay+ah/2};
-		int twoX[]={bx+ bw/2,bx+ bw,bx+ bw/2,bx};
-		int twoY[]={by,by+bh/2,by+bh,by+bh/2};
-		for(int i=0;i<4;i++){
-			for(int j=0;j<4;j++){
-				double len=Math.pow((oneX[i] - twoX[j]),2) + Math.pow((oneY[i] - twoY[j]),2);
-				if(len < length){
-					length=len;
-					ansOne=i;
-					ansTwo=j;
-				}
-			}
-		}
-		return new Point(ansOne, ansTwo);
-	}
-
 	public UMLObject getUMLObject(int x, int y) {
 		return umlCore.getUmlObject(x, y);
 	}
-
 	public void update() {
 		umlCore.update();
 	}
-
 	public List<UMLObject> getAllObjects() {
-		List<UMLObject> outList = new ArrayList<UMLObject>();
-		int[] layers=umlCore.getNotEmptyLayers();
-		for(int i=0;i<layers.length;i++){
-			List<UMLObject> list=umlCore.getRealObjects(layers[i]);
-			for(UMLObject object:list){
-				outList.add(object);
-			}
-		}
-		return outList;
+		return objectHandler.getAllObjects();
 	}
-
 	public void group(List<UMLObject> list) {
-		for(UMLObject object : list){
-			object.getObjectState().setSelected(false);
-			umlCore.removeUMLObject(object);
-		}
-		UMLObject groupObject = new DefaultGroupObject(list);
-		umlCore.addUMLObject(groupObject);
+		groupHandler.group(list);
 	}
-
 	public void unGroup(GroupObject object) {
-		umlCore.removeUMLObject(object);
-		List<UMLObject> list = object.getObjectList();
-		for(UMLObject object2:list){
-			umlCore.addUMLObject(object2);
-		}
+		groupHandler.unGroup(object);
 	}
 }

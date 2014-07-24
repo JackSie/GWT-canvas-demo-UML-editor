@@ -10,8 +10,8 @@ import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
 public class ChangeNameDialogBox extends DialogBox{
-	TextBox textBox;
-	Button buttonOK;
+	private TextBox textBox;
+	private Button buttonOK;
 	public ChangeNameDialogBox() {
 		setText("Change Object's Name");
 	    setAnimationEnabled(true);

@@ -12,12 +12,12 @@ public class GroupObject implements UMLObject{
 	private String type;
 	private List<UMLObject> list;
 	private ObjectState objectState;
-	public GroupObject(String name,String type,ObjectState objectState) {
-		this(name,type,objectState,new ArrayList<UMLObject>());
+	public GroupObject(String name,ObjectState objectState) {
+		this(name,objectState,new ArrayList<UMLObject>());
 	}
-	public GroupObject(String name,String type,ObjectState objectState,List<UMLObject> list) {
+	public GroupObject(String name,ObjectState objectState,List<UMLObject> list) {
 		this.name=name;
-		this.type=type;
+		this.type=GROUP;
 		this.objectState=objectState;
 		setObjectList(list);
 	}	
@@ -51,22 +51,22 @@ public class GroupObject implements UMLObject{
 		return objectState;
 	}
 	private void calculateSize(){
-		int x=Integer.MAX_VALUE;
-		int y=Integer.MAX_VALUE;
-		int w=0;
-		int h=0;
+		int x=Integer.MAX_VALUE;int y=Integer.MAX_VALUE;
+		int w=0;int h=0;
 		if(list!=null && list.size()>0){
 			for(UMLObject object:list){
-				if(object.getObjectState().getX()<x)
-					x=object.getObjectState().getX();
-				if(object.getObjectState().getY()<y)
-					y=object.getObjectState().getY();
+				ObjectState state=object.getObjectState();
+				if(state.getX()<x)
+					x=state.getX();
+				if(state.getY()<y)
+					y=state.getY();
 			}
 			for(UMLObject object:list){
-				if(object.getObjectState().getX()+object.getObjectState().getSizeW() > x+w)
-					w = object.getObjectState().getX()+object.getObjectState().getSizeW() - x;
+				ObjectState state=object.getObjectState();
+				if(state.getX()+state.getSizeW() > x+w)
+					w = state.getX()+state.getSizeW() - x;
 				if(object.getObjectState().getY()+object.getObjectState().getSizeH() > y+h)
-					h = object.getObjectState().getY()+object.getObjectState().getSizeH() - y;
+					h = state.getY()+state.getSizeH() - y;
 			}
 			this.objectState.setX(x-5);
 			this.objectState.setY(y-5);
@@ -80,11 +80,12 @@ public class GroupObject implements UMLObject{
 		objectState.setX(x);
 		objectState.setY(y);
 		for(UMLObject object:list){
+			ObjectState state=object.getObjectState();
 			if(object instanceof GroupObject){
-				((GroupObject) object).move(object.getObjectState().getX()+offsetX, object.getObjectState().getY()+offsetY);
+				((GroupObject) object).move(state.getX()+offsetX, state.getY()+offsetY);
 			}else{
-				object.getObjectState().setX(object.getObjectState().getX()+offsetX);
-				object.getObjectState().setY(object.getObjectState().getY()+offsetY);
+				state.setX(state.getX()+offsetX);
+				state.setY(state.getY()+offsetY);
 			}
 		}
 	}

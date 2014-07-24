@@ -10,14 +10,13 @@ import java.util.Set;
 
 import org.twbbs.peak.uml.object.UMLObject;
 import org.twbbs.peak.uml.object.state.ObjectState;
-import org.twbbs.peak.uml.portal.UMLCoreObserver;
 import org.twbbs.peak.uml.portal.UMLCoreSubject;
 
 public class UMLCoreImpl implements UMLCore,UMLCoreSubject{
-	final static int DEPTH=100;
-	List<UMLCoreObserver> observersList;
-	Map<Integer,List<UMLObject>> objectLayers;
-	int nowDepth=DEPTH;
+	private final static int DEPTH=100;
+	private List<UMLCoreObserver> observersList;
+	private Map<Integer,List<UMLObject>> objectLayers;
+	private int nowDepth=DEPTH;
 	public UMLCoreImpl() {
 		observersList=new ArrayList<UMLCoreObserver>();
 		objectLayers=new HashMap<Integer, List<UMLObject>>();
@@ -66,11 +65,10 @@ public class UMLCoreImpl implements UMLCore,UMLCoreSubject{
 		update();
 	}
 	private int getNextLayer(){
-		if(nowDepth>0){
+		if(nowDepth>0)
 			return --nowDepth;
-		}else{
+		else
 			return nowDepth;
-		}
 	}
 	public void update(){
 		for(UMLCoreObserver observer:observersList){

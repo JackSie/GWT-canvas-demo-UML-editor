@@ -3,7 +3,7 @@ package org.twbbs.peak.canvastest.client.connector;
 import org.twbbs.peak.uml.portal.UMLModeHandler;
 
 public class ModeConnectorImpl implements ModeConnector{
-	UMLModeHandler modeHandler;
+	private UMLModeHandler modeHandler;
 	public ModeConnectorImpl(UMLModeHandler modeHandler) {
 		this.modeHandler=modeHandler;
 	}

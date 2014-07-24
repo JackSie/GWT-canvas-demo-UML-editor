@@ -51,5 +51,4 @@ public abstract class UMLAbstractConnection implements UMLConnection{
 			this.tailPostition=postion;
 		}
 	}
-	
 }

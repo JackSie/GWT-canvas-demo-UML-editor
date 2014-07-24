@@ -1,4 +1,4 @@
-package org.twbbs.peak.uml.object.detail;
+package org.twbbs.peak.uml.object.basic.detail;
 
 public interface HasUMLDetail {
 	void addMember(UMLDetailMember umlDetailMember);

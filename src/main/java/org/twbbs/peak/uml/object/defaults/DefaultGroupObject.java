@@ -8,6 +8,6 @@ import org.twbbs.peak.uml.object.state.DefaultGroupState;
 
 public class DefaultGroupObject extends GroupObject{
 	public DefaultGroupObject(List<UMLObject> list) {
-		super("group", UMLObject.GROUP, new DefaultGroupState(0, 0), list);
+		super("group", new DefaultGroupState(0, 0), list);
 	}
 }

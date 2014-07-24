@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.twbbs.peak.uml.connection.UMLConnection;
 import org.twbbs.peak.uml.object.UMLObject;
-import org.twbbs.peak.uml.object.state.ObjectState;
 
 public interface UMLBasicObject extends UMLObject{
 	void setConnection(UMLConnection umlConnection);

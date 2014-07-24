@@ -28,10 +28,9 @@ public class UmlEditorActivity implements UMLModeObserver{
 	private UmlEditorView umlEditorView;
 	private Canvas canvas;
 	private Canvas bufferedCanvas;
-	ModeConnector modeConnector;
-	PortalConnector portalConnector;
-	UMLCoreSubject umlCore;
-	UMLModeSubject modeSubject;
+	private ModeConnector modeConnector;
+	private PortalConnector portalConnector;
+	private UMLModeSubject modeSubject;
 	private CanvasCenter canvasCenter;
 	private PushButton buttonIsEnable;
 	private ChangeNameDialogBox changeNameDialogBox;
@@ -39,17 +38,15 @@ public class UmlEditorActivity implements UMLModeObserver{
 		umlEditorView =clientFactory.getUmlEditorView();
 		this.modeConnector=modeConnector;
 		this.portalConnector=portalConnector;
-		this.umlCore=umlCore;
 		this.modeSubject=modeSubject;
 		canvas=umlEditorView.getCanvas();
 		bufferedCanvas=umlEditorView.getBufferedCanvas();
 		this.canvasCenter=new CanvasCenter(canvas,bufferedCanvas,umlCore);
 		this.changeNameDialogBox=new ChangeNameDialogBox();
-		modeSubject.regist(this);
+		this.modeSubject.regist(this);
 	}
 	public void start(RootPanel panel){
 		panel.add(umlEditorView.asWidget());
-		
 		initHandler();
 		doUpdate();
 	}

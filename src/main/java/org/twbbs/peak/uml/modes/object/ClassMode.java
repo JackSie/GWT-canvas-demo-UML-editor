@@ -1,4 +1,4 @@
-package org.twbbs.peak.uml.modes;
+package org.twbbs.peak.uml.modes.object;
 
 import org.twbbs.peak.uml.object.UMLObjectManager;
 
