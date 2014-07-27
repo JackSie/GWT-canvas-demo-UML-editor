@@ -91,6 +91,7 @@
           <!--
           <i18nMessagesBundle>org.twbbs.peak.canvastest.client.Messages</i18nMessagesBundle>
           -->
+          <argLine>${jacocoArgs} ${argLine}</argLine>
         </configuration>
       </plugin>
 
@@ -139,6 +140,31 @@
       </systemProperties>
     </configuration>
   </plugin>
+  
+      <plugin>
+  <groupId>org.jboss.errai</groupId>
+  <artifactId>jacoco-gwt-maven-plugin</artifactId>
+  <version>0.5.4.201202141554</version>
+  <executions>
+    <execution>
+      <id>jacoco-initialize</id>
+      <phase>initialize</phase>
+      <goals>
+        <goal>prepare-agent</goal>
+      </goals>
+      <configuration>
+        <propertyName>jacocoArgs</propertyName>
+      </configuration>
+    </execution>
+    <execution>
+      <id>jacoco-site</id>
+      <phase>site</phase>
+      <goals>
+        <goal>report</goal>
+      </goals>
+    </execution>
+  </executions>
+</plugin>
       
     </plugins>
   </build>
