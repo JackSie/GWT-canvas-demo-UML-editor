@@ -91,7 +91,6 @@
           <!--
           <i18nMessagesBundle>org.twbbs.peak.canvastest.client.Messages</i18nMessagesBundle>
           -->
-          <argLine>${jacocoArgs} ${argLine}</argLine>
         </configuration>
       </plugin>
 
@@ -138,6 +137,7 @@
           <value>-out \${webAppDirectory}</value>
         </property>
       </systemProperties>
+      <argLine>${jacocoArgs} ${argLine}</argLine>
     </configuration>
   </plugin>
   
