@@ -31,7 +31,7 @@ public class UMLCoreImpl implements UMLCore,UMLCoreSubject{
 	}
 
 	public List<UMLObject> getObjects(int layer) {
-		return  objectLayers.get(layer);
+		return  getRealObjects(layer);
 	}
 	public List<UMLObject> getRealObjects(int layer) {
 		return objectLayers.get(layer);
@@ -53,10 +53,6 @@ public class UMLCoreImpl implements UMLCore,UMLCoreSubject{
 		List<UMLObject> list=null;
 		if(objectLayers.containsKey(layer)){
 			list = objectLayers.get(layer);
-			if(list==null){
-				list=new ArrayList<UMLObject>();
-				objectLayers.put(layer, list);
-			}
 		}else{
 			list=new ArrayList<UMLObject>();
 			objectLayers.put(layer, list);
