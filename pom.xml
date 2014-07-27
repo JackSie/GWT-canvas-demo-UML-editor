@@ -137,7 +137,7 @@
           <value>-out \${webAppDirectory}</value>
         </property>
       </systemProperties>
-      <argLine>${jacocoArgs} ${argLine}</argLine>
+      <argLine>${jacocoArgs}</argLine>
     </configuration>
   </plugin>
   
