@@ -3,6 +3,9 @@ package org.twbbs.peak.uml;
 import org.twbbs.peak.canvastest.client.ClinetFactoryTest;
 import org.twbbs.peak.canvastest.client.TestAdder;
 import org.twbbs.peak.uml.connection.ConnectionsTest;
+import org.twbbs.peak.uml.modes.SelectionModeTest;
+import org.twbbs.peak.uml.modes.line.LinesModeTest;
+import org.twbbs.peak.uml.modes.object.ObjectsModeTest;
 import org.twbbs.peak.uml.object.GroupHandlerTest;
 import org.twbbs.peak.uml.object.LineHandlerTest;
 import org.twbbs.peak.uml.object.ObjectHandlerTest;
@@ -11,6 +14,9 @@ import org.twbbs.peak.uml.object.basic.ClassObjectTest;
 import org.twbbs.peak.uml.object.basic.InterfaceObjectTest;
 import org.twbbs.peak.uml.object.basic.UmlAbstractObjectTest;
 import org.twbbs.peak.uml.object.basic.detail.UMLDetailsAllTest;
+import org.twbbs.peak.uml.object.composite.GroupObjectTest;
+import org.twbbs.peak.uml.object.state.ObjectStateTest;
+import org.twbbs.peak.uml.portal.UMLCorePortalTest;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;
@@ -36,6 +42,16 @@ public class AllTests extends GWTTestSuite{
 		suite.addTestSuite(UmlAbstractObjectTest.class);
 		
 		suite.addTestSuite(UMLDetailsAllTest.class);
+		
+		suite.addTestSuite(GroupObjectTest.class);
+		
+		suite.addTestSuite(ObjectStateTest.class);
+		
+		suite.addTestSuite(UMLCorePortalTest.class);
+		
+		suite.addTestSuite(ObjectsModeTest.class);
+		suite.addTestSuite(LinesModeTest.class);
+		suite.addTestSuite(SelectionModeTest.class);
 		return suite;
 	}
 }

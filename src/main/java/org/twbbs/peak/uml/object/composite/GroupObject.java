@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.twbbs.peak.uml.object.UMLObject;
-import org.twbbs.peak.uml.object.basic.UMLBasicObject;
 import org.twbbs.peak.uml.object.state.ObjectState;
 
 public class GroupObject implements UMLObject{
@@ -27,7 +26,7 @@ public class GroupObject implements UMLObject{
 	public String getType() {
 		return type;
 	}
-	public void addObject(UMLBasicObject object){
+	public void addObject(UMLObject object){
 		list.add(object);
 		calculateSize();
 	}

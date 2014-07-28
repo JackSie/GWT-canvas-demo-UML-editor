@@ -76,17 +76,15 @@ public class SelectionMode implements UmlMode{
 		int yRight= y > originY ? y :originY;
 		List<UMLObject> objectList = manager.getAllObjects();
 		List<UMLObject> newList = new ArrayList<UMLObject>();
-		if(objectList==null)
-			return;
 		for(UMLObject object:objectList){
 			int ox= object.getObjectState().getX();
 			int oy= object.getObjectState().getY();
 			int owx= object.getObjectState().getSizeW()+ox;
 			int ohy= object.getObjectState().getSizeH()+oy;
-			if(ox<xLeft || oy < yLeft || owx> xRight || ohy > yRight)
-				continue;
-			newList.add(object);
-			object.getObjectState().setSelected(true);
+			if(ox>=xLeft && oy >= yLeft && owx<= xRight && ohy <= yRight){
+				newList.add(object);
+				object.getObjectState().setSelected(true);
+			}
 		}
 		this.selectedList=newList;
 	}

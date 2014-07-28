@@ -71,6 +71,7 @@ public class UMLCorePortalImpl implements UMLCorePortal,UMLModeHandler,UMLModeSu
 			case USECASE_MODE:
 				nowMode=useCaseMode;break;
 		}
+		modifyToChangeMode(mode);
 	}
 	public void regist(UMLModeObserver observer) {
 		list.add(observer);
@@ -83,6 +84,11 @@ public class UMLCorePortalImpl implements UMLCorePortal,UMLModeHandler,UMLModeSu
 	public void modifyToChaneName(){
 		for(UMLModeObserver observer:list){
 			observer.changeName();
+		}
+	}
+	public void modifyToChangeMode(int mode){
+		for(UMLModeObserver observer:list){
+			observer.modeChanged(mode);
 		}
 	}
 }
