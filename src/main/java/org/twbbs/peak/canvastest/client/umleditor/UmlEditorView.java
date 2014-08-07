@@ -6,15 +6,15 @@ import com.google.gwt.user.client.ui.MenuItem;
 import com.google.gwt.user.client.ui.PushButton;
 
 public interface UmlEditorView extends IsWidget{
-	Canvas getCanvas();
-	Canvas getBufferedCanvas();
-	PushButton getBtnSelection();
-	PushButton getBtnNewButton();
-	PushButton getBtnCompostion();
-	PushButton getBtnGerenalization();
-	PushButton getBtnClass();
-	PushButton getBtnUsecase();
-	MenuItem getMntmChangeObjectName();
-	MenuItem getMntmGroup();
-	MenuItem getMntmUngroup();
+    Canvas getCanvas();
+    Canvas getBufferedCanvas();
+    PushButton getBtnSelection();
+    PushButton getBtnNewButton();
+    PushButton getBtnCompostion();
+    PushButton getBtnGerenalization();
+    PushButton getBtnClass();
+    PushButton getBtnUsecase();
+    MenuItem getMntmChangeObjectName();
+    MenuItem getMntmGroup();
+    MenuItem getMntmUngroup();
 }

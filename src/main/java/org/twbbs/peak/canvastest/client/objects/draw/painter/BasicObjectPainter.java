@@ -9,23 +9,23 @@ import org.twbbs.peak.uml.object.basic.UMLBasicObject;
 import com.google.gwt.canvas.dom.client.Context2d;
 
 public class BasicObjectPainter implements ObjectPainter{
-	private ClassDrawBehavior classDrawBehavior;
-	private UseCaseDrawBehavior useCaseDrawBehavior;
-	public BasicObjectPainter() {
-		classDrawBehavior=new ClassDrawBehavior(null);
-		useCaseDrawBehavior=new UseCaseDrawBehavior(null);
-	}
-	public void paint(UMLObject object, Context2d context2d) {
-		DrawBehavior drawBehavior=null;
-		String type=object.getType();
-		if(type.equals(UMLObject.CLASS)){
-			drawBehavior=classDrawBehavior;
-		}else if(type.equals(UMLObject.INTERFACE)){
-			drawBehavior=useCaseDrawBehavior;
-		}
-		if(drawBehavior!=null && object!=null){
-			drawBehavior.setObject((UMLBasicObject)object);
-			drawBehavior.toDraw(context2d);
-		}
-	}
+    private ClassDrawBehavior classDrawBehavior;
+    private UseCaseDrawBehavior useCaseDrawBehavior;
+    public BasicObjectPainter() {
+        classDrawBehavior=new ClassDrawBehavior(null);
+        useCaseDrawBehavior=new UseCaseDrawBehavior(null);
+    }
+    public void paint(UMLObject object, Context2d context2d) {
+        DrawBehavior drawBehavior=null;
+        String type=object.getType();
+        if(type.equals(UMLObject.CLASS)){
+            drawBehavior=classDrawBehavior;
+        }else if(type.equals(UMLObject.INTERFACE)){
+            drawBehavior=useCaseDrawBehavior;
+        }
+        if(drawBehavior!=null && object!=null){
+            drawBehavior.setObject((UMLBasicObject)object);
+            drawBehavior.toDraw(context2d);
+        }
+    }
 }

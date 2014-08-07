@@ -1,6 +1,5 @@
 package org.twbbs.peak.uml.connection;
 
-import org.twbbs.peak.uml.object.UMLObject;
 import org.twbbs.peak.uml.object.basic.UMLBasicObject;
 import org.twbbs.peak.uml.object.defaults.DefaultClassObject;
 import org.twbbs.peak.uml.object.defaults.DefaultInterfaceObject;

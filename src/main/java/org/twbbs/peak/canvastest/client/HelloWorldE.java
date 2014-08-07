@@ -18,22 +18,22 @@ import com.google.gwt.user.client.ui.RootPanel;
 
 public class HelloWorldE implements EntryPoint {
 
-	public void onModuleLoad() {
-		UMLCoreImpl umlCore=new UMLCoreImpl();
-		UMLObjectManager manager=new UMLObjectManagerImpl(umlCore);
-		UMLCorePortalImpl umlCorePortal=new UMLCorePortalImpl(manager);
+    public void onModuleLoad() {
+        UMLCoreImpl umlCore=new UMLCoreImpl();
+        UMLObjectManager manager=new UMLObjectManagerImpl(umlCore);
+        UMLCorePortalImpl umlCorePortal=new UMLCorePortalImpl(manager);
 
-		manager.createClassObject(100, 100);
-		manager.createUseCaseObject(400, 100);
-		
-		ModeConnector modeConnector=new ModeConnectorImpl(umlCorePortal);
-		PortalConnector portalConnector=new PortalConnectorImpl(umlCorePortal);
-		
-			
-		ClientFactory clientFactory= new ClientFactoryImpl();
-		UmlEditorActivity umlEditorActivity = new UmlEditorActivity(clientFactory,modeConnector,portalConnector,umlCore,umlCorePortal);
-		umlEditorActivity.start(RootPanel.get("umleditor"));
-		
-	}
+        manager.createClassObject(100, 100);
+        manager.createUseCaseObject(400, 100);
+        
+        ModeConnector modeConnector=new ModeConnectorImpl(umlCorePortal);
+        PortalConnector portalConnector=new PortalConnectorImpl(umlCorePortal);
+        
+            
+        ClientFactory clientFactory= new ClientFactoryImpl();
+        UmlEditorActivity umlEditorActivity = new UmlEditorActivity(clientFactory,modeConnector,portalConnector,umlCore,umlCorePortal);
+        umlEditorActivity.start(RootPanel.get("umleditor"));
+        
+    }
 
 }

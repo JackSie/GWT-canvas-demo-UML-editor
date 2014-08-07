@@ -14,8 +14,8 @@ public class UMLCorePortalTest extends GWTTestCase{
 		UMLCorePortalImpl corePortal=new UMLCorePortalImpl(manager);
 		UMLModeObserverImple observer=new UMLModeObserverImple();
 		corePortal.regist(observer);
-		corePortal.changeMode(UMLModeSeries.ASSOCAITION_Mode);
-		assertEquals(UMLModeSeries.ASSOCAITION_Mode, observer.mode);
+		corePortal.changeMode(UMLModeSeries.ASSOCAITION_MODE);
+		assertEquals(UMLModeSeries.ASSOCAITION_MODE, observer.mode);
 		corePortal.changeMode(UMLModeSeries.SELECTION_MODE);
 		
 		manager.createClassObject(0, 0);
@@ -44,8 +44,8 @@ public class UMLCorePortalTest extends GWTTestCase{
 		assertEquals(UMLModeSeries.SELECTION_MODE, observer.mode);
 		corePortal.changeMode(UMLModeSeries.USECASE_MODE);
 		assertEquals(UMLModeSeries.USECASE_MODE, observer.mode);
-		corePortal.changeMode(UMLModeSeries.ASSOCAITION_Mode);
-		assertEquals(UMLModeSeries.ASSOCAITION_Mode, observer.mode);
+		corePortal.changeMode(UMLModeSeries.ASSOCAITION_MODE);
+		assertEquals(UMLModeSeries.ASSOCAITION_MODE, observer.mode);
 	}
 	public void testDelegate(){
 		UMLCoreImpl coreImpl=new UMLCoreImpl();
