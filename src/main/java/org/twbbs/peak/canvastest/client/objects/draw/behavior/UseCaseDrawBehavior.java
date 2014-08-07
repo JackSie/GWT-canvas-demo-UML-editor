@@ -19,7 +19,7 @@ public class UseCaseDrawBehavior extends ObjectDrawBehavior{
     protected void cumstomDraw(Context2d context) {
         boolean isSelected=umlBasicObject.getObjectState().isSelected();
         if(isSelected){  
-            drawSpot(context,BLUE);
+            drawSpot(context,DrawColor.BLUE);
         }
     }
     @Override

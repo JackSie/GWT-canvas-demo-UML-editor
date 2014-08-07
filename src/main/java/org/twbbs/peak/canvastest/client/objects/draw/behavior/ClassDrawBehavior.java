@@ -18,7 +18,7 @@ public class ClassDrawBehavior extends ObjectDrawBehavior{
         drawMember(context);
         drawMethod(context);
         if(isSelected){  
-            drawSpot(context,BLUE);
+            drawSpot(context,DrawColor.BLUE);
         }
     }
     private void drawMember(Context2d context){

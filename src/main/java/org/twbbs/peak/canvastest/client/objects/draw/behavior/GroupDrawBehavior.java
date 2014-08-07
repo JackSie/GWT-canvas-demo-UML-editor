@@ -34,7 +34,7 @@ public class GroupDrawBehavior implements DrawBehavior{
         context.setFillStyle(canvasGradient);
 
         if(groupObject.getObjectState().isSelected()){
-            context.setStrokeStyle(RED);
+            context.setStrokeStyle(DrawColor.RED);
         }
         squareDrawHandler.drawShape(context, x, y, sizeW, sizeH);
     }

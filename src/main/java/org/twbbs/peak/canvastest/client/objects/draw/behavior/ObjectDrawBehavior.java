@@ -30,7 +30,7 @@ public abstract class ObjectDrawBehavior implements DrawBehavior{
         int y=umlBasicObject.getObjectState().getY();
         int sizeW=umlBasicObject.getObjectState().getSizeW();
         int nameSize=name.length();
-        context.setFillStyle(BLACK);
+        context.setFillStyle(DrawColor.BLACK);
         context.setFont("normal lighter 12px serif");
         context.fillText(name, x+sizeW/2-nameSize*4, y+20);
     }
@@ -82,10 +82,10 @@ public abstract class ObjectDrawBehavior implements DrawBehavior{
         boolean isDraged=umlBasicObject.getObjectState().isDraged();
         boolean isSelected=umlBasicObject.getObjectState().isSelected();
         double offset=ShadowSetting.SHADOWOFFSETNORMAL;
-        context.setStrokeStyle(BLACK);
+        context.setStrokeStyle(DrawColor.BLACK);
         if(isDraged||isSelected){
             offset=ShadowSetting.SHADOWOFFSETUP;
-            context.setStrokeStyle(RED);
+            context.setStrokeStyle(DrawColor.RED);
         }
         context.save();
         context.setShadowOffsetX(offset);
