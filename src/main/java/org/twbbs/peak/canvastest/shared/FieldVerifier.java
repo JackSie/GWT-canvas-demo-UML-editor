@@ -21,7 +21,8 @@ package org.twbbs.peak.canvastest.shared;
  * </p>
  */
 public class FieldVerifier {
-
+	private FieldVerifier() {
+	  }
   /**
    * Verifies that the specified name is valid for our service.
    *

@@ -3,25 +3,25 @@ package org.twbbs.peak.uml.object;
 import org.twbbs.peak.uml.connection.AssociationConnection;
 import org.twbbs.peak.uml.connection.CompositionConnection;
 import org.twbbs.peak.uml.connection.GeneralizationConnection;
+import org.twbbs.peak.uml.connection.UMLConnectPosition;
 import org.twbbs.peak.uml.object.basic.UMLBasicObject;
-import org.twbbs.peak.uml.util.Point;
 
 public class LineHandler {
     public void associateObjects(UMLBasicObject objectA, UMLBasicObject objectB) {
-        Point point = calc(objectA, objectB);        
-        objectA.setConnection(new AssociationConnection(objectA, objectB, point.getX(),point.getY()));
+        UMLConnectPosition[] point = calc(objectA, objectB);        
+        objectA.setConnection(new AssociationConnection(objectA, objectB, point[0],point[1]));
     }
 
     public void compositeObjects(UMLBasicObject objectA, UMLBasicObject objectB) {
-        Point point = calc(objectA, objectB);    
-        objectA.setConnection(new CompositionConnection(objectA, objectB, point.getX(),point.getY()));
+        UMLConnectPosition[] point = calc(objectA, objectB);    
+        objectA.setConnection(new CompositionConnection(objectA, objectB, point[0],point[1]));
     }
 
     public void generalizeObjects(UMLBasicObject objectA, UMLBasicObject objectB) {
-        Point point = calc(objectA, objectB);    
-        objectA.setConnection(new GeneralizationConnection(objectA, objectB, point.getX(),point.getY()));
+        UMLConnectPosition[] point = calc(objectA, objectB);    
+        objectA.setConnection(new GeneralizationConnection(objectA, objectB, point[0],point[1]));
     }
-    private Point calc(UMLBasicObject objectA, UMLBasicObject objectB){
+    private UMLConnectPosition[] calc(UMLBasicObject objectA, UMLBasicObject objectB){
         int ax=objectA.getObjectState().getX();
         int ay=objectA.getObjectState().getY();
         int bx=objectB.getObjectState().getX();
@@ -47,6 +47,9 @@ public class LineHandler {
                 }
             }
         }
-        return new Point(ansOne, ansTwo);
+        UMLConnectPosition[] position=new UMLConnectPosition[2];
+        position[0]=UMLConnectPosition.fromValue(ansOne);
+        position[1]=UMLConnectPosition.fromValue(ansTwo);
+        return position;
     }
 }

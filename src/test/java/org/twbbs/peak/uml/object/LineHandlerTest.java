@@ -1,6 +1,7 @@
 package org.twbbs.peak.uml.object;
 
 import org.twbbs.peak.uml.connection.UMLConnection;
+import org.twbbs.peak.uml.connection.UMLConnectionType;
 import org.twbbs.peak.uml.object.basic.UMLBasicObject;
 import org.twbbs.peak.uml.object.defaults.DefaultClassObject;
 
@@ -13,7 +14,7 @@ public class LineHandlerTest extends GWTTestCase{
 		LineHandler handler=new LineHandler();
 		handler.associateObjects(object1, object2);
 		UMLConnection connection=object1.getConnections().get(0);
-		assertEquals(UMLConnection.ASSOCIATION, connection.getType());
+		assertEquals(UMLConnectionType.ASSOCIATION, connection.getType());
 	}
 	public void testCompositeObjects(){
 		UMLBasicObject object1=new DefaultClassObject(0, 0);
@@ -21,7 +22,7 @@ public class LineHandlerTest extends GWTTestCase{
 		LineHandler handler=new LineHandler();
 		handler.compositeObjects(object1, object2);
 		UMLConnection connection=object1.getConnections().get(0);
-		assertEquals(UMLConnection.COMPOSITION, connection.getType());
+		assertEquals(UMLConnectionType.COMPOSITION, connection.getType());
 	}
 	public void testGeneralizeObjects(){
 		UMLBasicObject object1=new DefaultClassObject(0, 0);
@@ -29,7 +30,7 @@ public class LineHandlerTest extends GWTTestCase{
 		LineHandler handler=new LineHandler();
 		handler.generalizeObjects(object1, object2);
 		UMLConnection connection=object1.getConnections().get(0);
-		assertEquals(UMLConnection.GENERALIZATION, connection.getType());
+		assertEquals(UMLConnectionType.GENERALIZATION, connection.getType());
 	}
 	@Override
 	public String getModuleName() {

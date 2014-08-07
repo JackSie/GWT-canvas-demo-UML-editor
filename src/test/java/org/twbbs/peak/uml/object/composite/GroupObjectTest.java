@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.twbbs.peak.uml.object.UMLObject;
+import org.twbbs.peak.uml.object.UMLObjectType;
 import org.twbbs.peak.uml.object.defaults.DefaultClassObject;
 import org.twbbs.peak.uml.object.defaults.DefaultGroupObject;
 import org.twbbs.peak.uml.object.state.ObjectState;
@@ -20,7 +21,7 @@ public class GroupObjectTest extends GWTTestCase{
 	}
 	public void testNameAndType(){
 		String name="group";
-		String type=UMLObject.GROUP;
+		UMLObjectType type=UMLObjectType.GROUP;
 		GroupObject groupObject=new DefaultGroupObject(new ArrayList<UMLObject>());
 		groupObject.setName(name);
 		groupObject.setType(type);

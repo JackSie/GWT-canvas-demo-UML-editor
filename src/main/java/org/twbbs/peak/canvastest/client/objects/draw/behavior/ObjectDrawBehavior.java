@@ -81,10 +81,10 @@ public abstract class ObjectDrawBehavior implements DrawBehavior{
         int sizeH=umlBasicObject.getObjectState().getSizeH();
         boolean isDraged=umlBasicObject.getObjectState().isDraged();
         boolean isSelected=umlBasicObject.getObjectState().isSelected();
-        double offset=SHADOWOFFSETNORMAL;
+        double offset=ShadowSetting.SHADOWOFFSETNORMAL;
         context.setStrokeStyle(BLACK);
         if(isDraged||isSelected){
-            offset=SHADOWOFFSETUP;
+            offset=ShadowSetting.SHADOWOFFSETUP;
             context.setStrokeStyle(RED);
         }
         context.save();
@@ -97,7 +97,5 @@ public abstract class ObjectDrawBehavior implements DrawBehavior{
         context.restore();
     }
     protected abstract void drawShape(Context2d context2d,int x,int y,int sizeW,int sizeH);
-    protected void cumstomDraw(Context2d context){
-        // Do nothing because of thing this a hook function.
-    };
+    protected abstract void cumstomDraw(Context2d context);
 }

@@ -1,8 +1,10 @@
 package org.twbbs.peak.uml.object.basic;
 
 import org.twbbs.peak.uml.connection.AssociationConnection;
+import org.twbbs.peak.uml.connection.UMLConnectPosition;
 import org.twbbs.peak.uml.connection.UMLConnection;
 import org.twbbs.peak.uml.object.UMLObject;
+import org.twbbs.peak.uml.object.UMLObjectType;
 import org.twbbs.peak.uml.object.defaults.DefaultClassObject;
 import org.twbbs.peak.uml.object.state.ObjectState;
 import org.twbbs.peak.uml.object.state.ObjectStateImpl;
@@ -13,14 +15,14 @@ public class UmlAbstractObjectTest extends GWTTestCase{
 	public void testSetConnection(){
 		UmlAbstractObject objectA=new DefaultClassObject(0, 0);
 		UmlAbstractObject objectB=new DefaultClassObject(100, 0);
-		UMLConnection connection=new AssociationConnection(objectA, objectB, UMLConnection.NORTH, UMLConnection.NORTH);
+		UMLConnection connection=new AssociationConnection(objectA, objectB, UMLConnectPosition.NORTH, UMLConnectPosition.NORTH);
 		objectA.setConnection(connection);
 		assertEquals(connection, objectA.getConnections().get(0));
 	}
 	public void testEemoveConnection(){
 		UmlAbstractObject objectA=new DefaultClassObject(0, 0);
 		UmlAbstractObject objectB=new DefaultClassObject(100, 0);
-		UMLConnection connection=new AssociationConnection(objectA, objectB, UMLConnection.NORTH, UMLConnection.NORTH);
+		UMLConnection connection=new AssociationConnection(objectA, objectB, UMLConnectPosition.NORTH, UMLConnectPosition.NORTH);
 		objectA.setConnection(connection);
 		objectA.removeConnection(connection);
 		assertEquals(0, objectA.getConnections().size());
@@ -28,7 +30,7 @@ public class UmlAbstractObjectTest extends GWTTestCase{
 	public void testGetConnections(){
 		UmlAbstractObject objectA=new DefaultClassObject(0, 0);
 		UmlAbstractObject objectB=new DefaultClassObject(100, 0);
-		UMLConnection connection=new AssociationConnection(objectA, objectB, UMLConnection.NORTH, UMLConnection.NORTH);
+		UMLConnection connection=new AssociationConnection(objectA, objectB, UMLConnectPosition.NORTH, UMLConnectPosition.NORTH);
 		objectA.setConnection(connection);
 		assertEquals(connection, objectA.getConnections().get(0));
 	}
@@ -48,7 +50,7 @@ public class UmlAbstractObjectTest extends GWTTestCase{
 	}
 	public void testSetType(){
 		UmlAbstractObject objectB=new DefaultClassObject(100, 0);
-		String type=UMLObject.INTERFACE;
+		UMLObjectType type=UMLObjectType.INTERFACE;
 		objectB.setType(type);
 		assertEquals(type, objectB.getType());
 	}

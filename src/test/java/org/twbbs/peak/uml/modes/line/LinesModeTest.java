@@ -2,6 +2,7 @@ package org.twbbs.peak.uml.modes.line;
 
 import org.twbbs.peak.uml.UMLCoreImpl;
 import org.twbbs.peak.uml.connection.UMLConnection;
+import org.twbbs.peak.uml.connection.UMLConnectionType;
 import org.twbbs.peak.uml.object.UMLObjectManager;
 import org.twbbs.peak.uml.object.UMLObjectManagerImpl;
 import org.twbbs.peak.uml.object.basic.UMLBasicObject;
@@ -17,7 +18,7 @@ public class LinesModeTest extends GWTTestCase{
 		UMLBasicObject objectA= new DefaultClassObject(0, 0);
 		UMLBasicObject objectB= new DefaultClassObject(0, 0);
 		mode.createLine(objectA, objectB);
-		assertEquals(UMLConnection.ASSOCIATION, objectA.getConnections().get(0).getType());
+		assertEquals(UMLConnectionType.ASSOCIATION, objectA.getConnections().get(0).getType());
 	}
 	public void testCompositionLineMode(){
 		UMLCoreImpl coreImpl=new UMLCoreImpl();
@@ -26,7 +27,7 @@ public class LinesModeTest extends GWTTestCase{
 		UMLBasicObject objectA= new DefaultClassObject(0, 0);
 		UMLBasicObject objectB= new DefaultClassObject(0, 0);
 		mode.createLine(objectA, objectB);
-		assertEquals(UMLConnection.COMPOSITION, objectA.getConnections().get(0).getType());
+		assertEquals(UMLConnectionType.COMPOSITION, objectA.getConnections().get(0).getType());
 	}
 	public void testGeneralizationLineMode(){
 		UMLCoreImpl coreImpl=new UMLCoreImpl();
@@ -35,7 +36,7 @@ public class LinesModeTest extends GWTTestCase{
 		UMLBasicObject objectA= new DefaultClassObject(0, 0);
 		UMLBasicObject objectB= new DefaultClassObject(0, 0);
 		mode.createLine(objectA, objectB);
-		assertEquals(UMLConnection.GENERALIZATION, objectA.getConnections().get(0).getType());
+		assertEquals(UMLConnectionType.GENERALIZATION, objectA.getConnections().get(0).getType());
 	}
 	public void testStartDrag(){
 		UMLCoreImpl coreImpl=new UMLCoreImpl();
@@ -54,7 +55,7 @@ public class LinesModeTest extends GWTTestCase{
 		manager.createClassObject(500, 500);
 		mode.startDrag(1, 1);
 		mode.stopDrag(501, 501);
-		assertEquals(UMLConnection.ASSOCIATION, object.getConnections().get(0).getType());
+		assertEquals(UMLConnectionType.ASSOCIATION, object.getConnections().get(0).getType());
 	}
 	public void testUnuseMethod(){
 		UMLCoreImpl coreImpl=new UMLCoreImpl();

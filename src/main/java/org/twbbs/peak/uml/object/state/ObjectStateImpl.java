@@ -1,36 +1,35 @@
 package org.twbbs.peak.uml.object.state;
 
+import org.twbbs.peak.uml.util.Point;
+
 
 public class ObjectStateImpl implements ObjectState{
-    private int x;
-    private int y;
+    private Point point;
     private int sizeW;
     private int sizeH;
     private boolean isDraged=false;
     private boolean isSelected=false;
     
     public ObjectStateImpl(int x,int y, int sizeW, int sizeH) {
-        this.x=x;
-        this.y=y;
+        this.point=new Point(x, y);
         this.sizeW=sizeW;
         this.sizeH=sizeH;
     }
     public ObjectStateImpl(int x,int y) {
-        this.x=x;
-        this.y=y;
+        this.point=new Point(x, y);
     }
     
     public int getX() {
-        return x;
+        return point.getX();
     }
     public void setX(int x) {
-        this.x = x;
+        point.setX(x);
     }
     public int getY() {
-        return y;
+        return point.getY();
     }
     public void setY(int y) {
-        this.y = y;
+        point.setY(y);
     }
     public int getSizeW() {
         return sizeW;

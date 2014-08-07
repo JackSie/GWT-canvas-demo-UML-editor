@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.twbbs.peak.uml.UMLCoreImpl;
 import org.twbbs.peak.uml.connection.UMLConnection;
+import org.twbbs.peak.uml.connection.UMLConnectionType;
 import org.twbbs.peak.uml.object.basic.UMLBasicObject;
 import org.twbbs.peak.uml.object.composite.GroupObject;
 import org.twbbs.peak.uml.object.defaults.DefaultClassObject;
@@ -42,7 +43,7 @@ public class UMLObjectManagerTest extends GWTTestCase{
 		UMLObjectManager manager=new UMLObjectManagerImpl(umlCoreImpl);
 		manager.associateObjects(object1, object2);
 		UMLConnection connection=object1.getConnections().get(0);
-		assertEquals(UMLConnection.ASSOCIATION, connection.getType());
+		assertEquals(UMLConnectionType.ASSOCIATION, connection.getType());
 	}
 	public void testCompositeObjects(){
 		UMLBasicObject object1=new DefaultClassObject(0, 0);
@@ -51,7 +52,7 @@ public class UMLObjectManagerTest extends GWTTestCase{
 		UMLObjectManager manager=new UMLObjectManagerImpl(umlCoreImpl);
 		manager.compositeObjects(object1, object2);
 		UMLConnection connection=object1.getConnections().get(0);
-		assertEquals(UMLConnection.COMPOSITION, connection.getType());
+		assertEquals(UMLConnectionType.COMPOSITION, connection.getType());
 	}
 	public void testGeneralizeObjects(){
 		UMLBasicObject object1=new DefaultClassObject(0, 0);
@@ -60,7 +61,7 @@ public class UMLObjectManagerTest extends GWTTestCase{
 		UMLObjectManager manager=new UMLObjectManagerImpl(umlCoreImpl);
 		manager.generalizeObjects(object1, object2);
 		UMLConnection connection=object1.getConnections().get(0);
-		assertEquals(UMLConnection.GENERALIZATION, connection.getType());
+		assertEquals(UMLConnectionType.GENERALIZATION, connection.getType());
 	}
 	public void testGroup(){
 		UMLCoreImpl umlCoreImpl=new UMLCoreImpl();
@@ -94,6 +95,9 @@ public class UMLObjectManagerTest extends GWTTestCase{
 		assertNull(manager.getUMLObject(0, 0));
 		umlCoreImpl.addUMLObject(new DefaultClassObject(0, 0));
 		assertNotNull(manager.getUMLObject(0, 0));
+	}
+	public void testEnum(){
+	    UMLObjectType.valueOf(UMLObjectType.CLASS.toString());
 	}
 	@Override
 	public String getModuleName() {

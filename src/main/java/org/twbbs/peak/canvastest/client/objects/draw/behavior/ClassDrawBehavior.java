@@ -6,14 +6,14 @@ import com.google.gwt.canvas.dom.client.CanvasGradient;
 import com.google.gwt.canvas.dom.client.Context2d;
 
 public class ClassDrawBehavior extends ObjectDrawBehavior{
-    public static final int RADIUSINIT=10;
+    private SquareDrawHandler squareDrawHandler;
     
     public ClassDrawBehavior(UMLBasicObject umlBasicObject) {
         super(umlBasicObject);
+        this.squareDrawHandler=new SquareDrawHandler();
     }
     @Override
     protected void cumstomDraw(Context2d context) {
-        super.cumstomDraw(context);
         boolean isSelected=umlBasicObject.getObjectState().isSelected();
         drawMember(context);
         drawMethod(context);
@@ -35,23 +35,8 @@ public class ClassDrawBehavior extends ObjectDrawBehavior{
         canvasGradient.addColorStop(0, "#fff");
         canvasGradient.addColorStop(1, "#66CC00");
         context.setFillStyle(canvasGradient);
-
-        int radius=RADIUSINIT;
-        if (sizeW < 2 * radius) {
-            radius = sizeW / 2;
-        }
-        if (sizeH < 2 * radius) {
-            radius = sizeH / 2;
-        }
-        context.beginPath();
-        context.moveTo(x+radius, y);
-        context.arcTo(x+sizeW, y, x+sizeW, y+sizeH, radius);
-        context.arcTo(x+sizeW, y+sizeH, x, y+sizeH, radius);
-        context.arcTo(x, y+sizeH, x, y, radius);
-        context.arcTo(x, y, x+sizeW, y, radius);
-        context.fill();
-        context.stroke();
-        context.closePath();
+        
+        squareDrawHandler.drawShape(context, x, y, sizeW, sizeH);
     }
 
 }

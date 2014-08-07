@@ -4,15 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.twbbs.peak.uml.connection.UMLConnection;
+import org.twbbs.peak.uml.object.UMLObjectType;
 import org.twbbs.peak.uml.object.state.ObjectState;
 
 public abstract class UmlAbstractObject implements UMLBasicObject{
     private String name;
-    private String type;
+    private UMLObjectType type;
     private List<UMLConnection> list;
     private ObjectState objectState;
     
-    public UmlAbstractObject(String name,String type,ObjectState objectState) {
+    public UmlAbstractObject(String name,UMLObjectType type,ObjectState objectState) {
         this.setName(name);
         this.setType(type);
         this.objectState=objectState;
@@ -34,10 +35,10 @@ public abstract class UmlAbstractObject implements UMLBasicObject{
     public void setName(String name) {
         this.name = name;
     }
-    public String getType() {
+    public UMLObjectType getType() {
         return type;
     }
-    public void setType(String type) {
+    public void setType(UMLObjectType type) {
         this.type = type;
     }
     public ObjectState getObjectState() {

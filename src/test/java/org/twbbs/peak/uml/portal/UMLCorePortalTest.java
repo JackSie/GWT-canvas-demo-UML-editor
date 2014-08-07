@@ -13,13 +13,13 @@ public class UMLCorePortalTest extends GWTTestCase{
 		UMLObjectManager manager=new UMLObjectManagerImpl(coreImpl);
 		UMLCorePortalImpl corePortal=new UMLCorePortalImpl(manager);
 		UMLModeObserverImple observer=new UMLModeObserverImple();
-		corePortal.regist(observer);
-		corePortal.changeMode(UMLModeSeries.ASSOCAITION_MODE);
+		((UMLModeSubject)corePortal).regist(observer);
+		((UMLModeHandler)corePortal).changeMode(UMLModeSeries.ASSOCAITION_MODE);
 		assertEquals(UMLModeSeries.ASSOCAITION_MODE, observer.mode);
 		corePortal.changeMode(UMLModeSeries.SELECTION_MODE);
 		
 		manager.createClassObject(0, 0);
-		corePortal.onClick(1, 1);
+		((UMLCorePortal)corePortal).onClick(1, 1);
 		
 		corePortal.changeName(null);
 		assertTrue(observer.isChangeName);
@@ -62,8 +62,8 @@ public class UMLCorePortalTest extends GWTTestCase{
 		return "org.twbbs.peak.umlJUnit";
 	}
 	class UMLModeObserverImple implements UMLModeObserver{
-		public int mode;
-		public void modeChanged(int mode) {
+		public UMLModeSeries mode;
+		public void modeChanged(UMLModeSeries mode) {
 			this.mode=mode;
 		}
 		public boolean isChangeName=false;

@@ -4,6 +4,7 @@ import org.twbbs.peak.uml.UMLCoreImpl;
 import org.twbbs.peak.uml.object.UMLObject;
 import org.twbbs.peak.uml.object.UMLObjectManager;
 import org.twbbs.peak.uml.object.UMLObjectManagerImpl;
+import org.twbbs.peak.uml.object.UMLObjectType;
 import org.twbbs.peak.uml.object.composite.GroupObject;
 import org.twbbs.peak.uml.object.defaults.DefaultClassObject;
 import org.twbbs.peak.uml.portal.UMLCorePortalImpl;
@@ -125,6 +126,9 @@ public class SelectionModeTest extends GWTTestCase{
 		mode.onClick(30, 30);
 		mode.group(false);
 		assertFalse(manager.getAllObjects().get(0) instanceof GroupObject);
+	}
+	public void testEnum(){
+	    UMLModeSeries.valueOf(UMLModeSeries.ASSOCAITION_MODE.toString());
 	}
 	@Override
 	public String getModuleName() {

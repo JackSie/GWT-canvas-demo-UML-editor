@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.twbbs.peak.uml.modes.SelectionMode;
+import org.twbbs.peak.uml.modes.UMLModeSeries;
 import org.twbbs.peak.uml.modes.UmlMode;
 import org.twbbs.peak.uml.modes.line.AssociationLineMode;
 import org.twbbs.peak.uml.modes.line.CompositionLineMode;
@@ -55,7 +56,7 @@ public class UMLCorePortalImpl implements UMLCorePortal,UMLModeHandler,UMLModeSu
     public void group(boolean isGroup) {
         nowMode.group(isGroup);
     }
-    public void changeMode(int mode) {
+    public void changeMode(UMLModeSeries mode) {
         nowMode.modeChanged();
         switch(mode){
             case SELECTION_MODE:
@@ -93,7 +94,7 @@ public class UMLCorePortalImpl implements UMLCorePortal,UMLModeHandler,UMLModeSu
             observer.changeName();
         }
     }
-    public void modifyToChangeMode(int mode){
+    public void modifyToChangeMode(UMLModeSeries mode){
         for(UMLModeObserver observer:list){
             observer.modeChanged(mode);
         }

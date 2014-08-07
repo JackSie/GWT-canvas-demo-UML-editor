@@ -1,5 +1,6 @@
 package org.twbbs.peak.canvastest.client.connector;
 
+import org.twbbs.peak.uml.modes.UMLModeSeries;
 import org.twbbs.peak.uml.portal.UMLModeHandler;
 
 public class ModeConnectorImpl implements ModeConnector{
@@ -8,22 +9,22 @@ public class ModeConnectorImpl implements ModeConnector{
         this.modeHandler=modeHandler;
     }
     public void chageToSelection() {
-        modeHandler.changeMode(UMLModeHandler.SELECTION_MODE);
+        modeHandler.changeMode(UMLModeSeries.SELECTION_MODE);
     }
     public void chageToAssocaition() {
-        modeHandler.changeMode(UMLModeHandler.ASSOCAITION_MODE);
+        modeHandler.changeMode(UMLModeSeries.ASSOCAITION_MODE);
     }
     public void chageToGeneralization() {
-        modeHandler.changeMode(UMLModeHandler.GENERALIZATION_MODE);
+        modeHandler.changeMode(UMLModeSeries.GENERALIZATION_MODE);
     }
     public void chageToCompostion() {
-        modeHandler.changeMode(UMLModeHandler.COMPOSTION_MODE);
+        modeHandler.changeMode(UMLModeSeries.COMPOSTION_MODE);
     }
     public void chageToClassMode() {
-        modeHandler.changeMode(UMLModeHandler.CLASS_MODE);
+        modeHandler.changeMode(UMLModeSeries.CLASS_MODE);
     }
     public void chageToUseCaseMode() {
-        modeHandler.changeMode(UMLModeHandler.USECASE_MODE);
+        modeHandler.changeMode(UMLModeSeries.USECASE_MODE);
     }
     public void toChangeName() {
         modeHandler.changeName(null);

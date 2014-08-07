@@ -3,6 +3,7 @@ package org.twbbs.peak.uml.object.basic;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.twbbs.peak.uml.object.UMLObjectType;
 import org.twbbs.peak.uml.object.basic.detail.HasUMLDetail;
 import org.twbbs.peak.uml.object.basic.detail.UMLDetailMember;
 import org.twbbs.peak.uml.object.basic.detail.UMLDetailMethod;
@@ -14,7 +15,7 @@ public class ClassObject extends UmlAbstractObject implements HasUMLDetail{
     private List<UMLDetailMethod> methods;
     
     public ClassObject(String name,ObjectStateImpl classState) {
-        super(name,CLASS,classState);
+        super(name,UMLObjectType.CLASS,classState);
         members=new ArrayList<UMLDetailMember>();
         methods=new ArrayList<UMLDetailMethod>();
     }

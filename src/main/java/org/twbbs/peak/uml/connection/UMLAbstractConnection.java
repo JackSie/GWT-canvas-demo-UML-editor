@@ -3,23 +3,23 @@ package org.twbbs.peak.uml.connection;
 import org.twbbs.peak.uml.object.basic.UMLBasicObject;
 
 public abstract class UMLAbstractConnection implements UMLConnection{
-    private int headPostition;
-    private int tailPostition;
-    private int type;
+    private UMLConnectPosition headPostition;
+    private UMLConnectPosition tailPostition;
+    private UMLConnectionType type;
     private UMLBasicObject head;
     private UMLBasicObject tail;
     
-    public UMLAbstractConnection(UMLBasicObject head,UMLBasicObject tail,int headPostition,int tailPostition,int type) {
+    public UMLAbstractConnection(UMLBasicObject head,UMLBasicObject tail,UMLConnectPosition headPostition,UMLConnectPosition tailPostition,UMLConnectionType type) {
         this.setHead(head);
         this.setTail(tail);
         this.setHeadPosition(headPostition);
         this.setTailPostion(tailPostition);
         this.setType(type);
     }
-    public int getType() {
+    public UMLConnectionType getType() {
         return type;
     }
-    public void setType(int type) {
+    public void setType(UMLConnectionType type) {
         this.type=type;
     }
     public UMLBasicObject getHead() {
@@ -35,20 +35,16 @@ public abstract class UMLAbstractConnection implements UMLConnection{
         this.tail=object;
     }
 
-    public int getHeadPosition() {
+    public UMLConnectPosition getHeadPosition() {
         return headPostition;
     }
-    public void setHeadPosition(int postion) {
-        if(postion<=4 && postion>=0){
-            this.headPostition=postion;
-        }
+    public void setHeadPosition(UMLConnectPosition postion) {
+        this.headPostition=postion;
     }
-    public int getTailPostion() {
+    public UMLConnectPosition getTailPostion() {
         return tailPostition;
     }
-    public void setTailPostion(int postion) {
-        if(postion<=4 && postion>=0){
-            this.tailPostition=postion;
-        }
+    public void setTailPostion(UMLConnectPosition postion) {
+        this.tailPostition=postion;
     }
 }

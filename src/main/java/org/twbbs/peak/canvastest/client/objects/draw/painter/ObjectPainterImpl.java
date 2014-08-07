@@ -18,8 +18,9 @@ public class ObjectPainterImpl implements ObjectPainter{
         if(object!=null){
             if(object instanceof UMLBasicObject){
                 basicObjectPainter.paint(object, context2d);
-            }else if(object instanceof GroupObject)
+            }else if(object instanceof GroupObject){
                 groupObjectPainter.paint(object, context2d);
+            }
         }
     }
 

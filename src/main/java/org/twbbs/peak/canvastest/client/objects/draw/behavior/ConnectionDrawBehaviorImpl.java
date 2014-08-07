@@ -1,6 +1,8 @@
 package org.twbbs.peak.canvastest.client.objects.draw.behavior;
 
+import org.twbbs.peak.uml.connection.UMLConnectPosition;
 import org.twbbs.peak.uml.connection.UMLConnection;
+import org.twbbs.peak.uml.connection.UMLConnectionType;
 import org.twbbs.peak.uml.object.UMLObject;
 
 import com.google.gwt.canvas.dom.client.Context2d;
@@ -10,7 +12,7 @@ public class ConnectionDrawBehaviorImpl implements ConnectionDrawBehavior{
     private int y1;
     private int x2; 
     private int y2;
-    private int type;
+    private UMLConnectionType type;
     public void toDraw(Context2d context) {
         drawConnectionLine(context);
     }
@@ -32,7 +34,7 @@ public class ConnectionDrawBehaviorImpl implements ConnectionDrawBehavior{
         context.moveTo(x1,y1);
         context.lineTo(x2,y2);
         context.stroke();
-        if(type==UMLConnection.ASSOCIATION){
+        if(type==UMLConnectionType.ASSOCIATION){
             return;
         }
          double dist = Math.hypot(x1 - x2, y1 - y2);
@@ -43,7 +45,7 @@ public class ConnectionDrawBehaviorImpl implements ConnectionDrawBehavior{
             double nx = (mx - x2) / Math.hypot(mx - x2, my - y2);
             double ny = (my - y2) / Math.hypot(mx - x2, my - y2);
             int c1x, c1y, c2x, c2y;
-        if(type== UMLConnection.GENERALIZATION){
+        if(type== UMLConnectionType.GENERALIZATION){
             c1x = mx + (int) (ny * 15);
             c1y = my + (int) (-nx * 15);
             c2x = mx + (int) (-ny * 15);
@@ -56,7 +58,7 @@ public class ConnectionDrawBehaviorImpl implements ConnectionDrawBehavior{
             context.fill();
              context.stroke();
              context.closePath();
-        }else if(type == UMLConnection.COMPOSITION){
+        }else if(type == UMLConnectionType.COMPOSITION){
                 c1x = (mx + x2)/2 + (int) (ny * 10);
                 c1y = (my + y2)/2 + (int) (-nx * 10);
                 c2x = (mx + x2)/2 + (int) (-ny * 10);
@@ -73,21 +75,21 @@ public class ConnectionDrawBehaviorImpl implements ConnectionDrawBehavior{
         }
         context.restore();
     }
-    private int calculateX(UMLObject reader,int position){
+    private int calculateX(UMLObject reader,UMLConnectPosition position){
         int x=reader.getObjectState().getX();        
         int wide=reader.getObjectState().getSizeW();        
         int newX=0;
         switch (position) {
-        case UMLConnection.WEST:
+        case WEST:
             newX=x;
             break;
-        case UMLConnection.NORTH:
+        case NORTH:
             newX=x+wide/2;
             break;
-        case UMLConnection.EAST:
+        case EAST:
             newX=x+wide;
             break;
-        case UMLConnection.SOUTH:
+        case SOUTH:
             newX=x+wide/2;
             break;
         default:
@@ -95,21 +97,21 @@ public class ConnectionDrawBehaviorImpl implements ConnectionDrawBehavior{
         }
         return newX;
     }
-    private int calculateY(UMLObject reader,int position){
+    private int calculateY(UMLObject reader,UMLConnectPosition position){
         int y=reader.getObjectState().getY();
         int height=reader.getObjectState().getSizeH();
         int newY=0;
         switch (position) {
-        case UMLConnection.WEST:
+        case WEST:
             newY=y+height/2;
             break;
-        case UMLConnection.NORTH:
+        case NORTH:
             newY=y;
             break;
-        case UMLConnection.EAST:
+        case EAST:
             newY=y+height/2;
             break;
-        case UMLConnection.SOUTH:
+        case SOUTH:
             newY=y+height;
             break;
         default:

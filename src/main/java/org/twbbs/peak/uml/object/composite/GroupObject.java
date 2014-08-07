@@ -4,11 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.twbbs.peak.uml.object.UMLObject;
+import org.twbbs.peak.uml.object.UMLObjectType;
 import org.twbbs.peak.uml.object.state.ObjectState;
 
 public class GroupObject implements UMLObject{
     private String name;
-    private String type;
+    private UMLObjectType type;
     private List<UMLObject> list;
     private ObjectState objectState;
     public GroupObject(String name,ObjectState objectState) {
@@ -16,14 +17,14 @@ public class GroupObject implements UMLObject{
     }
     public GroupObject(String name,ObjectState objectState,List<UMLObject> list) {
         this.name=name;
-        this.type=GROUP;
+        this.type=UMLObjectType.GROUP;
         this.objectState=objectState;
         setObjectList(list);
     }    
     public String getName() {
         return name;
     }
-    public String getType() {
+    public UMLObjectType getType() {
         return type;
     }
     public void addObject(UMLObject object){
@@ -33,7 +34,7 @@ public class GroupObject implements UMLObject{
     public void setName(String name) {
         this.name=name;
     }
-    public void setType(String type) {
+    public void setType(UMLObjectType type) {
         this.type=type;
     }
     public void setObjectList(List<UMLObject> list){
@@ -54,7 +55,7 @@ public class GroupObject implements UMLObject{
         int y=Integer.MAX_VALUE;
         int w=0;
         int h=0;
-        if(list!=null && list.isEmpty()){
+        if(list!=null && !list.isEmpty()){
             for(UMLObject object:list){
                 ObjectState state=object.getObjectState();
                 if(state.getX()<x){

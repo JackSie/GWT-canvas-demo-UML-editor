@@ -5,6 +5,7 @@ import org.twbbs.peak.canvastest.client.ClientFactory;
 import org.twbbs.peak.canvastest.client.connector.ModeConnector;
 import org.twbbs.peak.canvastest.client.connector.PortalConnector;
 import org.twbbs.peak.canvastest.client.objects.draw.CanvasCenter;
+import org.twbbs.peak.uml.modes.UMLModeSeries;
 import org.twbbs.peak.uml.portal.UMLCoreSubject;
 import org.twbbs.peak.uml.portal.UMLModeObserver;
 import org.twbbs.peak.uml.portal.UMLModeSubject;
@@ -163,7 +164,7 @@ public class UmlEditorActivity implements UMLModeObserver{
         buttonIsEnable.setEnabled(false);
     }
     
-    public void modeChanged(int mode) {
+    public void modeChanged(UMLModeSeries mode) {
         // Do nothing because of current doesn't need this called back appear on view
     }
     public void changeName() {

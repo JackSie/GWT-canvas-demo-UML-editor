@@ -4,6 +4,7 @@ import org.twbbs.peak.canvastest.client.objects.draw.behavior.ClassDrawBehavior;
 import org.twbbs.peak.canvastest.client.objects.draw.behavior.DrawBehavior;
 import org.twbbs.peak.canvastest.client.objects.draw.behavior.UseCaseDrawBehavior;
 import org.twbbs.peak.uml.object.UMLObject;
+import org.twbbs.peak.uml.object.UMLObjectType;
 import org.twbbs.peak.uml.object.basic.UMLBasicObject;
 
 import com.google.gwt.canvas.dom.client.Context2d;
@@ -17,10 +18,10 @@ public class BasicObjectPainter implements ObjectPainter{
     }
     public void paint(UMLObject object, Context2d context2d) {
         DrawBehavior drawBehavior=null;
-        String type=object.getType();
-        if(type.equals(UMLObject.CLASS)){
+        UMLObjectType type=object.getType();
+        if(type.equals(UMLObjectType.CLASS)){
             drawBehavior=classDrawBehavior;
-        }else if(type.equals(UMLObject.INTERFACE)){
+        }else if(type.equals(UMLObjectType.INTERFACE)){
             drawBehavior=useCaseDrawBehavior;
         }
         if(drawBehavior!=null && object!=null){
