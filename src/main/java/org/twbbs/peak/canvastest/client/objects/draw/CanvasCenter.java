@@ -5,8 +5,8 @@ import java.util.List;
 import org.twbbs.peak.canvastest.client.objects.draw.painter.ObjectPainter;
 import org.twbbs.peak.canvastest.client.objects.draw.painter.ObjectPainterImpl;
 import org.twbbs.peak.uml.UMLCoreObserver;
+import org.twbbs.peak.uml.UMLCoreSubject;
 import org.twbbs.peak.uml.object.UMLObject;
-import org.twbbs.peak.uml.portal.UMLCoreSubject;
 
 import com.google.gwt.canvas.client.Canvas;
 import com.google.gwt.canvas.dom.client.Context2d;

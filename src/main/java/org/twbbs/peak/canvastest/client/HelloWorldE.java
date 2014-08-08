@@ -31,9 +31,7 @@ public class HelloWorldE implements EntryPoint {
         
             
         ClientFactory clientFactory= new ClientFactoryImpl();
-        UmlEditorActivity umlEditorActivity = new UmlEditorActivity(clientFactory,modeConnector,portalConnector,umlCore,umlCorePortal);
+        UmlEditorActivity umlEditorActivity = new UmlEditorActivity(clientFactory.getUmlEditorView(),modeConnector,portalConnector,umlCore,umlCorePortal);
         umlEditorActivity.start(RootPanel.get("umleditor"));
-        
     }
-
 }

@@ -13,7 +13,7 @@ import org.twbbs.peak.uml.modes.object.ClassMode;
 import org.twbbs.peak.uml.modes.object.UseCaseMode;
 import org.twbbs.peak.uml.object.UMLObjectManager;
 
-public class UMLCorePortalImpl implements UMLCorePortal,UMLModeHandler,UMLModeSubject{
+public class UMLCorePortalImpl implements UMLCorePortal,UMLModeHandler,UMLModeSubject,UMLCorePortalCallback{
 
     private UmlMode selectionMode;
     private UmlMode assocaitionMode;

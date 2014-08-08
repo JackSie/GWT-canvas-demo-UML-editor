@@ -10,7 +10,6 @@ import java.util.Set;
 
 import org.twbbs.peak.uml.object.UMLObject;
 import org.twbbs.peak.uml.object.state.ObjectState;
-import org.twbbs.peak.uml.portal.UMLCoreSubject;
 
 public class UMLCoreImpl implements UMLCore,UMLCoreSubject{
     private static final int DEPTH=100;

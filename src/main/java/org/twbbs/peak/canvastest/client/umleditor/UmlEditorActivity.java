@@ -1,12 +1,10 @@
 package org.twbbs.peak.canvastest.client.umleditor;
 
-
-import org.twbbs.peak.canvastest.client.ClientFactory;
 import org.twbbs.peak.canvastest.client.connector.ModeConnector;
 import org.twbbs.peak.canvastest.client.connector.PortalConnector;
 import org.twbbs.peak.canvastest.client.objects.draw.CanvasCenter;
+import org.twbbs.peak.uml.UMLCoreSubject;
 import org.twbbs.peak.uml.modes.UMLModeSeries;
-import org.twbbs.peak.uml.portal.UMLCoreSubject;
 import org.twbbs.peak.uml.portal.UMLModeObserver;
 import org.twbbs.peak.uml.portal.UMLModeSubject;
 
@@ -35,8 +33,8 @@ public class UmlEditorActivity implements UMLModeObserver{
     private CanvasCenter canvasCenter;
     private PushButton buttonIsEnable;
     private ChangeNameDialogBox changeNameDialogBox;
-    public UmlEditorActivity(ClientFactory clientFactory,ModeConnector modeConnector,PortalConnector portalConnector,UMLCoreSubject umlCore,UMLModeSubject modeSubject) {
-        umlEditorView =clientFactory.getUmlEditorView();
+    public UmlEditorActivity(UmlEditorView umlEditorView,ModeConnector modeConnector,PortalConnector portalConnector,UMLCoreSubject umlCore,UMLModeSubject modeSubject) {
+        this.umlEditorView=umlEditorView;
         this.modeConnector=modeConnector;
         this.portalConnector=portalConnector;
         this.modeSubject=modeSubject;
