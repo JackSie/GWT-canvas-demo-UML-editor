@@ -4,10 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.twbbs.peak.uml.object.UMLObject;
-import org.twbbs.peak.uml.object.UMLObjectManager;
 import org.twbbs.peak.uml.object.basic.UMLBasicObject;
 import org.twbbs.peak.uml.object.composite.GroupObject;
-import org.twbbs.peak.uml.portal.UMLCorePortalCallback;
+import org.twbbs.peak.uml.object.manage.UMLObjectManager;
 
 public class SelectionMode implements UmlMode{
     private UMLObjectManager manager;
@@ -17,8 +16,8 @@ public class SelectionMode implements UmlMode{
     private int offsetY;
     private UMLObject object;
     private List<UMLObject> selectedList;
-    private UMLCorePortalCallback corePortal;
-    public SelectionMode(UMLObjectManager manager,UMLCorePortalCallback corePortal) {
+    private UMLModeCallback corePortal;
+    public SelectionMode(UMLObjectManager manager,UMLModeCallback corePortal) {
         this.manager=manager;
         this.corePortal=corePortal;
         selectedList=new ArrayList<UMLObject>();

@@ -4,8 +4,8 @@ import org.twbbs.peak.canvastest.client.objects.draw.behavior.ClassDrawBehavior;
 import org.twbbs.peak.canvastest.client.objects.draw.behavior.DrawBehavior;
 import org.twbbs.peak.canvastest.client.objects.draw.behavior.UseCaseDrawBehavior;
 import org.twbbs.peak.uml.object.UMLObject;
-import org.twbbs.peak.uml.object.UMLObjectType;
 import org.twbbs.peak.uml.object.basic.UMLBasicObject;
+import org.twbbs.peak.uml.object.series.UMLObjectType;
 
 import com.google.gwt.canvas.dom.client.Context2d;
 

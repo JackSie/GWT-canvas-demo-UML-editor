@@ -3,10 +3,10 @@ package org.twbbs.peak.uml.modes.line;
 import org.twbbs.peak.uml.UMLCoreImpl;
 import org.twbbs.peak.uml.connection.UMLConnection;
 import org.twbbs.peak.uml.connection.UMLConnectionType;
-import org.twbbs.peak.uml.object.UMLObjectManager;
-import org.twbbs.peak.uml.object.UMLObjectManagerImpl;
 import org.twbbs.peak.uml.object.basic.UMLBasicObject;
 import org.twbbs.peak.uml.object.defaults.DefaultClassObject;
+import org.twbbs.peak.uml.object.manage.UMLObjectManager;
+import org.twbbs.peak.uml.object.manage.UMLObjectManagerImpl;
 
 import com.google.gwt.junit.client.GWTTestCase;
 

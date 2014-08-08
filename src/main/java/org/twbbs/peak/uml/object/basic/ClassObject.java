@@ -3,10 +3,10 @@ package org.twbbs.peak.uml.object.basic;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.twbbs.peak.uml.object.UMLObjectType;
 import org.twbbs.peak.uml.object.basic.detail.HasUMLDetail;
 import org.twbbs.peak.uml.object.basic.detail.UMLDetailMember;
 import org.twbbs.peak.uml.object.basic.detail.UMLDetailMethod;
+import org.twbbs.peak.uml.object.series.UMLObjectType;
 import org.twbbs.peak.uml.object.state.ObjectStateImpl;
 
 public class ClassObject extends UmlAbstractObject implements HasUMLDetail{

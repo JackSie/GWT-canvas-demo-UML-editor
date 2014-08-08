@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.twbbs.peak.uml.modes.SelectionMode;
+import org.twbbs.peak.uml.modes.UMLModeCallback;
 import org.twbbs.peak.uml.modes.UMLModeSeries;
 import org.twbbs.peak.uml.modes.UmlMode;
 import org.twbbs.peak.uml.modes.line.AssociationLineMode;
@@ -11,9 +12,9 @@ import org.twbbs.peak.uml.modes.line.CompositionLineMode;
 import org.twbbs.peak.uml.modes.line.GeneralizationLineMode;
 import org.twbbs.peak.uml.modes.object.ClassMode;
 import org.twbbs.peak.uml.modes.object.UseCaseMode;
-import org.twbbs.peak.uml.object.UMLObjectManager;
+import org.twbbs.peak.uml.object.manage.UMLObjectManager;
 
-public class UMLCorePortalImpl implements UMLCorePortal,UMLModeHandler,UMLModeSubject,UMLCorePortalCallback{
+public class UMLCorePortalImpl implements UMLCorePortal,UMLModeHandler,UMLModeSubject,UMLModeCallback{
 
     private UmlMode selectionMode;
     private UmlMode assocaitionMode;

@@ -2,10 +2,10 @@ package org.twbbs.peak.uml.modes.object;
 
 import org.twbbs.peak.uml.UMLCoreImpl;
 import org.twbbs.peak.uml.object.UMLObject;
-import org.twbbs.peak.uml.object.UMLObjectManager;
-import org.twbbs.peak.uml.object.UMLObjectManagerImpl;
 import org.twbbs.peak.uml.object.basic.ClassObject;
 import org.twbbs.peak.uml.object.basic.InterfaceObject;
+import org.twbbs.peak.uml.object.manage.UMLObjectManager;
+import org.twbbs.peak.uml.object.manage.UMLObjectManagerImpl;
 
 import com.google.gwt.junit.client.GWTTestCase;
 

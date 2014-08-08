@@ -9,6 +9,9 @@ import org.twbbs.peak.uml.connection.UMLConnectionType;
 import org.twbbs.peak.uml.object.basic.UMLBasicObject;
 import org.twbbs.peak.uml.object.composite.GroupObject;
 import org.twbbs.peak.uml.object.defaults.DefaultClassObject;
+import org.twbbs.peak.uml.object.manage.UMLObjectManager;
+import org.twbbs.peak.uml.object.manage.UMLObjectManagerImpl;
+import org.twbbs.peak.uml.object.series.UMLObjectType;
 
 import com.google.gwt.junit.client.GWTTestCase;
 

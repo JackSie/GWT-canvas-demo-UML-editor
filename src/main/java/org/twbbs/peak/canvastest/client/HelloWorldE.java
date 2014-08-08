@@ -9,8 +9,8 @@ import org.twbbs.peak.canvastest.client.umleditor.UmlEditorActivity;
 
 
 import org.twbbs.peak.uml.UMLCoreImpl;
-import org.twbbs.peak.uml.object.UMLObjectManager;
-import org.twbbs.peak.uml.object.UMLObjectManagerImpl;
+import org.twbbs.peak.uml.object.manage.UMLObjectManager;
+import org.twbbs.peak.uml.object.manage.UMLObjectManagerImpl;
 import org.twbbs.peak.uml.portal.UMLCorePortalImpl;
 
 import com.google.gwt.core.client.EntryPoint;

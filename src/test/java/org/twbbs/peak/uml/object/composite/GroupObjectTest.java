@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.twbbs.peak.uml.object.UMLObject;
-import org.twbbs.peak.uml.object.UMLObjectType;
 import org.twbbs.peak.uml.object.defaults.DefaultClassObject;
 import org.twbbs.peak.uml.object.defaults.DefaultGroupObject;
+import org.twbbs.peak.uml.object.series.UMLObjectType;
 import org.twbbs.peak.uml.object.state.ObjectState;
 import org.twbbs.peak.uml.object.state.ObjectStateImpl;
 

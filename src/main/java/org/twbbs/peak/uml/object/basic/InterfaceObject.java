@@ -1,6 +1,6 @@
 package org.twbbs.peak.uml.object.basic;
 
-import org.twbbs.peak.uml.object.UMLObjectType;
+import org.twbbs.peak.uml.object.series.UMLObjectType;
 import org.twbbs.peak.uml.object.state.ObjectState;
 
 public class InterfaceObject extends UmlAbstractObject{

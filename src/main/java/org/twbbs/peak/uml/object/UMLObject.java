@@ -1,5 +1,6 @@
 package org.twbbs.peak.uml.object;
 
+import org.twbbs.peak.uml.object.series.UMLObjectType;
 import org.twbbs.peak.uml.object.state.ObjectState;
 
 public interface UMLObject{

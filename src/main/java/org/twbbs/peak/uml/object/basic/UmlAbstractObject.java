@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.twbbs.peak.uml.connection.UMLConnection;
-import org.twbbs.peak.uml.object.UMLObjectType;
+import org.twbbs.peak.uml.object.series.UMLObjectType;
 import org.twbbs.peak.uml.object.state.ObjectState;
 
 public abstract class UmlAbstractObject implements UMLBasicObject{

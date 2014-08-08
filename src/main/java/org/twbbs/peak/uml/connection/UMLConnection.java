@@ -1,7 +1,5 @@
 package org.twbbs.peak.uml.connection;
 
-import org.twbbs.peak.uml.object.basic.UMLBasicObject;
-
 public interface UMLConnection {
     UMLConnectPosition getHeadPosition();
     void setHeadPosition(UMLConnectPosition postion);
@@ -9,8 +7,8 @@ public interface UMLConnection {
     void setTailPostion(UMLConnectPosition postion);
     UMLConnectionType getType();
     void setType(UMLConnectionType type);
-    UMLBasicObject getHead();
-    void setHead(UMLBasicObject object);
-    UMLBasicObject getTail();
-    void setTail(UMLBasicObject object);
+    UMLConnectable getHead();
+    void setHead(UMLConnectable object);
+    UMLConnectable getTail();
+    void setTail(UMLConnectable object);
 }
