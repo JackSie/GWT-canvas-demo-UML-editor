@@ -1,4 +1,4 @@
-package org.twbbs.peak.uml.object.manage;
+package org.twbbs.peak.uml.manage.object;
 
 import java.util.List;
 

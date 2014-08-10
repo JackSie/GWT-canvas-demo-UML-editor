@@ -1,13 +1,12 @@
 package org.twbbs.peak.uml.modes.line;
 
-import org.twbbs.peak.uml.object.basic.UMLBasicObject;
-import org.twbbs.peak.uml.object.manage.UMLObjectManager;
+import org.twbbs.peak.uml.manage.connection.UMLConnectionManager;
 
 public class AssociationLineMode extends LinesMode{
-    public AssociationLineMode(UMLObjectManager manager) {
+    public AssociationLineMode(UMLConnectionManager manager) {
         super(manager);
     }
-    protected void createLine(UMLBasicObject objectA, UMLBasicObject objectB) {
-        manager.associateObjects(objectA, objectB);
+    protected void createLine() {
+        manager.associateObjects();
     }
 }

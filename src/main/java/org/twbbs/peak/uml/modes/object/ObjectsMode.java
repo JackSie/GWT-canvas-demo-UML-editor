@@ -1,7 +1,7 @@
 package org.twbbs.peak.uml.modes.object;
 
+import org.twbbs.peak.uml.manage.object.UMLObjectManager;
 import org.twbbs.peak.uml.modes.UmlMode;
-import org.twbbs.peak.uml.object.manage.UMLObjectManager;
 
 public abstract class ObjectsMode implements UmlMode{
     protected UMLObjectManager manager;

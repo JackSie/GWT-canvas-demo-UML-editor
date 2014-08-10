@@ -2,9 +2,9 @@ package org.twbbs.peak.uml.object;
 
 import org.twbbs.peak.uml.connection.UMLConnection;
 import org.twbbs.peak.uml.connection.UMLConnectionType;
+import org.twbbs.peak.uml.manage.object.LineHandler;
 import org.twbbs.peak.uml.object.basic.UMLBasicObject;
 import org.twbbs.peak.uml.object.defaults.DefaultClassObject;
-import org.twbbs.peak.uml.object.manage.LineHandler;
 
 import com.google.gwt.junit.client.GWTTestCase;
 

@@ -3,7 +3,7 @@ package org.twbbs.peak.canvastest.client.umleditor;
 import org.twbbs.peak.canvastest.client.connector.ModeConnector;
 import org.twbbs.peak.canvastest.client.connector.PortalConnector;
 import org.twbbs.peak.canvastest.client.objects.draw.CanvasCenter;
-import org.twbbs.peak.uml.UMLCoreSubject;
+import org.twbbs.peak.uml.core.UMLCoreSubject;
 import org.twbbs.peak.uml.modes.UMLModeSeries;
 import org.twbbs.peak.uml.portal.UMLModeObserver;
 import org.twbbs.peak.uml.portal.UMLModeSubject;

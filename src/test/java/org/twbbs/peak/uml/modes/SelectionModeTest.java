@@ -1,13 +1,12 @@
 package org.twbbs.peak.uml.modes;
 
-import org.twbbs.peak.uml.UMLCoreImpl;
+import org.twbbs.peak.uml.core.UMLCoreImpl;
+import org.twbbs.peak.uml.manage.object.UMLObjectManager;
+import org.twbbs.peak.uml.manage.object.UMLObjectManagerImpl;
 import org.twbbs.peak.uml.modes.operation.SelectionMode;
 import org.twbbs.peak.uml.object.UMLObject;
 import org.twbbs.peak.uml.object.composite.GroupObject;
 import org.twbbs.peak.uml.object.defaults.DefaultClassObject;
-import org.twbbs.peak.uml.object.manage.UMLObjectManager;
-import org.twbbs.peak.uml.object.manage.UMLObjectManagerImpl;
-import org.twbbs.peak.uml.object.series.UMLObjectType;
 import org.twbbs.peak.uml.portal.UMLCorePortalImpl;
 
 import com.google.gwt.junit.client.GWTTestCase;
@@ -16,7 +15,7 @@ public class SelectionModeTest extends GWTTestCase{
 	public void testOnClick(){
 		UMLCoreImpl coreImpl=new UMLCoreImpl();
 		UMLObjectManager manager=new UMLObjectManagerImpl(coreImpl);
-		UMLCorePortalImpl corePortalImpl=new UMLCorePortalImpl(manager);
+		UMLCorePortalImpl corePortalImpl=new UMLCorePortalImpl(manager,null);
 		SelectionMode mode=new SelectionMode(manager,corePortalImpl);
 		UMLObject object= new DefaultClassObject(0, 0);
 		coreImpl.addUMLObject(object);
@@ -26,7 +25,7 @@ public class SelectionModeTest extends GWTTestCase{
 	public void testDragWithNothing(){
 		UMLCoreImpl coreImpl=new UMLCoreImpl();
 		UMLObjectManager manager=new UMLObjectManagerImpl(coreImpl);
-		UMLCorePortalImpl corePortalImpl=new UMLCorePortalImpl(manager);
+		UMLCorePortalImpl corePortalImpl=new UMLCorePortalImpl(manager,null);
 		SelectionMode mode=new SelectionMode(manager,corePortalImpl);
 		UMLObject object= new DefaultClassObject(10, 10);
 		coreImpl.addUMLObject(object);
@@ -38,7 +37,7 @@ public class SelectionModeTest extends GWTTestCase{
 	public void testDrag(){
 		UMLCoreImpl coreImpl=new UMLCoreImpl();
 		UMLObjectManager manager=new UMLObjectManagerImpl(coreImpl);
-		UMLCorePortalImpl corePortalImpl=new UMLCorePortalImpl(manager);
+		UMLCorePortalImpl corePortalImpl=new UMLCorePortalImpl(manager,null);
 		SelectionMode mode=new SelectionMode(manager,corePortalImpl);
 		UMLObject object= new DefaultClassObject(0, 0);
 		coreImpl.addUMLObject(object);
@@ -52,7 +51,7 @@ public class SelectionModeTest extends GWTTestCase{
 	public void testDragGroup(){
 		UMLCoreImpl coreImpl=new UMLCoreImpl();
 		UMLObjectManager manager=new UMLObjectManagerImpl(coreImpl);
-		UMLCorePortalImpl corePortalImpl=new UMLCorePortalImpl(manager);
+		UMLCorePortalImpl corePortalImpl=new UMLCorePortalImpl(manager,null);
 		SelectionMode mode=new SelectionMode(manager,corePortalImpl);
 		UMLObject object= new DefaultClassObject(10, 10);
 		coreImpl.addUMLObject(object);
@@ -70,7 +69,7 @@ public class SelectionModeTest extends GWTTestCase{
 	public void testModeChanged(){
 		UMLCoreImpl coreImpl=new UMLCoreImpl();
 		UMLObjectManager manager=new UMLObjectManagerImpl(coreImpl);
-		UMLCorePortalImpl corePortalImpl=new UMLCorePortalImpl(manager);
+		UMLCorePortalImpl corePortalImpl=new UMLCorePortalImpl(manager,null);
 		SelectionMode mode=new SelectionMode(manager,corePortalImpl);
 		UMLObject object= new DefaultClassObject(10, 10);
 		coreImpl.addUMLObject(object);
@@ -88,7 +87,7 @@ public class SelectionModeTest extends GWTTestCase{
 		String name="hoho";
 		UMLCoreImpl coreImpl=new UMLCoreImpl();
 		UMLObjectManager manager=new UMLObjectManagerImpl(coreImpl);
-		UMLCorePortalImpl corePortalImpl=new UMLCorePortalImpl(manager);
+		UMLCorePortalImpl corePortalImpl=new UMLCorePortalImpl(manager,null);
 		SelectionMode mode=new SelectionMode(manager,corePortalImpl);
 		UMLObject object= new DefaultClassObject(0, 0);
 		coreImpl.addUMLObject(object);
@@ -99,7 +98,7 @@ public class SelectionModeTest extends GWTTestCase{
 	public void testChangeNameWithGroupObject(){
 	    UMLCoreImpl coreImpl=new UMLCoreImpl();
         UMLObjectManager manager=new UMLObjectManagerImpl(coreImpl);
-        UMLCorePortalImpl corePortalImpl=new UMLCorePortalImpl(manager);
+        UMLCorePortalImpl corePortalImpl=new UMLCorePortalImpl(manager,null);
         SelectionMode mode=new SelectionMode(manager,corePortalImpl);
         UMLObject object= new DefaultClassObject(50, 50);
         coreImpl.addUMLObject(object);
@@ -119,7 +118,7 @@ public class SelectionModeTest extends GWTTestCase{
 	public void testGroup(){
 		UMLCoreImpl coreImpl=new UMLCoreImpl();
 		UMLObjectManager manager=new UMLObjectManagerImpl(coreImpl);
-		UMLCorePortalImpl corePortalImpl=new UMLCorePortalImpl(manager);
+		UMLCorePortalImpl corePortalImpl=new UMLCorePortalImpl(manager,null);
 		SelectionMode mode=new SelectionMode(manager,corePortalImpl);
 		UMLObject object= new DefaultClassObject(50, 50);
 		coreImpl.addUMLObject(object);
@@ -135,7 +134,7 @@ public class SelectionModeTest extends GWTTestCase{
 	public void testUnGroup(){
 		UMLCoreImpl coreImpl=new UMLCoreImpl();
 		UMLObjectManager manager=new UMLObjectManagerImpl(coreImpl);
-		UMLCorePortalImpl corePortalImpl=new UMLCorePortalImpl(manager);
+		UMLCorePortalImpl corePortalImpl=new UMLCorePortalImpl(manager,null);
 		SelectionMode mode=new SelectionMode(manager,corePortalImpl);
 		UMLObject object= new DefaultClassObject(10, 10);
 		coreImpl.addUMLObject(object);

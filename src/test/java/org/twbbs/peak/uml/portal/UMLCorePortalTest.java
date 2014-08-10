@@ -1,9 +1,11 @@
 package org.twbbs.peak.uml.portal;
 
-import org.twbbs.peak.uml.UMLCoreImpl;
+import org.twbbs.peak.uml.core.UMLCoreImpl;
+import org.twbbs.peak.uml.manage.connection.UMLConnectionManager;
+import org.twbbs.peak.uml.manage.connection.UMLConnectionManagerImpl;
+import org.twbbs.peak.uml.manage.object.UMLObjectManager;
+import org.twbbs.peak.uml.manage.object.UMLObjectManagerImpl;
 import org.twbbs.peak.uml.modes.UMLModeSeries;
-import org.twbbs.peak.uml.object.manage.UMLObjectManager;
-import org.twbbs.peak.uml.object.manage.UMLObjectManagerImpl;
 
 import com.google.gwt.junit.client.GWTTestCase;
 
@@ -11,7 +13,8 @@ public class UMLCorePortalTest extends GWTTestCase{
 	public void testObserver(){
 		UMLCoreImpl coreImpl=new UMLCoreImpl();
 		UMLObjectManager manager=new UMLObjectManagerImpl(coreImpl);
-		UMLCorePortalImpl corePortal=new UMLCorePortalImpl(manager);
+		UMLConnectionManager managerc=new UMLConnectionManagerImpl(manager);
+		UMLCorePortalImpl corePortal=new UMLCorePortalImpl(manager,managerc);
 		UMLModeObserverImple observer=new UMLModeObserverImple();
 		((UMLModeSubject)corePortal).regist(observer);
 		((UMLModeHandler)corePortal).changeMode(UMLModeSeries.ASSOCAITION_MODE);
@@ -30,8 +33,9 @@ public class UMLCorePortalTest extends GWTTestCase{
 	}
 	public void testChangeMode(){
 		UMLCoreImpl coreImpl=new UMLCoreImpl();
-		UMLObjectManager manager=new UMLObjectManagerImpl(coreImpl);
-		UMLCorePortalImpl corePortal=new UMLCorePortalImpl(manager);
+		UMLObjectManager manager=new UMLObjectManagerImpl(coreImpl);      
+		UMLConnectionManager managerc=new UMLConnectionManagerImpl(manager);
+        UMLCorePortalImpl corePortal=new UMLCorePortalImpl(manager,managerc);
 		UMLModeObserverImple observer=new UMLModeObserverImple();
 		corePortal.regist(observer);
 		corePortal.changeMode(UMLModeSeries.CLASS_MODE);
@@ -50,7 +54,8 @@ public class UMLCorePortalTest extends GWTTestCase{
 	public void testDelegate(){
 		UMLCoreImpl coreImpl=new UMLCoreImpl();
 		UMLObjectManager manager=new UMLObjectManagerImpl(coreImpl);
-		UMLCorePortalImpl corePortal=new UMLCorePortalImpl(manager);
+	    UMLConnectionManager managerc=new UMLConnectionManagerImpl(manager);
+	    UMLCorePortalImpl corePortal=new UMLCorePortalImpl(manager,managerc);
 		corePortal.group(true);
 		corePortal.onClick(0, 0);
 		corePortal.onDrag(0, 0);

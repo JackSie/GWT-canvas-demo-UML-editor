@@ -1,6 +1,6 @@
 package org.twbbs.peak.uml.modes.object;
 
-import org.twbbs.peak.uml.object.manage.UMLObjectManager;
+import org.twbbs.peak.uml.manage.object.UMLObjectManager;
 
 public class UseCaseMode extends ObjectsMode{
     public UseCaseMode(UMLObjectManager manager) {

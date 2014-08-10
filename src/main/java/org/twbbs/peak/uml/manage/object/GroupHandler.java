@@ -1,8 +1,8 @@
-package org.twbbs.peak.uml.object.manage;
+package org.twbbs.peak.uml.manage.object;
 
 import java.util.List;
 
-import org.twbbs.peak.uml.UMLCore;
+import org.twbbs.peak.uml.core.UMLCore;
 import org.twbbs.peak.uml.object.UMLObject;
 import org.twbbs.peak.uml.object.composite.GroupObject;
 import org.twbbs.peak.uml.object.defaults.DefaultGroupObject;

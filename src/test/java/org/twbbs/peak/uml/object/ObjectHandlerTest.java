@@ -2,8 +2,8 @@ package org.twbbs.peak.uml.object;
 
 import java.util.List;
 
-import org.twbbs.peak.uml.UMLCoreImpl;
-import org.twbbs.peak.uml.object.manage.ObjectHandler;
+import org.twbbs.peak.uml.core.UMLCoreImpl;
+import org.twbbs.peak.uml.manage.object.ObjectHandler;
 
 import com.google.gwt.junit.client.GWTTestCase;
 

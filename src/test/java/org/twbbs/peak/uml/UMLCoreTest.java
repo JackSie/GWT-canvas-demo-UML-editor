@@ -2,6 +2,8 @@ package org.twbbs.peak.uml;
 
 import java.util.List;
 
+import org.twbbs.peak.uml.core.UMLCoreImpl;
+import org.twbbs.peak.uml.core.UMLCoreObserver;
 import org.twbbs.peak.uml.object.UMLObject;
 import org.twbbs.peak.uml.object.defaults.DefaultClassObject;
 

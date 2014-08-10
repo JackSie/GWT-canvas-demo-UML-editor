@@ -8,9 +8,11 @@ import org.twbbs.peak.canvastest.client.connector.PortalConnectorImpl;
 import org.twbbs.peak.canvastest.client.umleditor.UmlEditorActivity;
 
 
-import org.twbbs.peak.uml.UMLCoreImpl;
-import org.twbbs.peak.uml.object.manage.UMLObjectManager;
-import org.twbbs.peak.uml.object.manage.UMLObjectManagerImpl;
+import org.twbbs.peak.uml.core.UMLCoreImpl;
+import org.twbbs.peak.uml.manage.connection.UMLConnectionManager;
+import org.twbbs.peak.uml.manage.connection.UMLConnectionManagerImpl;
+import org.twbbs.peak.uml.manage.object.UMLObjectManager;
+import org.twbbs.peak.uml.manage.object.UMLObjectManagerImpl;
 import org.twbbs.peak.uml.portal.UMLCorePortalImpl;
 
 import com.google.gwt.core.client.EntryPoint;
@@ -21,10 +23,8 @@ public class HelloWorldE implements EntryPoint {
     public void onModuleLoad() {
         UMLCoreImpl umlCore=new UMLCoreImpl();
         UMLObjectManager manager=new UMLObjectManagerImpl(umlCore);
-        UMLCorePortalImpl umlCorePortal=new UMLCorePortalImpl(manager);
-
-        manager.createClassObject(100, 100);
-        manager.createUseCaseObject(400, 100);
+        UMLConnectionManager connectionManager=new UMLConnectionManagerImpl(manager);
+        UMLCorePortalImpl umlCorePortal=new UMLCorePortalImpl(manager,connectionManager);
         
         ModeConnector modeConnector=new ModeConnectorImpl(umlCorePortal);
         PortalConnector portalConnector=new PortalConnectorImpl(umlCorePortal);

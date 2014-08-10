@@ -1,4 +1,4 @@
-package org.twbbs.peak.uml;
+package org.twbbs.peak.uml.core;
 
 import java.util.ArrayList;
 import java.util.Arrays;

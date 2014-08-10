@@ -1,30 +1,44 @@
-package org.twbbs.peak.uml.modes.operation;
+package org.twbbs.peak.uml.manage;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import org.twbbs.peak.uml.manage.object.UMLObjectManager;
 import org.twbbs.peak.uml.object.UMLObject;
-import org.twbbs.peak.uml.object.manage.UMLObjectManager;
 
-public class ServeralObjectsHandler {
-    private SelectionMode mode;
+public class ServeralObjectsManagerImpl implements ServeralObjectsManager{
+    private ObjectManagerCallback mode;
     private UMLObjectManager manager;
     private int originX;
     private int originY;
     private List<UMLObject> selectedList;
-    public ServeralObjectsHandler(SelectionMode mode) {
+    public ServeralObjectsManagerImpl(ObjectManagerCallback mode,UMLObjectManager manager) {
         this.mode=mode;
-        this.manager=mode.manager;
+        this.manager=manager;
         selectedList=new ArrayList<UMLObject>();
     }
-    protected void prepareDrag(int x,int y){
+    public void prepareDrag(int x,int y){
         this.originX=x;
         this.originY=y;
     }
-    protected void endOfDrag(int x,int y){
+    public void endOfDrag(int x,int y){
         calcauteZone(x,y);
     }
-    
+    public void unSelected(){
+        if(isSeveralObjectsSelected()){
+            for(UMLObject object:selectedList){
+                object.getObjectState().setSelected(false);
+                object.getObjectState().setDraged(false);
+            }
+            selectedList=null;
+        }
+    }
+    public void group(){
+        if(isListBiggerThanTwo()){
+            manager.group(selectedList);
+            mode.modeChanged();
+            update();
+        }
+    }
     private void calcauteZone(int x,int y){
         List<UMLObject> objectList = manager.getAllObjects();
         List<UMLObject> newList = getNewListInTheZone(objectList,x,y);
@@ -50,30 +64,15 @@ public class ServeralObjectsHandler {
         int owx= object.getObjectState().getSizeW()+ox;
         int ohy= object.getObjectState().getSizeH()+oy;
         return ox>=xLeft && oy >= yLeft && owx<= xRight && ohy <= yRight;
-    }
-    protected void group(){
-        if(isListBiggerThanTwo()){
-            manager.group(selectedList);
-            mode.modeChanged();
-            update();
-        }
-    }
-    protected boolean isSeveralObjectsSelected(){
+    }    
+    private boolean isSeveralObjectsSelected(){
         return selectedList!=null;
     }
-    protected boolean isListBiggerThanTwo(){
+    private boolean isListBiggerThanTwo(){
         return isSeveralObjectsSelected() && selectedList.size()>=2;
     }
     private void update(){
         mode.updateToObserver();
     }
-    protected void unSelected(){
-        if(isSeveralObjectsSelected()){
-            for(UMLObject object:selectedList){
-                object.getObjectState().setSelected(false);
-                object.getObjectState().setDraged(false);
-            }
-            selectedList=null;
-        }
-    }
+    
 }

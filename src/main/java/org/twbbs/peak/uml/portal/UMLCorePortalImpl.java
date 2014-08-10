@@ -3,6 +3,8 @@ package org.twbbs.peak.uml.portal;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.twbbs.peak.uml.manage.connection.UMLConnectionManager;
+import org.twbbs.peak.uml.manage.object.UMLObjectManager;
 import org.twbbs.peak.uml.modes.UMLModeCallback;
 import org.twbbs.peak.uml.modes.UMLModeSeries;
 import org.twbbs.peak.uml.modes.UmlMode;
@@ -12,7 +14,6 @@ import org.twbbs.peak.uml.modes.line.GeneralizationLineMode;
 import org.twbbs.peak.uml.modes.object.ClassMode;
 import org.twbbs.peak.uml.modes.object.UseCaseMode;
 import org.twbbs.peak.uml.modes.operation.SelectionMode;
-import org.twbbs.peak.uml.object.manage.UMLObjectManager;
 
 public class UMLCorePortalImpl implements UMLCorePortal,UMLModeHandler,UMLModeSubject,UMLModeCallback{
 
@@ -24,12 +25,12 @@ public class UMLCorePortalImpl implements UMLCorePortal,UMLModeHandler,UMLModeSu
     private UmlMode useCaseMode;    
     private UmlMode nowMode;
     private List<UMLModeObserver> list;
-    public UMLCorePortalImpl(UMLObjectManager manager) {
+    public UMLCorePortalImpl(UMLObjectManager manager,UMLConnectionManager connectionManager) {
         list=new ArrayList<UMLModeObserver>();
         selectionMode=new SelectionMode(manager,this);
-        assocaitionMode=new AssociationLineMode(manager);
-        generalizationMode=new GeneralizationLineMode(manager);
-        compostionMode=new CompositionLineMode(manager);
+        assocaitionMode=new AssociationLineMode(connectionManager);
+        generalizationMode=new GeneralizationLineMode(connectionManager);
+        compostionMode=new CompositionLineMode(connectionManager);
         classMode=new ClassMode(manager);
         useCaseMode=new UseCaseMode(manager);
         nowMode=selectionMode;

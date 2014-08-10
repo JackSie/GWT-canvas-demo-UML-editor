@@ -1,13 +1,12 @@
 package org.twbbs.peak.uml.modes.line;
 
-import org.twbbs.peak.uml.object.basic.UMLBasicObject;
-import org.twbbs.peak.uml.object.manage.UMLObjectManager;
+import org.twbbs.peak.uml.manage.connection.UMLConnectionManager;
 
 public class CompositionLineMode extends LinesMode{
-    public CompositionLineMode(UMLObjectManager manager) {
+    public CompositionLineMode(UMLConnectionManager manager) {
         super(manager);
     }
-    protected void createLine(UMLBasicObject objectA, UMLBasicObject objectB) {
-        manager.compositeObjects(objectA, objectB);
+    protected void createLine() {
+        manager.compositeObjects();
     }
 }

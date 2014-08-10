@@ -3,10 +3,10 @@ package org.twbbs.peak.uml.object;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.twbbs.peak.uml.UMLCoreImpl;
+import org.twbbs.peak.uml.core.UMLCoreImpl;
+import org.twbbs.peak.uml.manage.object.GroupHandler;
 import org.twbbs.peak.uml.object.composite.GroupObject;
 import org.twbbs.peak.uml.object.defaults.DefaultClassObject;
-import org.twbbs.peak.uml.object.manage.GroupHandler;
 
 import com.google.gwt.junit.client.GWTTestCase;
 

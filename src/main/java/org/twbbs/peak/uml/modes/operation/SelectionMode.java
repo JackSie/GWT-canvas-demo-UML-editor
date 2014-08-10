@@ -1,19 +1,24 @@
 package org.twbbs.peak.uml.modes.operation;
 
+import org.twbbs.peak.uml.manage.ObjectManagerCallback;
+import org.twbbs.peak.uml.manage.ServeralObjectsManager;
+import org.twbbs.peak.uml.manage.ServeralObjectsManagerImpl;
+import org.twbbs.peak.uml.manage.SingleObjectManager;
+import org.twbbs.peak.uml.manage.SingleObjectManagerImpl;
+import org.twbbs.peak.uml.manage.object.UMLObjectManager;
 import org.twbbs.peak.uml.modes.UMLModeCallback;
 import org.twbbs.peak.uml.modes.UmlMode;
-import org.twbbs.peak.uml.object.manage.UMLObjectManager;
 
-public class SelectionMode implements UmlMode{
+public class SelectionMode implements UmlMode,ObjectManagerCallback{
     protected UMLObjectManager manager;
     private UMLModeCallback corePortal;
-    private SingleObjectHandler objectHandler;
-    private ServeralObjectsHandler serveralObjectsHandler;
+    private SingleObjectManager objectHandler;
+    private ServeralObjectsManager serveralObjectsHandler;
     public SelectionMode(UMLObjectManager manager,UMLModeCallback corePortal) {
         this.manager=manager;
         this.corePortal=corePortal;
-        this.objectHandler=new SingleObjectHandler(this);
-        this.serveralObjectsHandler=new ServeralObjectsHandler(this);
+        this.objectHandler=new SingleObjectManagerImpl(this,manager);
+        this.serveralObjectsHandler=new ServeralObjectsManagerImpl(this,manager);
     }
     public void onClick(int x, int y) {
         modeChanged();
@@ -65,7 +70,7 @@ public class SelectionMode implements UmlMode{
         }
     }
     
-    protected void updateToObserver(){
+    public void updateToObserver(){
         manager.update();
     }
     private void changeNameCheck(){
