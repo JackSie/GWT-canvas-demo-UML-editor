@@ -26,10 +26,8 @@ import com.google.gwt.user.client.ui.RootPanel;
 public class UmlEditorActivity implements UMLModeObserver{
     private UmlEditorView umlEditorView;
     private Canvas canvas;
-    private Canvas bufferedCanvas;
     private ModeConnector modeConnector;
     private PortalConnector portalConnector;
-    private UMLModeSubject modeSubject;
     private CanvasCenter canvasCenter;
     private PushButton buttonIsEnable;
     private ChangeNameDialogBox changeNameDialogBox;
@@ -37,12 +35,11 @@ public class UmlEditorActivity implements UMLModeObserver{
         this.umlEditorView=umlEditorView;
         this.modeConnector=modeConnector;
         this.portalConnector=portalConnector;
-        this.modeSubject=modeSubject;
         canvas=umlEditorView.getCanvas();
-        bufferedCanvas=umlEditorView.getBufferedCanvas();
+        Canvas bufferedCanvas=umlEditorView.getBufferedCanvas();
         this.canvasCenter=new CanvasCenter(canvas,bufferedCanvas,umlCore);
         this.changeNameDialogBox=new ChangeNameDialogBox();
-        this.modeSubject.regist(this);
+        modeSubject.regist(this);
     }
     public void start(RootPanel panel){
         panel.add(umlEditorView.asWidget());
@@ -66,24 +63,18 @@ public class UmlEditorActivity implements UMLModeObserver{
     
     private void initCanvasHandler(){
         canvas.addMouseDownHandler(new MouseDownHandler() {            
-            public void onMouseDown(MouseDownEvent event){
-                int x=event.getX();
-                int y=event.getY();                
-                portalConnector.onMouseDown(x, y);
+            public void onMouseDown(MouseDownEvent event){      
+                portalConnector.onMouseDown(event.getX(), event.getY());
             }
         });    
         canvas.addMouseMoveHandler(new MouseMoveHandler() {
             public void onMouseMove(MouseMoveEvent event) {
-                int x=event.getX();
-                int y=event.getY();
-                portalConnector.onMouseMove(x, y);
+                portalConnector.onMouseMove(event.getX(), event.getY());
             }
         });        
         canvas.addMouseUpHandler(new MouseUpHandler() {            
             public void onMouseUp(MouseUpEvent event) {
-                int x=event.getX();
-                int y=event.getY();
-                portalConnector.onMouseUp(x, y);
+                portalConnector.onMouseUp(event.getX(), event.getY());
             }
         });
         canvas.addMouseOutHandler(new MouseOutHandler() {
@@ -163,7 +154,7 @@ public class UmlEditorActivity implements UMLModeObserver{
     }
     
     public void modeChanged(UMLModeSeries mode) {
-        // Do nothing because of current doesn't need this called back appear on view
+        // Do nothing because of currently doesn't need this called back appear on view
     }
     public void changeName() {
         changeNameDialogBox.center();

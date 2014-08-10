@@ -17,16 +17,27 @@ public class BasicObjectPainter implements ObjectPainter{
         useCaseDrawBehavior=new UseCaseDrawBehavior(null);
     }
     public void paint(UMLObject object, Context2d context2d) {
+        if(!isObjectNull(object)){
+            DrawBehavior drawBehavior=chooseDrawBehavior(object.getType());
+            if(drawBehavior!=null){
+                drawObject(drawBehavior,object,context2d);
+            }
+        }
+    }
+    private void drawObject(DrawBehavior drawBehavior,UMLObject object, Context2d context2d){
+        drawBehavior.setObject((UMLBasicObject)object);
+        drawBehavior.toDraw(context2d);
+    }
+    private boolean isObjectNull(UMLObject object){
+        return object==null;
+    }
+    private DrawBehavior chooseDrawBehavior(UMLObjectType type){
         DrawBehavior drawBehavior=null;
-        UMLObjectType type=object.getType();
         if(type.equals(UMLObjectType.CLASS)){
             drawBehavior=classDrawBehavior;
         }else if(type.equals(UMLObjectType.INTERFACE)){
             drawBehavior=useCaseDrawBehavior;
         }
-        if(drawBehavior!=null && object!=null){
-            drawBehavior.setObject((UMLBasicObject)object);
-            drawBehavior.toDraw(context2d);
-        }
+        return drawBehavior;
     }
 }

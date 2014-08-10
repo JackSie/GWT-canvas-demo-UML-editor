@@ -7,13 +7,7 @@ public class SquareDrawHandler {
     public static final int RADIUSINIT=10;
     protected void drawShape(Context2d context, int x, int y, int sizeW,
             int sizeH) {
-        int radius=RADIUSINIT;
-        if (sizeW < 2 * radius) {
-            radius = sizeW / 2;
-        }
-        if (sizeH < 2 * radius) {
-            radius = sizeH / 2;
-        }
+        int radius=calRadius(sizeW,sizeH);
         context.beginPath();
         context.moveTo(x+radius, y);
         context.arcTo(x+sizeW, y, x+sizeW, y+sizeH, radius);
@@ -23,5 +17,16 @@ public class SquareDrawHandler {
         context.fill();
         context.stroke();
         context.closePath();
+    }
+    
+    private int calRadius(int sizeW, int sizeH){
+        int radius=RADIUSINIT;
+        if (sizeW < 2 * radius) {
+            radius = sizeW / 2;
+        }
+        if (sizeH < 2 * radius) {
+            radius = sizeH / 2;
+        }
+        return radius;
     }
 }

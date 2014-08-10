@@ -89,10 +89,7 @@ public class UMLCoreImpl implements UMLCore,UMLCoreSubject{
         int nowY=classState.getY();
         int sizeW=classState.getSizeW();
         int sizeH=classState.getSizeH();
-        if(x>=nowX&&x<=nowX+sizeW && y>=nowY&&y<=nowY+sizeH){
-            return true;
-        }
-        return false;
+        return x>=nowX&&x<=nowX+sizeW && y>=nowY&&y<=nowY+sizeH;
     }
     public void removeUMLObject(UMLObject umlObject) {
         int [] keys=getNotEmptyLayers();

@@ -1,6 +1,7 @@
 package org.twbbs.peak.uml.modes;
 
 import org.twbbs.peak.uml.UMLCoreImpl;
+import org.twbbs.peak.uml.modes.operation.SelectionMode;
 import org.twbbs.peak.uml.object.UMLObject;
 import org.twbbs.peak.uml.object.composite.GroupObject;
 import org.twbbs.peak.uml.object.defaults.DefaultClassObject;
@@ -94,6 +95,26 @@ public class SelectionModeTest extends GWTTestCase{
 		mode.onClick(1, 1);
 		mode.changeName(name);
 		assertEquals(name, object.getName());
+	}
+	public void testChangeNameWithGroupObject(){
+	    UMLCoreImpl coreImpl=new UMLCoreImpl();
+        UMLObjectManager manager=new UMLObjectManagerImpl(coreImpl);
+        UMLCorePortalImpl corePortalImpl=new UMLCorePortalImpl(manager);
+        SelectionMode mode=new SelectionMode(manager,corePortalImpl);
+        UMLObject object= new DefaultClassObject(50, 50);
+        coreImpl.addUMLObject(object);
+        manager.createClassObject(60, 60);
+        manager.createClassObject(500, 500);
+        mode.startDrag(400, 400);
+        mode.onDrag(300, 300);
+        mode.stopDrag(40, 40);
+        
+        mode.group(true);
+        GroupObject groupObject=(GroupObject) manager.getAllObjects().get(1);
+        mode.onClick(50, 50);
+        mode.changeName("hah");
+        assertNotSame("hah", groupObject.getName());
+        
 	}
 	public void testGroup(){
 		UMLCoreImpl coreImpl=new UMLCoreImpl();

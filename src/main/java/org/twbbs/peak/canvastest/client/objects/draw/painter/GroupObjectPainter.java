@@ -18,16 +18,30 @@ public class GroupObjectPainter implements ObjectPainter{
     }
 
     public void paint(UMLObject object, Context2d context2d) {
-        if(object!=null && object instanceof GroupObject){
-            groupDrawBehavior.setObject(object);
-            groupDrawBehavior.toDraw(context2d);
-            GroupObject groupObject=(GroupObject)object;
-            List<UMLObject> list =groupObject.getObjectList();
-            for(UMLObject object2:list){
-                paint(object2, context2d);
-            }
-        }else if(object!=null && object instanceof UMLBasicObject){
-            basicObjectPainter.paint(object, context2d);
+        if(isGroupObject(object)){
+            drawGroupObjectShape(object,context2d);
+            drawGroupObjectChildren(object,context2d);
+        }else if(isBasicObject(object)){
+            drawBasicObject(object,context2d);
         }
+    }
+    private void drawGroupObjectShape(UMLObject object, Context2d context2d){
+        groupDrawBehavior.setObject(object);
+        groupDrawBehavior.toDraw(context2d);
+    }
+    private void drawGroupObjectChildren(UMLObject object, Context2d context2d){
+        List<UMLObject> list =((GroupObject)object).getObjectList();
+        for(UMLObject object2:list){
+            paint(object2, context2d);
+        }
+    }
+    private void drawBasicObject(UMLObject object, Context2d context2d){
+        basicObjectPainter.paint(object, context2d);
+    }
+    private boolean isGroupObject(UMLObject object){
+        return object!=null && object instanceof GroupObject;
+    }
+    private boolean isBasicObject(UMLObject object){
+        return object!=null && object instanceof UMLBasicObject;
     }
 }
