@@ -9,7 +9,7 @@
   <groupId>org.twbbs.peak</groupId>
   <artifactId>canvastest</artifactId>
   <packaging>war</packaging>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>1.0.0-SNAPSHOT</version>
   <name>GWT Maven Archetype</name>
 
   <properties>
@@ -134,7 +134,7 @@
       <systemProperties>
         <property>
           <name>gwt.args</name>
-          <value>-out \${webAppDirectory}</value>
+          <value>-war \${webAppDirectory}</value>
         </property>
       </systemProperties>
     </configuration>
