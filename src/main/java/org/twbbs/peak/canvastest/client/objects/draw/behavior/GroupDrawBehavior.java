@@ -29,8 +29,8 @@ public class GroupDrawBehavior implements DrawBehavior{
     protected void drawShape(Context2d context, int x, int y, int sizeW,
             int sizeH) {
         CanvasGradient canvasGradient= context.createLinearGradient(0, y, 0, y+sizeH);
-        canvasGradient.addColorStop(0, "#fff");
-        canvasGradient.addColorStop(1, "#ff0");
+        canvasGradient.addColorStop(0, "rgba(255,255,0,0.3)");
+        canvasGradient.addColorStop(1, "rgba(255,255,0,0.1)");
         context.setFillStyle(canvasGradient);
 
         if(groupObject.getObjectState().isSelected()){

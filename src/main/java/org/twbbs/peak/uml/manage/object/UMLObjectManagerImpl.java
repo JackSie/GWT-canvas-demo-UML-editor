@@ -42,7 +42,10 @@ public class UMLObjectManagerImpl implements UMLObjectManager{
         update();
     }
     public UMLObject getUMLObject(int x, int y) {
-        return umlCore.getUmlObject(x, y);
+        return objectHandler.getUMLObject(x, y);
+    }
+    public UMLBasicObject getUMLBasicObject(int x, int y) {
+        return objectHandler.getUMLBasicObject(x, y);
     }
     public void update() {
         umlCore.update();

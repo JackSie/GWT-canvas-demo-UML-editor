@@ -13,6 +13,7 @@ public interface UMLObjectManager {
     void compositeObjects(UMLBasicObject objectA,UMLBasicObject objectB);
     void generalizeObjects(UMLBasicObject objectA,UMLBasicObject objectB);
     UMLObject getUMLObject(int x,int y);
+    UMLBasicObject getUMLBasicObject(int x,int y);
     List<UMLObject> getAllObjects();
     void update();
     void group(List<UMLObject> list);

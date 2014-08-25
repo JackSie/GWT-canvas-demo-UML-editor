@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.Set;
 
 import org.twbbs.peak.uml.object.UMLObject;
-import org.twbbs.peak.uml.object.state.ObjectState;
+import org.twbbs.peak.uml.util.Utility;
 
 public class UMLCoreImpl implements UMLCore,UMLCoreSubject{
     private static final int DEPTH=100;
@@ -77,19 +77,12 @@ public class UMLCoreImpl implements UMLCore,UMLCoreSubject{
         for(int i=keys.length-1;i>=0;i--){
             List<UMLObject> list=objectLayers.get(keys[i]);
             for(int j=list.size()-1;j>=0;j--){
-                if(isInit(x,y, list.get(j).getObjectState())){
+                if(Utility.isInit(x,y, list.get(j).getObjectState())){
                     return list.get(j);
                 }
             }
         }
         return null;
-    }
-    private boolean isInit(int x,int y,ObjectState classState){
-        int nowX=classState.getX();
-        int nowY=classState.getY();
-        int sizeW=classState.getSizeW();
-        int sizeH=classState.getSizeH();
-        return x>=nowX&&x<=nowX+sizeW && y>=nowY&&y<=nowY+sizeH;
     }
     public void removeUMLObject(UMLObject umlObject) {
         int [] keys=getNotEmptyLayers();

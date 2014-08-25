@@ -1,7 +1,6 @@
 package org.twbbs.peak.uml.manage.connection;
 
 import org.twbbs.peak.uml.manage.object.UMLObjectManager;
-import org.twbbs.peak.uml.object.UMLObject;
 import org.twbbs.peak.uml.object.basic.UMLBasicObject;
 
 public class UMLConnectionManagerImpl implements UMLConnectionManager{
@@ -13,18 +12,11 @@ public class UMLConnectionManagerImpl implements UMLConnectionManager{
     }
     
     public void connectStart(int x, int y) {
-        UMLObject object=manager.getUMLObject(x, y);
-        if(object!=null && object instanceof UMLBasicObject){
-            preObject=(UMLBasicObject)object;
-        }
-    }
+        preObject=manager.getUMLBasicObject(x, y);      
+    }    
     public boolean connectEnd(int x, int y) {
-        postObject=null;
         if(preObject!=null){
-            UMLObject umlObject=manager.getUMLObject(x, y);
-            if(umlObject!=null && umlObject instanceof UMLBasicObject){
-                postObject=(UMLBasicObject)umlObject;
-            }
+            postObject=manager.getUMLBasicObject(x, y);
             if(isBothObjectsExist()){
                 return true;
             }
@@ -52,6 +44,7 @@ public class UMLConnectionManagerImpl implements UMLConnectionManager{
     private boolean isBothObjectsExist(){
         return postObject!=null && preObject!=postObject;
     }
+    
     private void init(){
         preObject=null;
         postObject=null;
