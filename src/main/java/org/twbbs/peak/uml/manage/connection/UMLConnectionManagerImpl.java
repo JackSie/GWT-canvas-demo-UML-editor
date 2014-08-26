@@ -2,21 +2,26 @@ package org.twbbs.peak.uml.manage.connection;
 
 import org.twbbs.peak.uml.manage.object.UMLObjectManager;
 import org.twbbs.peak.uml.object.basic.UMLBasicObject;
+import org.twbbs.peak.uml.util.Point;
 
 public class UMLConnectionManagerImpl implements UMLConnectionManager{
     protected UMLObjectManager manager;
     protected UMLBasicObject preObject;
     protected UMLBasicObject postObject;
+    protected Point prePoint;
+    protected Point postPoint;
     public UMLConnectionManagerImpl(UMLObjectManager manager) {
         this.manager=manager;
     }
     
     public void connectStart(int x, int y) {
-        preObject=manager.getUMLBasicObject(x, y);      
+        preObject=manager.getUMLBasicObject(x, y);
+        prePoint=new Point(x, y);
     }    
     public boolean connectEnd(int x, int y) {
         if(preObject!=null){
             postObject=manager.getUMLBasicObject(x, y);
+            postPoint=new Point(x, y);
             if(isBothObjectsExist()){
                 return true;
             }
@@ -25,19 +30,19 @@ public class UMLConnectionManagerImpl implements UMLConnectionManager{
     }
     public boolean associateObjects() {
         if(isBothObjectsExist()){
-            manager.associateObjects(preObject,postObject);
+            manager.associateObjects(prePoint,preObject,postPoint,postObject);
         }
         return initWithPreStatement();
     }
     public boolean compositeObjects() {
         if(isBothObjectsExist()){
-            manager.compositeObjects(preObject,postObject);
+            manager.compositeObjects(prePoint,preObject,postPoint,postObject);
         }
         return initWithPreStatement();
     }
     public boolean generalizeObjects() {
         if(isBothObjectsExist()){
-            manager.generalizeObjects(preObject,postObject);
+            manager.generalizeObjects(prePoint,preObject,postPoint,postObject);
         }
         return initWithPreStatement();
     }

@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.Set;
 
 import org.twbbs.peak.uml.object.UMLObject;
-import org.twbbs.peak.uml.util.Utility;
+import org.twbbs.peak.uml.object.state.StateUtility;
 
 public class UMLCoreImpl implements UMLCore,UMLCoreSubject{
     private static final int DEPTH=100;
@@ -77,7 +77,7 @@ public class UMLCoreImpl implements UMLCore,UMLCoreSubject{
         for(int i=keys.length-1;i>=0;i--){
             List<UMLObject> list=objectLayers.get(keys[i]);
             for(int j=list.size()-1;j>=0;j--){
-                if(Utility.isInit(x,y, list.get(j).getObjectState())){
+                if(StateUtility.isInit(x,y, list.get(j).getObjectState())){
                     return list.get(j);
                 }
             }

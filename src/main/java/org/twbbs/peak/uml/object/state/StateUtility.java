@@ -1,9 +1,8 @@
-package org.twbbs.peak.uml.util;
+package org.twbbs.peak.uml.object.state;
 
-import org.twbbs.peak.uml.object.state.ObjectState;
 
-public class Utility {
-    private Utility() {
+public class StateUtility {
+    private StateUtility() {
     }
     public static boolean isInit(int x,int y,ObjectState classState){
         int nowX=classState.getX();

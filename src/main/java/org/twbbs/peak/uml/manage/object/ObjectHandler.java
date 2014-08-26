@@ -9,7 +9,7 @@ import org.twbbs.peak.uml.object.basic.UMLBasicObject;
 import org.twbbs.peak.uml.object.composite.GroupObject;
 import org.twbbs.peak.uml.object.defaults.DefaultClassObject;
 import org.twbbs.peak.uml.object.defaults.DefaultInterfaceObject;
-import org.twbbs.peak.uml.util.Utility;
+import org.twbbs.peak.uml.object.state.StateUtility;
 
 public class ObjectHandler {
     private UMLCore umlCore;
@@ -43,7 +43,7 @@ public class ObjectHandler {
     }
     private UMLBasicObject getObject(int x,int y,UMLObject object){
         UMLBasicObject returnObject= null;
-        if(object!=null && Utility.isInit(x,y,object.getObjectState())){
+        if(object!=null && StateUtility.isInit(x,y,object.getObjectState())){
             if(object instanceof UMLBasicObject){                
                 returnObject= (UMLBasicObject)object;            
             }else if(object instanceof GroupObject){                

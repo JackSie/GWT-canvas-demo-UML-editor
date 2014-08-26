@@ -12,6 +12,7 @@ import org.twbbs.peak.uml.object.basic.UMLBasicObject;
 import org.twbbs.peak.uml.object.composite.GroupObject;
 import org.twbbs.peak.uml.object.defaults.DefaultClassObject;
 import org.twbbs.peak.uml.object.series.UMLObjectType;
+import org.twbbs.peak.uml.util.Point;
 
 import com.google.gwt.junit.client.GWTTestCase;
 
@@ -44,7 +45,7 @@ public class UMLObjectManagerTest extends GWTTestCase{
 		UMLBasicObject object2=new DefaultClassObject(20, 25);
 		UMLCoreImpl umlCoreImpl=new UMLCoreImpl();
 		UMLObjectManager manager=new UMLObjectManagerImpl(umlCoreImpl);
-		manager.associateObjects(object1, object2);
+		manager.associateObjects(new Point(0, 0),object1,new Point(20, 25), object2);
 		UMLConnection connection=object1.getConnections().get(0);
 		assertEquals(UMLConnectionType.ASSOCIATION, connection.getType());
 	}
@@ -53,7 +54,7 @@ public class UMLObjectManagerTest extends GWTTestCase{
 		UMLBasicObject object2=new DefaultClassObject(20, 25);
 		UMLCoreImpl umlCoreImpl=new UMLCoreImpl();
 		UMLObjectManager manager=new UMLObjectManagerImpl(umlCoreImpl);
-		manager.compositeObjects(object1, object2);
+		manager.compositeObjects(new Point(0, 0),object1,new Point(20, 25), object2);
 		UMLConnection connection=object1.getConnections().get(0);
 		assertEquals(UMLConnectionType.COMPOSITION, connection.getType());
 	}
@@ -62,7 +63,7 @@ public class UMLObjectManagerTest extends GWTTestCase{
 		UMLBasicObject object2=new DefaultClassObject(20, 25);
 		UMLCoreImpl umlCoreImpl=new UMLCoreImpl();
 		UMLObjectManager manager=new UMLObjectManagerImpl(umlCoreImpl);
-		manager.generalizeObjects(object1, object2);
+		manager.generalizeObjects(new Point(0, 0),object1,new Point(20, 25), object2);
 		UMLConnection connection=object1.getConnections().get(0);
 		assertEquals(UMLConnectionType.GENERALIZATION, connection.getType());
 	}

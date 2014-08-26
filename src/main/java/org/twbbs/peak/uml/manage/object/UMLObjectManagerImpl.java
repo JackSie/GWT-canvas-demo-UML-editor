@@ -6,6 +6,7 @@ import org.twbbs.peak.uml.core.UMLCore;
 import org.twbbs.peak.uml.object.UMLObject;
 import org.twbbs.peak.uml.object.basic.UMLBasicObject;
 import org.twbbs.peak.uml.object.composite.GroupObject;
+import org.twbbs.peak.uml.util.Point;
 
 public class UMLObjectManagerImpl implements UMLObjectManager{
     private UMLCore umlCore;
@@ -26,21 +27,6 @@ public class UMLObjectManagerImpl implements UMLObjectManager{
     public void createUseCaseObject(int x, int y) {
         objectHandler.createUseCaseObject(x, y);
     }
-
-    public void associateObjects(UMLBasicObject objectA, UMLBasicObject objectB) {
-        lineHandler.associateObjects(objectA, objectB);
-        update();
-    }
-
-    public void compositeObjects(UMLBasicObject objectA, UMLBasicObject objectB) {
-        lineHandler.compositeObjects(objectA, objectB);
-        update();
-    }
-
-    public void generalizeObjects(UMLBasicObject objectA, UMLBasicObject objectB) {
-        lineHandler.generalizeObjects(objectA, objectB);
-        update();
-    }
     public UMLObject getUMLObject(int x, int y) {
         return objectHandler.getUMLObject(x, y);
     }
@@ -58,5 +44,23 @@ public class UMLObjectManagerImpl implements UMLObjectManager{
     }
     public void unGroup(GroupObject object) {
         groupHandler.unGroup(object);
+    }
+
+    public void associateObjects(Point prePoint, UMLBasicObject objectA,
+            Point postPoint, UMLBasicObject objectB) {
+        lineHandler.associateObjects(prePoint, objectA, postPoint, objectB);
+        update();
+    }
+
+    public void compositeObjects(Point prePoint, UMLBasicObject objectA,
+            Point postPoint, UMLBasicObject objectB) {
+        lineHandler.compositeObjects(prePoint, objectA, postPoint, objectB);
+        update();
+    }
+
+    public void generalizeObjects(Point prePoint, UMLBasicObject objectA,
+            Point postPoint, UMLBasicObject objectB) {
+        lineHandler.generalizeObjects(prePoint, objectA, postPoint, objectB);
+        update();
     }
 }
