@@ -1,4 +1,4 @@
-package org.twbbs.peak.uml.manage.object;
+package org.twbbs.peak.uml.manage.connection;
 
 import org.twbbs.peak.uml.connection.AssociationConnection;
 import org.twbbs.peak.uml.connection.CompositionConnection;

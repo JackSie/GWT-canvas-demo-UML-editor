@@ -6,12 +6,14 @@ import org.twbbs.peak.uml.util.Point;
 
 public class UMLConnectionManagerImpl implements UMLConnectionManager{
     protected UMLObjectManager manager;
+    private LineHandler lineHandler;
     protected UMLBasicObject preObject;
     protected UMLBasicObject postObject;
     protected Point prePoint;
     protected Point postPoint;
     public UMLConnectionManagerImpl(UMLObjectManager manager) {
         this.manager=manager;
+        this.lineHandler=new LineHandler();
     }
     
     public void connectStart(int x, int y) {
@@ -30,19 +32,22 @@ public class UMLConnectionManagerImpl implements UMLConnectionManager{
     }
     public boolean associateObjects() {
         if(isBothObjectsExist()){
-            manager.associateObjects(prePoint,preObject,postPoint,postObject);
+            lineHandler.associateObjects(prePoint, preObject, postPoint, postObject);
+            manager.update();
         }
         return initWithPreStatement();
     }
     public boolean compositeObjects() {
         if(isBothObjectsExist()){
-            manager.compositeObjects(prePoint,preObject,postPoint,postObject);
+            lineHandler.compositeObjects(prePoint, preObject, postPoint, postObject);
+            manager.update();
         }
         return initWithPreStatement();
     }
     public boolean generalizeObjects() {
         if(isBothObjectsExist()){
-            manager.generalizeObjects(prePoint,preObject,postPoint,postObject);
+            lineHandler.generalizeObjects(prePoint, preObject, postPoint, postObject);
+            manager.update();
         }
         return initWithPreStatement();
     }
@@ -61,5 +66,5 @@ public class UMLConnectionManagerImpl implements UMLConnectionManager{
         }
         init();
         return result;
-    }
+    }    
 }

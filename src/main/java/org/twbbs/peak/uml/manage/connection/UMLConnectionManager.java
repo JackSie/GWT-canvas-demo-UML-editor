@@ -6,4 +6,5 @@ public interface UMLConnectionManager {
     boolean associateObjects();
     boolean compositeObjects();
     boolean generalizeObjects();
+    
 }

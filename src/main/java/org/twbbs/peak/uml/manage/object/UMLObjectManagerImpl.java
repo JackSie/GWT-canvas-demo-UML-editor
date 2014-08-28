@@ -6,16 +6,13 @@ import org.twbbs.peak.uml.core.UMLCore;
 import org.twbbs.peak.uml.object.UMLObject;
 import org.twbbs.peak.uml.object.basic.UMLBasicObject;
 import org.twbbs.peak.uml.object.composite.GroupObject;
-import org.twbbs.peak.uml.util.Point;
 
 public class UMLObjectManagerImpl implements UMLObjectManager{
-    private UMLCore umlCore;
-    private LineHandler lineHandler;
+    private UMLCore umlCore;    
     private ObjectHandler objectHandler;
     private GroupHandler groupHandler;
     public UMLObjectManagerImpl(UMLCore core) {
-        this.umlCore=core;
-        this.lineHandler=new LineHandler();
+        this.umlCore=core;        
         this.objectHandler=new ObjectHandler(umlCore);
         this.groupHandler=new GroupHandler(core);
     }
@@ -44,23 +41,5 @@ public class UMLObjectManagerImpl implements UMLObjectManager{
     }
     public void unGroup(GroupObject object) {
         groupHandler.unGroup(object);
-    }
-
-    public void associateObjects(Point prePoint, UMLBasicObject objectA,
-            Point postPoint, UMLBasicObject objectB) {
-        lineHandler.associateObjects(prePoint, objectA, postPoint, objectB);
-        update();
-    }
-
-    public void compositeObjects(Point prePoint, UMLBasicObject objectA,
-            Point postPoint, UMLBasicObject objectB) {
-        lineHandler.compositeObjects(prePoint, objectA, postPoint, objectB);
-        update();
-    }
-
-    public void generalizeObjects(Point prePoint, UMLBasicObject objectA,
-            Point postPoint, UMLBasicObject objectB) {
-        lineHandler.generalizeObjects(prePoint, objectA, postPoint, objectB);
-        update();
     }
 }
