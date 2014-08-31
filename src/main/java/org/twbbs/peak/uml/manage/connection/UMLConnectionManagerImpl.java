@@ -1,5 +1,6 @@
 package org.twbbs.peak.uml.manage.connection;
 
+import org.twbbs.peak.uml.connection.UMLConnectionType;
 import org.twbbs.peak.uml.manage.object.UMLObjectManager;
 import org.twbbs.peak.uml.object.basic.UMLBasicObject;
 import org.twbbs.peak.uml.util.Point;
@@ -30,27 +31,6 @@ public class UMLConnectionManagerImpl implements UMLConnectionManager{
         }
         return false;
     }
-    public boolean associateObjects() {
-        if(isBothObjectsExist()){
-            lineHandler.associateObjects(prePoint, preObject, postPoint, postObject);
-            manager.update();
-        }
-        return initWithPreStatement();
-    }
-    public boolean compositeObjects() {
-        if(isBothObjectsExist()){
-            lineHandler.compositeObjects(prePoint, preObject, postPoint, postObject);
-            manager.update();
-        }
-        return initWithPreStatement();
-    }
-    public boolean generalizeObjects() {
-        if(isBothObjectsExist()){
-            lineHandler.generalizeObjects(prePoint, preObject, postPoint, postObject);
-            manager.update();
-        }
-        return initWithPreStatement();
-    }
     private boolean isBothObjectsExist(){
         return postObject!=null && preObject!=postObject;
     }
@@ -66,5 +46,13 @@ public class UMLConnectionManagerImpl implements UMLConnectionManager{
         }
         init();
         return result;
+    }
+
+    public boolean connectObjects(UMLConnectionType type) {
+        if(isBothObjectsExist()){
+            lineHandler.connectObjects(type,prePoint, preObject, postPoint, postObject);
+            manager.update();
+        }
+        return initWithPreStatement();
     }    
 }

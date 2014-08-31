@@ -6,6 +6,7 @@ import org.twbbs.peak.uml.TestElement;
 import org.twbbs.peak.uml.core.UMLCoreImpl;
 import org.twbbs.peak.uml.manage.object.ObjectHandler;
 import org.twbbs.peak.uml.object.factory.UMLObjectFactory;
+import org.twbbs.peak.uml.object.series.UMLObjectType;
 
 import com.google.gwt.junit.client.GWTTestCase;
 
@@ -17,23 +18,23 @@ public class ObjectHandlerTest extends GWTTestCase{
 	public void testCreateClassObject(){
 		UMLCoreImpl umlCoreImpl=new UMLCoreImpl();
 		ObjectHandler handler=new ObjectHandler(umlCoreImpl,factory);
-		handler.createClassObject(0, 0);
+		handler.createObject(0, 0, UMLObjectType.CLASS);
 		UMLObject object=umlCoreImpl.getUmlObject(1, 1);
 		assertNotNull(object);
 	}
 	public void testCreateUseCaseObject(){
 		UMLCoreImpl umlCoreImpl=new UMLCoreImpl();
 		ObjectHandler handler=new ObjectHandler(umlCoreImpl,factory);
-		handler.createUseCaseObject(0, 0);
+		handler.createObject(0, 0, UMLObjectType.CLASS);
 		UMLObject object=umlCoreImpl.getUmlObject(1, 1);
 		assertNotNull(object);
 	}
 	public void testGetAllObjects(){
 		UMLCoreImpl umlCoreImpl=new UMLCoreImpl();
 		ObjectHandler handler=new ObjectHandler(umlCoreImpl,factory);
-		handler.createClassObject(0, 0);
-		handler.createUseCaseObject(20, 20);
-		handler.createClassObject(50, 50);
+		handler.createObject(0, 0, UMLObjectType.CLASS);
+		handler.createObject(20, 20, UMLObjectType.INTERFACE);
+		handler.createObject(50, 50, UMLObjectType.CLASS);
 		List<UMLObject> list =handler.getAllObjects();
 		assertEquals(3, list.size());
 	}

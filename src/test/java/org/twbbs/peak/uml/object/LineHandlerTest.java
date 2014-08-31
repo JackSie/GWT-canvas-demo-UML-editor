@@ -20,7 +20,7 @@ public class LineHandlerTest extends GWTTestCase{
 		UMLBasicObject object1=(UMLBasicObject)factory.create(0, 0, UMLObjectType.CLASS);
 		UMLBasicObject object2=(UMLBasicObject)factory.create(20, 25, UMLObjectType.CLASS);
 		LineHandler handler=new LineHandler();
-		handler.associateObjects(new Point(0, 0),object1,new Point(20, 25), object2);
+		handler.connectObjects(UMLConnectionType.ASSOCIATION,new Point(0, 0),object1,new Point(20, 25), object2);
 		UMLConnection connection=object1.getConnections().get(0);
 		assertEquals(UMLConnectionType.ASSOCIATION, connection.getType());
 	}
@@ -28,7 +28,7 @@ public class LineHandlerTest extends GWTTestCase{
 		UMLBasicObject object1=(UMLBasicObject)factory.create(0, 0, UMLObjectType.CLASS);
 		UMLBasicObject object2=(UMLBasicObject)factory.create(20, 25, UMLObjectType.CLASS);
 		LineHandler handler=new LineHandler();
-		handler.compositeObjects(new Point(0, 0),object1,new Point(20, 25), object2);
+		handler.connectObjects(UMLConnectionType.COMPOSITION,new Point(0, 0),object1,new Point(20, 25), object2);
 		UMLConnection connection=object1.getConnections().get(0);
 		assertEquals(UMLConnectionType.COMPOSITION, connection.getType());
 	}
@@ -36,7 +36,7 @@ public class LineHandlerTest extends GWTTestCase{
 		UMLBasicObject object1=(UMLBasicObject)factory.create(0, 0, UMLObjectType.CLASS);
 		UMLBasicObject object2=(UMLBasicObject)factory.create(20, 25, UMLObjectType.CLASS);
 		LineHandler handler=new LineHandler();
-		handler.generalizeObjects(new Point(0, 0),object1,new Point(20, 25), object2);
+		handler.connectObjects(UMLConnectionType.GENERALIZATION,new Point(0, 0),object1,new Point(20, 25), object2);
 		UMLConnection connection=object1.getConnections().get(0);
 		assertEquals(UMLConnectionType.GENERALIZATION, connection.getType());
 	}

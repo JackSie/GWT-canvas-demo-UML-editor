@@ -15,6 +15,7 @@ import org.twbbs.peak.uml.modes.object.ClassMode;
 import org.twbbs.peak.uml.modes.object.UseCaseMode;
 import org.twbbs.peak.uml.modes.operation.SelectionMode;
 import org.twbbs.peak.uml.object.factory.UMLObjectFactory;
+import org.twbbs.peak.uml.object.series.UMLObjectType;
 
 import com.google.gwt.junit.client.GWTTestCase;
 
@@ -34,7 +35,7 @@ public class UMLCorePortalTest extends GWTTestCase{
 		assertEquals(UMLModeSeries.ASSOCAITION_MODE, observer.mode);
 		corePortal.changeMode(UMLModeSeries.SELECTION_MODE);
 		
-		manager.createClassObject(0, 0);
+		manager.createObject(0, 0, UMLObjectType.CLASS);
 		((UMLCorePortal)corePortal).onClick(1, 1);
 		
 		corePortal.changeName(null);

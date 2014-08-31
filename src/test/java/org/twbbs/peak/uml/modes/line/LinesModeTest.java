@@ -64,7 +64,7 @@ public class LinesModeTest extends GWTTestCase{
 		AssociationLineMode mode=new AssociationLineMode(manager);
 		UMLBasicObject object=(UMLBasicObject)factory.create(0, 0, UMLObjectType.CLASS);
 		coreImpl.addUMLObject(object);
-		managero.createClassObject(500, 500);
+		managero.createObject(500, 500, UMLObjectType.CLASS);
 		mode.startDrag(1, 1);
 		mode.stopDrag(501, 501);
 		assertEquals(UMLConnectionType.ASSOCIATION, object.getConnections().get(0).getType());

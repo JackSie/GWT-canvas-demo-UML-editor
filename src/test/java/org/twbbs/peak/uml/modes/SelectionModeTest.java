@@ -69,7 +69,7 @@ public class SelectionModeTest extends GWTTestCase{
         corePortalImpl.changeMode(UMLModeSeries.SELECTION_MODE);
 		UMLObject object= factory.create(10, 10, UMLObjectType.CLASS);
 		coreImpl.addUMLObject(object);
-		manager.createClassObject(20, 20);
+		manager.createObject(20, 20, UMLObjectType.CLASS);
 		mode.startDrag(5, 5);
 		mode.onDrag(100, 100);
 		mode.stopDrag(400, 400);
@@ -122,8 +122,8 @@ public class SelectionModeTest extends GWTTestCase{
         corePortalImpl.changeMode(UMLModeSeries.SELECTION_MODE);
         UMLObject object=factory.create(50, 50, UMLObjectType.CLASS);
         coreImpl.addUMLObject(object);
-        manager.createClassObject(60, 60);
-        manager.createClassObject(500, 500);
+        manager.createObject(60, 60, UMLObjectType.CLASS);
+        manager.createObject(500, 500, UMLObjectType.CLASS);
         mode.startDrag(400, 400);
         mode.onDrag(300, 300);
         mode.stopDrag(40, 40);
@@ -144,8 +144,8 @@ public class SelectionModeTest extends GWTTestCase{
         corePortalImpl.changeMode(UMLModeSeries.SELECTION_MODE);
 		UMLObject object= factory.create(50, 50, UMLObjectType.CLASS);
 		coreImpl.addUMLObject(object);
-		manager.createClassObject(60, 60);
-		manager.createClassObject(500, 500);
+		manager.createObject(60, 60, UMLObjectType.CLASS);
+		manager.createObject(500, 500, UMLObjectType.CLASS);
 		mode.startDrag(400, 400);
 		mode.onDrag(300, 300);
 		mode.stopDrag(40, 40);
@@ -162,7 +162,7 @@ public class SelectionModeTest extends GWTTestCase{
 		corePortalImpl.changeMode(UMLModeSeries.SELECTION_MODE);
 		UMLObject object= factory.create(10, 10, UMLObjectType.CLASS);
 		coreImpl.addUMLObject(object);
-		manager.createClassObject(20, 20);
+		manager.createObject(20, 20, UMLObjectType.CLASS);
 		mode.startDrag(0, 0);
 		mode.onDrag(300, 300);
 		mode.stopDrag(400, 400);

@@ -1,9 +1,9 @@
 package org.twbbs.peak.uml.object.basic;
 
 import org.twbbs.peak.uml.TestElement;
-import org.twbbs.peak.uml.connection.AssociationConnection;
 import org.twbbs.peak.uml.connection.UMLConnectPosition;
 import org.twbbs.peak.uml.connection.UMLConnection;
+import org.twbbs.peak.uml.connection.UMLConnectionType;
 import org.twbbs.peak.uml.object.factory.UMLObjectFactory;
 import org.twbbs.peak.uml.object.series.UMLObjectType;
 import org.twbbs.peak.uml.object.state.ObjectState;
@@ -19,14 +19,14 @@ public class UmlAbstractObjectTest extends GWTTestCase{
 	public void testSetConnection(){
 		UmlAbstractObject objectA=(UmlAbstractObject)factory.create(0, 0, UMLObjectType.CLASS);
 		UmlAbstractObject objectB=(UmlAbstractObject)factory.create(100, 0, UMLObjectType.CLASS);
-		UMLConnection connection=new AssociationConnection(objectA, objectB, UMLConnectPosition.NORTH, UMLConnectPosition.NORTH);
+		UMLConnection connection=new UMLConnection(objectA, objectB, UMLConnectPosition.NORTH, UMLConnectPosition.NORTH,UMLConnectionType.ASSOCIATION);
 		objectA.setConnection(connection);
 		assertEquals(connection, objectA.getConnections().get(0));
 	}
 	public void testEemoveConnection(){
 		UmlAbstractObject objectA=(UmlAbstractObject)factory.create(0, 0, UMLObjectType.CLASS);
 		UmlAbstractObject objectB=(UmlAbstractObject)factory.create(100, 0, UMLObjectType.CLASS);
-		UMLConnection connection=new AssociationConnection(objectA, objectB, UMLConnectPosition.NORTH, UMLConnectPosition.NORTH);
+		UMLConnection connection=new UMLConnection(objectA, objectB, UMLConnectPosition.NORTH, UMLConnectPosition.NORTH,UMLConnectionType.ASSOCIATION);
 		objectA.setConnection(connection);
 		objectA.removeConnection(connection);
 		assertEquals(0, objectA.getConnections().size());
@@ -34,7 +34,7 @@ public class UmlAbstractObjectTest extends GWTTestCase{
 	public void testGetConnections(){
 		UmlAbstractObject objectA=(UmlAbstractObject)factory.create(0, 0, UMLObjectType.CLASS);
 		UmlAbstractObject objectB=(UmlAbstractObject)factory.create(100, 0, UMLObjectType.CLASS);
-		UMLConnection connection=new AssociationConnection(objectA, objectB, UMLConnectPosition.NORTH, UMLConnectPosition.NORTH);
+		UMLConnection connection=new UMLConnection(objectA, objectB, UMLConnectPosition.NORTH, UMLConnectPosition.NORTH,UMLConnectionType.ASSOCIATION);
 		objectA.setConnection(connection);
 		assertEquals(connection, objectA.getConnections().get(0));
 	}

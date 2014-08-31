@@ -12,25 +12,12 @@ import org.twbbs.peak.uml.object.series.UMLObjectType;
 public class UMLObjectManagerImpl implements UMLObjectManager{
     private UMLCore umlCore;    
     private ObjectHandler objectHandler;
-    private GroupHandler groupHandler;
-    
+    private GroupHandler groupHandler;    
     public UMLObjectManagerImpl(UMLCore core,UMLObjectFactory factory) {
         this.umlCore=core;        
         this.objectHandler=new ObjectHandler(umlCore,factory);
         this.groupHandler=new GroupHandler(core,factory);
-    }
-    
-    public void creatObject(int x,int y,UMLObjectType type){
-        
-    }
-    
-    public void createClassObject(int x, int y) {
-        objectHandler.createClassObject(x, y);
-    }
-
-    public void createUseCaseObject(int x, int y) {
-        objectHandler.createUseCaseObject(x, y);
-    }
+    }        
     public UMLObject getUMLObject(int x, int y) {
         return objectHandler.getUMLObject(x, y);
     }
@@ -48,5 +35,8 @@ public class UMLObjectManagerImpl implements UMLObjectManager{
     }
     public void unGroup(GroupObject object) {
         groupHandler.unGroup(object);
+    }
+    public void createObject(int x, int y, UMLObjectType type) {
+        objectHandler.createObject(x, y, type);
     }
 }

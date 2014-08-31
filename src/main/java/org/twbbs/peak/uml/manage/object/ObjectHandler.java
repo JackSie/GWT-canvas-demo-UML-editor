@@ -18,12 +18,11 @@ public class ObjectHandler {
         this.umlCore=umlCore;
         this.factory=factory;
     }
-    public void createClassObject(int x, int y) {
-        umlCore.addUMLObject(factory.create(x, y, UMLObjectType.CLASS));
-    }
-
-    public void createUseCaseObject(int x, int y) {
-        umlCore.addUMLObject(factory.create(x, y, UMLObjectType.INTERFACE));    
+    public void createObject(int x, int y, UMLObjectType type){
+        UMLObject object = factory.create(x, y, type);
+        if(object!=null){
+            umlCore.addUMLObject(object);
+        }
     }
     public List<UMLObject> getAllObjects() {
         List<UMLObject> outList = new ArrayList<UMLObject>();

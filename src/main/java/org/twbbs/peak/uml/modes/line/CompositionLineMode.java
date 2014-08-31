@@ -1,5 +1,6 @@
 package org.twbbs.peak.uml.modes.line;
 
+import org.twbbs.peak.uml.connection.UMLConnectionType;
 import org.twbbs.peak.uml.manage.connection.UMLConnectionManager;
 
 public class CompositionLineMode extends LinesMode{
@@ -7,6 +8,6 @@ public class CompositionLineMode extends LinesMode{
         super(manager);
     }
     protected void createLine() {
-        manager.compositeObjects();
+        manager.connectObjects(UMLConnectionType.COMPOSITION);
     }
 }

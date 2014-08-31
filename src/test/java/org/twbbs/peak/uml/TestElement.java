@@ -8,7 +8,8 @@ import org.twbbs.peak.uml.object.factory.creator.InterfaceObjectCreator;
 import org.twbbs.peak.uml.object.series.UMLObjectType;
 
 public class TestElement {
-    private TestElement(){        
+    public int getInt(int i){
+        return i;
     }
     public static UMLObjectFactory initFactory(){
         UMLObjectFactory factory= new UMLObjectFactoryImpl();

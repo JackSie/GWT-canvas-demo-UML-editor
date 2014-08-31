@@ -13,69 +13,69 @@ public class ConnectionsTest extends GWTTestCase{
         factory=TestElement.initFactory();
     }
 	public void testCreateAssociationConnection(){
-		AssociationConnection associationConnection=new AssociationConnection((UMLConnectable)factory.create(0, 0, UMLObjectType.CLASS), (UMLConnectable)factory.create(0, 0, UMLObjectType.CLASS), UMLConnectPosition.EAST, UMLConnectPosition.NORTH);
+		UMLConnection associationConnection=new UMLConnection((UMLConnectable)factory.create(0, 0, UMLObjectType.CLASS), (UMLConnectable)factory.create(0, 0, UMLObjectType.CLASS), UMLConnectPosition.EAST, UMLConnectPosition.NORTH,UMLConnectionType.ASSOCIATION);
 		assertNotNull(associationConnection);
 	}
 	public void testCreateCompositionConnection(){
-		CompositionConnection compositionConnection=new CompositionConnection((UMLConnectable)factory.create(0, 0, UMLObjectType.CLASS), (UMLConnectable)factory.create(0, 0, UMLObjectType.CLASS), UMLConnectPosition.EAST, UMLConnectPosition.NORTH);
+	    UMLConnection compositionConnection=new UMLConnection((UMLConnectable)factory.create(0, 0, UMLObjectType.CLASS), (UMLConnectable)factory.create(0, 0, UMLObjectType.CLASS), UMLConnectPosition.EAST, UMLConnectPosition.NORTH,UMLConnectionType.COMPOSITION);
 		assertNotNull(compositionConnection);
 	}
 	public void testCreateGeneralizationConnection(){
-		GeneralizationConnection generalizationConnection=new GeneralizationConnection((UMLConnectable)factory.create(0, 0, UMLObjectType.CLASS), (UMLConnectable)factory.create(0, 0, UMLObjectType.CLASS), UMLConnectPosition.EAST, UMLConnectPosition.NORTH);
+	    UMLConnection generalizationConnection=new UMLConnection((UMLConnectable)factory.create(0, 0, UMLObjectType.CLASS), (UMLConnectable)factory.create(0, 0, UMLObjectType.CLASS), UMLConnectPosition.EAST, UMLConnectPosition.NORTH,UMLConnectionType.GENERALIZATION);
 		assertNotNull(generalizationConnection);
 	}
 	public void testGetType(){
-		UMLAbstractConnection connection=new AssociationConnection((UMLConnectable)factory.create(0, 0, UMLObjectType.CLASS), (UMLConnectable)factory.create(0, 0, UMLObjectType.CLASS), UMLConnectPosition.EAST, UMLConnectPosition.NORTH);
+	    UMLConnection connection=new UMLConnection((UMLConnectable)factory.create(0, 0, UMLObjectType.CLASS), (UMLConnectable)factory.create(0, 0, UMLObjectType.CLASS), UMLConnectPosition.EAST, UMLConnectPosition.NORTH,UMLConnectionType.ASSOCIATION);
 		assertEquals(UMLConnectionType.ASSOCIATION, connection.getType());
 	}
 	public void testSetType(){
-		UMLAbstractConnection connection=new AssociationConnection((UMLConnectable)factory.create(0, 0, UMLObjectType.CLASS), (UMLConnectable)factory.create(0, 0, UMLObjectType.CLASS), UMLConnectPosition.EAST, UMLConnectPosition.NORTH);
+	    UMLConnection connection=new UMLConnection((UMLConnectable)factory.create(0, 0, UMLObjectType.CLASS), (UMLConnectable)factory.create(0, 0, UMLObjectType.CLASS), UMLConnectPosition.EAST, UMLConnectPosition.NORTH,UMLConnectionType.COMPOSITION);
 		connection.setType(UMLConnectionType.COMPOSITION);
 		assertEquals(UMLConnectionType.COMPOSITION, connection.getType());
 	}
 	public void testGetHead(){
 	    UMLBasicObject object=(UMLBasicObject)factory.create(0, 0, UMLObjectType.CLASS);
-		UMLAbstractConnection connection=new AssociationConnection(object, (UMLConnectable)factory.create(0, 0, UMLObjectType.CLASS), UMLConnectPosition.EAST, UMLConnectPosition.NORTH);
+	    UMLConnection connection=new UMLConnection(object, (UMLConnectable)factory.create(0, 0, UMLObjectType.CLASS), UMLConnectPosition.EAST, UMLConnectPosition.NORTH,UMLConnectionType.GENERALIZATION);
 		assertEquals(object,connection.getHead());
 	}
 	public void testSetHead(){
 		UMLBasicObject object=(UMLBasicObject)factory.create(0, 0, UMLObjectType.CLASS);
 		UMLBasicObject object2=(UMLBasicObject)factory.create(0, 0, UMLObjectType.INTERFACE);
-		UMLAbstractConnection connection=new AssociationConnection(object, (UMLConnectable)factory.create(0, 0, UMLObjectType.CLASS), UMLConnectPosition.EAST, UMLConnectPosition.NORTH);
+		UMLConnection connection=new UMLConnection(object, (UMLConnectable)factory.create(0, 0, UMLObjectType.CLASS), UMLConnectPosition.EAST, UMLConnectPosition.NORTH,UMLConnectionType.ASSOCIATION);
 		connection.setHead(object2);
 		assertEquals(object2,connection.getHead());
 	}
 	public void testGetTail(){
         UMLBasicObject object=(UMLBasicObject)factory.create(0, 0, UMLObjectType.CLASS);
-		UMLAbstractConnection connection=new AssociationConnection((UMLConnectable)factory.create(0, 0, UMLObjectType.CLASS),object,  UMLConnectPosition.EAST, UMLConnectPosition.NORTH);
+        UMLConnection connection=new UMLConnection((UMLConnectable)factory.create(0, 0, UMLObjectType.CLASS),object,  UMLConnectPosition.EAST, UMLConnectPosition.NORTH,UMLConnectionType.ASSOCIATION);
 		assertEquals(object,connection.getTail());
 	}
 	public void testSetTail(){
         UMLBasicObject object=(UMLBasicObject)factory.create(0, 0, UMLObjectType.CLASS);
         UMLBasicObject object2=(UMLBasicObject)factory.create(0, 0, UMLObjectType.INTERFACE);
-		UMLAbstractConnection connection=new AssociationConnection((UMLConnectable)factory.create(0, 0, UMLObjectType.CLASS),object,  UMLConnectPosition.EAST, UMLConnectPosition.NORTH);
+        UMLConnection connection=new UMLConnection((UMLConnectable)factory.create(0, 0, UMLObjectType.CLASS),object,  UMLConnectPosition.EAST, UMLConnectPosition.NORTH,UMLConnectionType.ASSOCIATION);
 		connection.setTail(object2);
 		assertEquals(object2,connection.getTail());
 	}
 	public void testGetHeadPosition(){
         UMLBasicObject object=(UMLBasicObject)factory.create(0, 0, UMLObjectType.CLASS);
-		UMLAbstractConnection connection=new AssociationConnection(object,(UMLConnectable)factory.create(0, 0, UMLObjectType.CLASS), UMLConnectPosition.EAST, UMLConnectPosition.NORTH);
+        UMLConnection connection=new UMLConnection(object,(UMLConnectable)factory.create(0, 0, UMLObjectType.CLASS), UMLConnectPosition.EAST, UMLConnectPosition.NORTH,UMLConnectionType.ASSOCIATION);
 		assertEquals(UMLConnectPosition.EAST,connection.getHeadPosition());
 	}
 	public void testSetHeadPosition(){
         UMLBasicObject object=(UMLBasicObject)factory.create(0, 0, UMLObjectType.CLASS);
-		UMLAbstractConnection connection=new AssociationConnection(object, (UMLConnectable)factory.create(0, 0, UMLObjectType.CLASS), UMLConnectPosition.EAST, UMLConnectPosition.NORTH);
+        UMLConnection connection=new UMLConnection(object, (UMLConnectable)factory.create(0, 0, UMLObjectType.CLASS), UMLConnectPosition.EAST, UMLConnectPosition.NORTH,UMLConnectionType.ASSOCIATION);
 		connection.setHeadPosition(UMLConnectPosition.SOUTH);
 		assertEquals(UMLConnectPosition.SOUTH,connection.getHeadPosition());
 	}
 	public void testGetTailPosition(){
         UMLBasicObject object=(UMLBasicObject)factory.create(0, 0, UMLObjectType.CLASS);
-		UMLAbstractConnection connection=new AssociationConnection(object, (UMLConnectable)factory.create(0, 0, UMLObjectType.CLASS), UMLConnectPosition.EAST, UMLConnectPosition.NORTH);
+        UMLConnection connection=new UMLConnection(object, (UMLConnectable)factory.create(0, 0, UMLObjectType.CLASS), UMLConnectPosition.EAST, UMLConnectPosition.NORTH,UMLConnectionType.ASSOCIATION);
 		assertEquals(UMLConnectPosition.NORTH,connection.getTailPostion());
 	}
 	public void testSetTailPosition(){
         UMLBasicObject object=(UMLBasicObject)factory.create(0, 0, UMLObjectType.CLASS);
-		UMLAbstractConnection connection=new AssociationConnection(object, (UMLConnectable)factory.create(0, 0, UMLObjectType.CLASS), UMLConnectPosition.EAST, UMLConnectPosition.NORTH);
+        UMLConnection connection=new UMLConnection(object, (UMLConnectable)factory.create(0, 0, UMLObjectType.CLASS), UMLConnectPosition.EAST, UMLConnectPosition.NORTH,UMLConnectionType.ASSOCIATION);
 		connection.setTailPostion(UMLConnectPosition.SOUTH);
 		assertEquals(UMLConnectPosition.SOUTH,connection.getTailPostion());
 	}

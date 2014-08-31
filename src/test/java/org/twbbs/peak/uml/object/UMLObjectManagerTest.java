@@ -26,23 +26,23 @@ public class UMLObjectManagerTest extends GWTTestCase{
 	public void testCreateClassObject(){
 		UMLCoreImpl umlCoreImpl=new UMLCoreImpl();
 		UMLObjectManager manager=new UMLObjectManagerImpl(umlCoreImpl,factory);
-		manager.createClassObject(0, 0);
+		manager.createObject(0, 0, UMLObjectType.CLASS);
 		UMLObject object=umlCoreImpl.getUmlObject(1, 1);
 		assertNotNull(object);
 	}
 	public void testCreateUseCaseObject(){
 		UMLCoreImpl umlCoreImpl=new UMLCoreImpl();
 		UMLObjectManager manager=new UMLObjectManagerImpl(umlCoreImpl,factory);
-		manager.createUseCaseObject(0, 0);
+		manager.createObject(0, 0, UMLObjectType.CLASS);
 		UMLObject object=umlCoreImpl.getUmlObject(1, 1);
 		assertNotNull(object);
 	}
 	public void testGetAllObjects(){
 		UMLCoreImpl umlCoreImpl=new UMLCoreImpl();
 		UMLObjectManager manager=new UMLObjectManagerImpl(umlCoreImpl,factory);
-		manager.createClassObject(0, 0);
-		manager.createUseCaseObject(20, 20);
-		manager.createClassObject(50, 50);
+		manager.createObject(0, 0, UMLObjectType.CLASS);
+		manager.createObject(20, 20, UMLObjectType.INTERFACE);
+		manager.createObject(50, 50, UMLObjectType.CLASS);
 		List<UMLObject> list =manager.getAllObjects();
 		assertEquals(3, list.size());
 	}
@@ -50,7 +50,7 @@ public class UMLObjectManagerTest extends GWTTestCase{
 		UMLBasicObject object1=(UMLBasicObject)factory.create(0, 0, UMLObjectType.CLASS);
 		UMLBasicObject object2=(UMLBasicObject)factory.create(20, 25, UMLObjectType.CLASS);
 		LineHandler lineHandler = new LineHandler();
-		lineHandler.associateObjects(new Point(0, 0),object1,new Point(20, 25), object2);
+		lineHandler.connectObjects(UMLConnectionType.ASSOCIATION,new Point(0, 0),object1,new Point(20, 25), object2);
 		UMLConnection connection=object1.getConnections().get(0);
 		assertEquals(UMLConnectionType.ASSOCIATION, connection.getType());
 	}
@@ -58,7 +58,7 @@ public class UMLObjectManagerTest extends GWTTestCase{
 		UMLBasicObject object1=(UMLBasicObject)factory.create(0, 0, UMLObjectType.CLASS);
 		UMLBasicObject object2=(UMLBasicObject)factory.create(20, 25, UMLObjectType.CLASS);
 		LineHandler lineHandler = new LineHandler();
-		lineHandler.compositeObjects(new Point(0, 0),object1,new Point(20, 25), object2);
+		lineHandler.connectObjects(UMLConnectionType.COMPOSITION,new Point(0, 0),object1,new Point(20, 25), object2);
 		UMLConnection connection=object1.getConnections().get(0);
 		assertEquals(UMLConnectionType.COMPOSITION, connection.getType());
 	}
@@ -66,7 +66,7 @@ public class UMLObjectManagerTest extends GWTTestCase{
 		UMLBasicObject object1=(UMLBasicObject)factory.create(0, 0, UMLObjectType.CLASS);
 		UMLBasicObject object2=(UMLBasicObject)factory.create(20, 25, UMLObjectType.CLASS);
 		LineHandler lineHandler = new LineHandler();
-		lineHandler.generalizeObjects(new Point(0, 0),object1,new Point(20, 25), object2);
+		lineHandler.connectObjects(UMLConnectionType.GENERALIZATION,new Point(0, 0),object1,new Point(20, 25), object2);
 		UMLConnection connection=object1.getConnections().get(0);
 		assertEquals(UMLConnectionType.GENERALIZATION, connection.getType());
 	}
