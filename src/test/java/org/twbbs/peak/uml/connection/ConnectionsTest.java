@@ -1,6 +1,6 @@
 package org.twbbs.peak.uml.connection;
 
-import org.twbbs.peak.uml.TestElement;
+import org.twbbs.peak.uml.ElementTest;
 import org.twbbs.peak.uml.object.basic.UMLBasicObject;
 import org.twbbs.peak.uml.object.factory.UMLObjectFactory;
 import org.twbbs.peak.uml.object.series.UMLObjectType;
@@ -10,7 +10,7 @@ import com.google.gwt.junit.client.GWTTestCase;
 public class ConnectionsTest extends GWTTestCase{
     UMLObjectFactory factory;   
     public ConnectionsTest() {
-        factory=TestElement.initFactory();
+        factory=ElementTest.initFactory();
     }
 	public void testCreateAssociationConnection(){
 		UMLConnection associationConnection=new UMLConnection((UMLConnectable)factory.create(0, 0, UMLObjectType.CLASS), (UMLConnectable)factory.create(0, 0, UMLObjectType.CLASS), UMLConnectPosition.EAST, UMLConnectPosition.NORTH,UMLConnectionType.ASSOCIATION);

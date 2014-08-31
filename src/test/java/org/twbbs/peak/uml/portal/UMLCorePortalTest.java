@@ -1,6 +1,7 @@
 package org.twbbs.peak.uml.portal;
 
-import org.twbbs.peak.uml.TestElement;
+import org.twbbs.peak.uml.ElementTest;
+import org.twbbs.peak.uml.connection.UMLConnectionType;
 import org.twbbs.peak.uml.core.UMLCoreImpl;
 import org.twbbs.peak.uml.manage.connection.UMLConnectionManager;
 import org.twbbs.peak.uml.manage.connection.UMLConnectionManagerImpl;
@@ -8,9 +9,7 @@ import org.twbbs.peak.uml.manage.object.UMLObjectManager;
 import org.twbbs.peak.uml.manage.object.UMLObjectManagerImpl;
 import org.twbbs.peak.uml.modes.UMLModeSeries;
 import org.twbbs.peak.uml.modes.UmlMode;
-import org.twbbs.peak.uml.modes.line.AssociationLineMode;
-import org.twbbs.peak.uml.modes.line.CompositionLineMode;
-import org.twbbs.peak.uml.modes.line.GeneralizationLineMode;
+import org.twbbs.peak.uml.modes.line.LinesMode;
 import org.twbbs.peak.uml.modes.object.ClassMode;
 import org.twbbs.peak.uml.modes.object.UseCaseMode;
 import org.twbbs.peak.uml.modes.operation.SelectionMode;
@@ -22,7 +21,7 @@ import com.google.gwt.junit.client.GWTTestCase;
 public class UMLCorePortalTest extends GWTTestCase{
     UMLObjectFactory factory;
     public UMLCorePortalTest() {
-        factory=TestElement.initFactory();
+        factory=ElementTest.initFactory();
     }
 	public void testObserver(){
 		UMLCoreImpl coreImpl=new UMLCoreImpl();
@@ -95,9 +94,9 @@ public class UMLCorePortalTest extends GWTTestCase{
         UMLCorePortalImpl umlCorePortal=new UMLCorePortalImpl();
         
         UmlMode selectionMode=new SelectionMode(manager,umlCorePortal);
-        UmlMode assocaitionMode=new AssociationLineMode(connectionManager);
-        UmlMode generalizationMode=new GeneralizationLineMode(connectionManager);
-        UmlMode compostionMode=new CompositionLineMode(connectionManager);
+        UmlMode assocaitionMode=new LinesMode(connectionManager,UMLConnectionType.ASSOCIATION);
+        UmlMode generalizationMode=new LinesMode(connectionManager,UMLConnectionType.GENERALIZATION);
+        UmlMode compostionMode=new LinesMode(connectionManager,UMLConnectionType.COMPOSITION);
         UmlMode classMode=new ClassMode(manager);
         UmlMode useCaseMode=new UseCaseMode(manager);
         

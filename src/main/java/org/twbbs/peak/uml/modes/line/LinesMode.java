@@ -1,12 +1,15 @@
 package org.twbbs.peak.uml.modes.line;
 
+import org.twbbs.peak.uml.connection.UMLConnectionType;
 import org.twbbs.peak.uml.manage.connection.UMLConnectionManager;
 import org.twbbs.peak.uml.modes.UmlMode;
 
-public abstract class LinesMode implements UmlMode{
+public class LinesMode implements UmlMode{
     protected UMLConnectionManager manager;
-    public LinesMode(UMLConnectionManager manager) {
+    private UMLConnectionType type;
+    public LinesMode(UMLConnectionManager manager,UMLConnectionType type) {
         this.manager=manager;
+        this.type=type;
     }
     public void startDrag(int x, int y) {
         manager.connectStart(x, y);
@@ -32,5 +35,7 @@ public abstract class LinesMode implements UmlMode{
     public void group(boolean isGroup) {
         // Do noting because of no action needed after click group.
     }
-    protected abstract void createLine();
+    private void createLine(){
+        manager.connectObjects(type);
+    }
 }

@@ -1,6 +1,6 @@
 package org.twbbs.peak.uml.object;
 
-import org.twbbs.peak.uml.TestElement;
+import org.twbbs.peak.uml.ElementTest;
 import org.twbbs.peak.uml.connection.UMLConnection;
 import org.twbbs.peak.uml.connection.UMLConnectionType;
 import org.twbbs.peak.uml.manage.connection.LineHandler;
@@ -14,7 +14,7 @@ import com.google.gwt.junit.client.GWTTestCase;
 public class LineHandlerTest extends GWTTestCase{
     UMLObjectFactory factory;
     public LineHandlerTest() {
-        factory=TestElement.initFactory();
+        factory=ElementTest.initFactory();
     }
 	public void testAssociateObjects(){
 		UMLBasicObject object1=(UMLBasicObject)factory.create(0, 0, UMLObjectType.CLASS);

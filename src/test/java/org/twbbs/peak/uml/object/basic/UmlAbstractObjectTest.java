@@ -1,6 +1,6 @@
 package org.twbbs.peak.uml.object.basic;
 
-import org.twbbs.peak.uml.TestElement;
+import org.twbbs.peak.uml.ElementTest;
 import org.twbbs.peak.uml.connection.UMLConnectPosition;
 import org.twbbs.peak.uml.connection.UMLConnection;
 import org.twbbs.peak.uml.connection.UMLConnectionType;
@@ -14,7 +14,7 @@ import com.google.gwt.junit.client.GWTTestCase;
 public class UmlAbstractObjectTest extends GWTTestCase{
     UMLObjectFactory factory;
     public UmlAbstractObjectTest() {
-        factory=TestElement.initFactory();
+        factory=ElementTest.initFactory();
     }
 	public void testSetConnection(){
 		UmlAbstractObject objectA=(UmlAbstractObject)factory.create(0, 0, UMLObjectType.CLASS);

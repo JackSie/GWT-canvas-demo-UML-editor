@@ -2,7 +2,7 @@ package org.twbbs.peak.uml.object;
 
 import java.util.List;
 
-import org.twbbs.peak.uml.TestElement;
+import org.twbbs.peak.uml.ElementTest;
 import org.twbbs.peak.uml.core.UMLCoreImpl;
 import org.twbbs.peak.uml.manage.object.ObjectHandler;
 import org.twbbs.peak.uml.object.factory.UMLObjectFactory;
@@ -13,7 +13,7 @@ import com.google.gwt.junit.client.GWTTestCase;
 public class ObjectHandlerTest extends GWTTestCase{
     UMLObjectFactory factory;
     public ObjectHandlerTest() {
-        factory=TestElement.initFactory();
+        factory=ElementTest.initFactory();
     }
 	public void testCreateClassObject(){
 		UMLCoreImpl umlCoreImpl=new UMLCoreImpl();

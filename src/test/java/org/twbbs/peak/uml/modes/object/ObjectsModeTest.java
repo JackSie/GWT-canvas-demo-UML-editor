@@ -1,6 +1,6 @@
 package org.twbbs.peak.uml.modes.object;
 
-import org.twbbs.peak.uml.TestElement;
+import org.twbbs.peak.uml.ElementTest;
 import org.twbbs.peak.uml.core.UMLCoreImpl;
 import org.twbbs.peak.uml.manage.object.UMLObjectManager;
 import org.twbbs.peak.uml.manage.object.UMLObjectManagerImpl;
@@ -14,7 +14,7 @@ import com.google.gwt.junit.client.GWTTestCase;
 public class ObjectsModeTest extends GWTTestCase{
     UMLObjectFactory factory;
     public ObjectsModeTest() {
-        factory=TestElement.initFactory();
+        factory=ElementTest.initFactory();
     }
 	public void testClassMode(){
 		UMLCoreImpl coreImpl=new UMLCoreImpl();

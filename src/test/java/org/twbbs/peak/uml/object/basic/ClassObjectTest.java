@@ -1,6 +1,6 @@
 package org.twbbs.peak.uml.object.basic;
 
-import org.twbbs.peak.uml.TestElement;
+import org.twbbs.peak.uml.ElementTest;
 import org.twbbs.peak.uml.object.basic.detail.UMLDetailMember;
 import org.twbbs.peak.uml.object.basic.detail.UMLDetailMethod;
 import org.twbbs.peak.uml.object.factory.UMLObjectFactory;
@@ -11,7 +11,7 @@ import com.google.gwt.junit.client.GWTTestCase;
 public class ClassObjectTest extends GWTTestCase{
     UMLObjectFactory factory;
     public ClassObjectTest() {
-        factory=TestElement.initFactory();
+        factory=ElementTest.initFactory();
     }
 	public void testAddMember(){
 		ClassObject classObject=(ClassObject)factory.create(0, 0, UMLObjectType.CLASS);

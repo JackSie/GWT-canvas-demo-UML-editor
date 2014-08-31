@@ -18,7 +18,7 @@ public class UMLCoreTest extends GWTTestCase{
 	public UMLCoreTest() {
 		core=new UMLCoreImpl();
 		observer=new UMLCoreObserverTest();
-		factory=TestElement.initFactory();
+		factory=ElementTest.initFactory();
 	}
 	public void testRegist(){
 		observer.isUpdate=false;

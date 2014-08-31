@@ -52,6 +52,8 @@ public class AllTests extends GWTTestSuite{
 		suite.addTestSuite(ObjectsModeTest.class);
 		suite.addTestSuite(LinesModeTest.class);
 		suite.addTestSuite(SelectionModeTest.class);
+		
+		suite.addTestSuite(ElementTest.class);
 		return suite;
 	}
 }

@@ -3,7 +3,7 @@ package org.twbbs.peak.uml.object;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.twbbs.peak.uml.TestElement;
+import org.twbbs.peak.uml.ElementTest;
 import org.twbbs.peak.uml.connection.UMLConnection;
 import org.twbbs.peak.uml.connection.UMLConnectionType;
 import org.twbbs.peak.uml.core.UMLCoreImpl;
@@ -21,7 +21,7 @@ import com.google.gwt.junit.client.GWTTestCase;
 public class UMLObjectManagerTest extends GWTTestCase{
     UMLObjectFactory factory;
     public UMLObjectManagerTest() {
-        factory=TestElement.initFactory();
+        factory=ElementTest.initFactory();
     }
 	public void testCreateClassObject(){
 		UMLCoreImpl umlCoreImpl=new UMLCoreImpl();

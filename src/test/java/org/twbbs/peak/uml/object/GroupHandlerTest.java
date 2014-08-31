@@ -3,7 +3,7 @@ package org.twbbs.peak.uml.object;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.twbbs.peak.uml.TestElement;
+import org.twbbs.peak.uml.ElementTest;
 import org.twbbs.peak.uml.core.UMLCoreImpl;
 import org.twbbs.peak.uml.manage.object.GroupHandler;
 import org.twbbs.peak.uml.object.composite.GroupObject;
@@ -15,7 +15,7 @@ import com.google.gwt.junit.client.GWTTestCase;
 public class GroupHandlerTest extends GWTTestCase{
     UMLObjectFactory factory;
     public GroupHandlerTest() {
-        factory=TestElement.initFactory();
+        factory=ElementTest.initFactory();
     }
 	public void testGroup(){
 		UMLCoreImpl coreImpl=new UMLCoreImpl();

@@ -1,6 +1,6 @@
 package org.twbbs.peak.uml.modes.line;
 
-import org.twbbs.peak.uml.TestElement;
+import org.twbbs.peak.uml.ElementTest;
 import org.twbbs.peak.uml.connection.UMLConnectionType;
 import org.twbbs.peak.uml.core.UMLCoreImpl;
 import org.twbbs.peak.uml.manage.connection.UMLConnectionManager;
@@ -16,13 +16,13 @@ import com.google.gwt.junit.client.GWTTestCase;
 public class LinesModeTest extends GWTTestCase{
     UMLObjectFactory factory;
     public LinesModeTest() {
-        factory=TestElement.initFactory();
+        factory=ElementTest.initFactory();
     }
 	public void testAssociationLineMode(){
 		UMLCoreImpl coreImpl=new UMLCoreImpl();
 		UMLObjectManager managero=new UMLObjectManagerImpl(coreImpl,factory);
 		UMLConnectionManager manager=new UMLConnectionManagerImpl(managero);
-		AssociationLineMode mode=new AssociationLineMode(manager);
+		LinesMode mode=new LinesMode(manager,UMLConnectionType.ASSOCIATION);
 		UMLBasicObject objectA= (UMLBasicObject)factory.create(0, 0, UMLObjectType.CLASS);
 		coreImpl.addUMLObject(objectA);
 		UMLBasicObject objectB= (UMLBasicObject)factory.create(300, 300, UMLObjectType.CLASS);
@@ -35,7 +35,7 @@ public class LinesModeTest extends GWTTestCase{
 		UMLCoreImpl coreImpl=new UMLCoreImpl();
 		UMLObjectManager managero=new UMLObjectManagerImpl(coreImpl,factory);
 		UMLConnectionManager manager=new UMLConnectionManagerImpl(managero);
-		CompositionLineMode mode=new CompositionLineMode(manager);
+		LinesMode mode=new LinesMode(manager,UMLConnectionType.COMPOSITION);
 		UMLBasicObject objectA= (UMLBasicObject)factory.create(0, 0, UMLObjectType.CLASS);
         coreImpl.addUMLObject(objectA);
         UMLBasicObject objectB= (UMLBasicObject)factory.create(300, 300, UMLObjectType.CLASS);
@@ -48,7 +48,7 @@ public class LinesModeTest extends GWTTestCase{
 		UMLCoreImpl coreImpl=new UMLCoreImpl();
 		UMLObjectManager managero=new UMLObjectManagerImpl(coreImpl,factory);
 		UMLConnectionManager manager=new UMLConnectionManagerImpl(managero);
-		GeneralizationLineMode mode=new GeneralizationLineMode(manager);
+		LinesMode mode=new LinesMode(manager,UMLConnectionType.GENERALIZATION);
 		UMLBasicObject objectA= (UMLBasicObject)factory.create(0, 0, UMLObjectType.CLASS);
         coreImpl.addUMLObject(objectA);
         UMLBasicObject objectB= (UMLBasicObject)factory.create(300, 300, UMLObjectType.CLASS);
@@ -61,7 +61,7 @@ public class LinesModeTest extends GWTTestCase{
 		UMLCoreImpl coreImpl=new UMLCoreImpl();
 		UMLObjectManager managero=new UMLObjectManagerImpl(coreImpl,factory);
 		UMLConnectionManager manager=new UMLConnectionManagerImpl(managero);
-		AssociationLineMode mode=new AssociationLineMode(manager);
+		LinesMode mode=new LinesMode(manager,UMLConnectionType.ASSOCIATION);
 		UMLBasicObject object=(UMLBasicObject)factory.create(0, 0, UMLObjectType.CLASS);
 		coreImpl.addUMLObject(object);
 		managero.createObject(500, 500, UMLObjectType.CLASS);
@@ -73,7 +73,7 @@ public class LinesModeTest extends GWTTestCase{
 		UMLCoreImpl coreImpl=new UMLCoreImpl();
 		UMLObjectManager managero=new UMLObjectManagerImpl(coreImpl,factory);
 		UMLConnectionManager manager=new UMLConnectionManagerImpl(managero);
-		AssociationLineMode mode=new AssociationLineMode(manager);
+		LinesMode mode=new LinesMode(manager,UMLConnectionType.ASSOCIATION);
 		mode.onClick(0, 0);
 		mode.onDrag(0, 0);
 		mode.modeChanged();
@@ -84,7 +84,7 @@ public class LinesModeTest extends GWTTestCase{
 	    UMLCoreImpl coreImpl=new UMLCoreImpl();
         UMLObjectManager managero=new UMLObjectManagerImpl(coreImpl,factory);
         UMLConnectionManager manager=new UMLConnectionManagerImpl(managero);
-        GeneralizationLineMode mode=new GeneralizationLineMode(manager);  
+        LinesMode mode=new LinesMode(manager,UMLConnectionType.GENERALIZATION);
         UMLBasicObject objectA= (UMLBasicObject)factory.create(600, 600, UMLObjectType.CLASS);
         coreImpl.addUMLObject(objectA);
         mode.startDrag(1, 1);
@@ -95,7 +95,7 @@ public class LinesModeTest extends GWTTestCase{
 	        UMLCoreImpl coreImpl=new UMLCoreImpl();
 	        UMLObjectManager managero=new UMLObjectManagerImpl(coreImpl,factory);
 	        UMLConnectionManager manager=new UMLConnectionManagerImpl(managero);
-	        GeneralizationLineMode mode=new GeneralizationLineMode(manager);  
+	        LinesMode mode=new LinesMode(manager,UMLConnectionType.GENERALIZATION); 
 	        UMLBasicObject objectA= (UMLBasicObject)factory.create(0, 0, UMLObjectType.CLASS);
 	        coreImpl.addUMLObject(objectA);
 	        mode.startDrag(1, 1);

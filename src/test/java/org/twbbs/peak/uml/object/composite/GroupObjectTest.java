@@ -3,7 +3,7 @@ package org.twbbs.peak.uml.object.composite;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.twbbs.peak.uml.TestElement;
+import org.twbbs.peak.uml.ElementTest;
 import org.twbbs.peak.uml.object.UMLObject;
 import org.twbbs.peak.uml.object.factory.UMLObjectFactory;
 import org.twbbs.peak.uml.object.series.UMLObjectType;
@@ -15,7 +15,7 @@ import com.google.gwt.junit.client.GWTTestCase;
 public class GroupObjectTest extends GWTTestCase{
     UMLObjectFactory factory;
     public GroupObjectTest() {
-        factory=TestElement.initFactory();
+        factory=ElementTest.initFactory();
     }
 	public void testConstructor(){
 		GroupObject groupObject=new GroupObject("group", new ObjectStateImpl(0, 0));
