@@ -17,8 +17,7 @@ import org.twbbs.peak.uml.manage.object.UMLObjectManagerImpl;
 import org.twbbs.peak.uml.modes.UMLModeSeries;
 import org.twbbs.peak.uml.modes.UmlMode;
 import org.twbbs.peak.uml.modes.line.LinesMode;
-import org.twbbs.peak.uml.modes.object.ClassMode;
-import org.twbbs.peak.uml.modes.object.UseCaseMode;
+import org.twbbs.peak.uml.modes.object.ObjectsMode;
 import org.twbbs.peak.uml.modes.operation.SelectionMode;
 import org.twbbs.peak.uml.object.factory.UMLObjectFactory;
 import org.twbbs.peak.uml.object.factory.UMLObjectFactoryImpl;
@@ -55,8 +54,8 @@ public class HelloWorldE implements EntryPoint {
         UmlMode assocaitionMode=new LinesMode(connectionManager,UMLConnectionType.ASSOCIATION);
         UmlMode generalizationMode=new LinesMode(connectionManager,UMLConnectionType.GENERALIZATION);
         UmlMode compostionMode=new LinesMode(connectionManager,UMLConnectionType.COMPOSITION);
-        UmlMode classMode=new ClassMode(manager);
-        UmlMode useCaseMode=new UseCaseMode(manager);
+        UmlMode classMode=new ObjectsMode(manager,UMLObjectType.CLASS);
+        UmlMode useCaseMode=new ObjectsMode(manager,UMLObjectType.INTERFACE);
         
         umlCorePortal.addMode(UMLModeSeries.SELECTION_MODE, selectionMode);
         umlCorePortal.addMode(UMLModeSeries.ASSOCAITION_MODE, assocaitionMode);

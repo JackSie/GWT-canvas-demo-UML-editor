@@ -2,13 +2,18 @@ package org.twbbs.peak.uml.modes.object;
 
 import org.twbbs.peak.uml.manage.object.UMLObjectManager;
 import org.twbbs.peak.uml.modes.UmlMode;
+import org.twbbs.peak.uml.object.series.UMLObjectType;
 
-public abstract class ObjectsMode implements UmlMode{
+public class ObjectsMode implements UmlMode{
     protected UMLObjectManager manager;
-    public ObjectsMode(UMLObjectManager manager) {
+    private UMLObjectType type;
+    public ObjectsMode(UMLObjectManager manager,UMLObjectType type) {
         this.manager=manager;
+        this.type=type;
     }
-    public abstract void onClick(int x, int y);
+    public void onClick(int x, int y){
+        manager.createObject(x, y, type);
+    }
     public void startDrag(int x, int y) {
         // Do noting because of no action needed after Drag.
     }
