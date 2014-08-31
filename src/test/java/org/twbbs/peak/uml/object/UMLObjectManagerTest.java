@@ -3,6 +3,7 @@ package org.twbbs.peak.uml.object;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.twbbs.peak.uml.TestElement;
 import org.twbbs.peak.uml.connection.UMLConnection;
 import org.twbbs.peak.uml.connection.UMLConnectionType;
 import org.twbbs.peak.uml.core.UMLCoreImpl;
@@ -11,30 +12,34 @@ import org.twbbs.peak.uml.manage.object.UMLObjectManager;
 import org.twbbs.peak.uml.manage.object.UMLObjectManagerImpl;
 import org.twbbs.peak.uml.object.basic.UMLBasicObject;
 import org.twbbs.peak.uml.object.composite.GroupObject;
-import org.twbbs.peak.uml.object.defaults.DefaultClassObject;
+import org.twbbs.peak.uml.object.factory.UMLObjectFactory;
 import org.twbbs.peak.uml.object.series.UMLObjectType;
 import org.twbbs.peak.uml.util.Point;
 
 import com.google.gwt.junit.client.GWTTestCase;
 
 public class UMLObjectManagerTest extends GWTTestCase{
+    UMLObjectFactory factory;
+    public UMLObjectManagerTest() {
+        factory=TestElement.initFactory();
+    }
 	public void testCreateClassObject(){
 		UMLCoreImpl umlCoreImpl=new UMLCoreImpl();
-		UMLObjectManager manager=new UMLObjectManagerImpl(umlCoreImpl);
+		UMLObjectManager manager=new UMLObjectManagerImpl(umlCoreImpl,factory);
 		manager.createClassObject(0, 0);
 		UMLObject object=umlCoreImpl.getUmlObject(1, 1);
 		assertNotNull(object);
 	}
 	public void testCreateUseCaseObject(){
 		UMLCoreImpl umlCoreImpl=new UMLCoreImpl();
-		UMLObjectManager manager=new UMLObjectManagerImpl(umlCoreImpl);
+		UMLObjectManager manager=new UMLObjectManagerImpl(umlCoreImpl,factory);
 		manager.createUseCaseObject(0, 0);
 		UMLObject object=umlCoreImpl.getUmlObject(1, 1);
 		assertNotNull(object);
 	}
 	public void testGetAllObjects(){
 		UMLCoreImpl umlCoreImpl=new UMLCoreImpl();
-		UMLObjectManager manager=new UMLObjectManagerImpl(umlCoreImpl);
+		UMLObjectManager manager=new UMLObjectManagerImpl(umlCoreImpl,factory);
 		manager.createClassObject(0, 0);
 		manager.createUseCaseObject(20, 20);
 		manager.createClassObject(50, 50);
@@ -42,24 +47,24 @@ public class UMLObjectManagerTest extends GWTTestCase{
 		assertEquals(3, list.size());
 	}
 	public void testAssociateObjects(){
-		UMLBasicObject object1=new DefaultClassObject(0, 0);
-		UMLBasicObject object2=new DefaultClassObject(20, 25);
+		UMLBasicObject object1=(UMLBasicObject)factory.create(0, 0, UMLObjectType.CLASS);
+		UMLBasicObject object2=(UMLBasicObject)factory.create(20, 25, UMLObjectType.CLASS);
 		LineHandler lineHandler = new LineHandler();
 		lineHandler.associateObjects(new Point(0, 0),object1,new Point(20, 25), object2);
 		UMLConnection connection=object1.getConnections().get(0);
 		assertEquals(UMLConnectionType.ASSOCIATION, connection.getType());
 	}
 	public void testCompositeObjects(){
-		UMLBasicObject object1=new DefaultClassObject(0, 0);
-		UMLBasicObject object2=new DefaultClassObject(20, 25);
+		UMLBasicObject object1=(UMLBasicObject)factory.create(0, 0, UMLObjectType.CLASS);
+		UMLBasicObject object2=(UMLBasicObject)factory.create(20, 25, UMLObjectType.CLASS);
 		LineHandler lineHandler = new LineHandler();
 		lineHandler.compositeObjects(new Point(0, 0),object1,new Point(20, 25), object2);
 		UMLConnection connection=object1.getConnections().get(0);
 		assertEquals(UMLConnectionType.COMPOSITION, connection.getType());
 	}
 	public void testGeneralizeObjects(){
-		UMLBasicObject object1=new DefaultClassObject(0, 0);
-		UMLBasicObject object2=new DefaultClassObject(20, 25);
+		UMLBasicObject object1=(UMLBasicObject)factory.create(0, 0, UMLObjectType.CLASS);
+		UMLBasicObject object2=(UMLBasicObject)factory.create(20, 25, UMLObjectType.CLASS);
 		LineHandler lineHandler = new LineHandler();
 		lineHandler.generalizeObjects(new Point(0, 0),object1,new Point(20, 25), object2);
 		UMLConnection connection=object1.getConnections().get(0);
@@ -67,11 +72,11 @@ public class UMLObjectManagerTest extends GWTTestCase{
 	}
 	public void testGroup(){
 		UMLCoreImpl umlCoreImpl=new UMLCoreImpl();
-		UMLObjectManager manager=new UMLObjectManagerImpl(umlCoreImpl);
+		UMLObjectManager manager=new UMLObjectManagerImpl(umlCoreImpl,factory);
 		List<UMLObject> list=new ArrayList<UMLObject>();
-		list.add(new DefaultClassObject(0, 0));
-		list.add(new DefaultClassObject(0, 0));
-		list.add(new DefaultClassObject(0, 0));
+		list.add((UMLBasicObject)factory.create(0, 0, UMLObjectType.CLASS));
+		list.add((UMLBasicObject)factory.create(0, 0, UMLObjectType.CLASS));
+		list.add((UMLBasicObject)factory.create(0, 0, UMLObjectType.CLASS));
 		manager.group(list);
 		UMLObject object=umlCoreImpl.getUmlObject(0, 0);
 		assertNotNull(object);
@@ -79,11 +84,11 @@ public class UMLObjectManagerTest extends GWTTestCase{
 	}
 	public void testUnGroup(){
 		UMLCoreImpl umlCoreImpl=new UMLCoreImpl();
-		UMLObjectManager manager=new UMLObjectManagerImpl(umlCoreImpl);
+		UMLObjectManager manager=new UMLObjectManagerImpl(umlCoreImpl,factory);
 		List<UMLObject> list=new ArrayList<UMLObject>();
-		list.add(new DefaultClassObject(0, 0));
-		list.add(new DefaultClassObject(0, 0));
-		list.add(new DefaultClassObject(0, 0));
+		list.add((UMLBasicObject)factory.create(0, 0, UMLObjectType.CLASS));
+		list.add((UMLBasicObject)factory.create(0, 0, UMLObjectType.CLASS));
+		list.add((UMLBasicObject)factory.create(0, 0, UMLObjectType.CLASS));
 		manager.group(list);
 		UMLObject object=umlCoreImpl.getUmlObject(0, 0);
 		manager.unGroup((GroupObject) object);
@@ -93,9 +98,9 @@ public class UMLObjectManagerTest extends GWTTestCase{
 	}
 	public void testGetUMLObject(){
 		UMLCoreImpl umlCoreImpl=new UMLCoreImpl();
-		UMLObjectManager manager=new UMLObjectManagerImpl(umlCoreImpl);
+		UMLObjectManager manager=new UMLObjectManagerImpl(umlCoreImpl,factory);
 		assertNull(manager.getUMLObject(0, 0));
-		umlCoreImpl.addUMLObject(new DefaultClassObject(0, 0));
+		umlCoreImpl.addUMLObject((UMLBasicObject)factory.create(0, 0, UMLObjectType.CLASS));
 		assertNotNull(manager.getUMLObject(0, 0));
 	}
 	public void testEnum(){

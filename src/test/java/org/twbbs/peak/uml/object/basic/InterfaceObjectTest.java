@@ -1,12 +1,18 @@
 package org.twbbs.peak.uml.object.basic;
 
-import org.twbbs.peak.uml.object.defaults.DefaultInterfaceObject;
+import org.twbbs.peak.uml.TestElement;
+import org.twbbs.peak.uml.object.factory.UMLObjectFactory;
+import org.twbbs.peak.uml.object.series.UMLObjectType;
 
 import com.google.gwt.junit.client.GWTTestCase;
 
 public class InterfaceObjectTest extends GWTTestCase{
+    UMLObjectFactory factory;
+    public InterfaceObjectTest() {
+        factory=TestElement.initFactory();
+    }
 	public void testInit(){
-		InterfaceObject interfaceObject=new DefaultInterfaceObject(0, 0);
+		InterfaceObject interfaceObject=(InterfaceObject)factory.create(0, 0, UMLObjectType.INTERFACE);
 		assertNotNull(interfaceObject);
 	}
 	@Override

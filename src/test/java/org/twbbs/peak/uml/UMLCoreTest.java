@@ -5,18 +5,20 @@ import java.util.List;
 import org.twbbs.peak.uml.core.UMLCoreImpl;
 import org.twbbs.peak.uml.core.UMLCoreObserver;
 import org.twbbs.peak.uml.object.UMLObject;
-import org.twbbs.peak.uml.object.defaults.DefaultClassObject;
+import org.twbbs.peak.uml.object.factory.UMLObjectFactory;
+import org.twbbs.peak.uml.object.series.UMLObjectType;
 
 import com.google.gwt.junit.client.GWTTestCase;
 
 public class UMLCoreTest extends GWTTestCase{
 	UMLCoreObserverTest observer;
 	UMLCoreImpl core;
-	
+	UMLObjectFactory factory;	
 	
 	public UMLCoreTest() {
 		core=new UMLCoreImpl();
 		observer=new UMLCoreObserverTest();
+		factory=TestElement.initFactory();
 	}
 	public void testRegist(){
 		observer.isUpdate=false;
@@ -34,14 +36,14 @@ public class UMLCoreTest extends GWTTestCase{
 		assertFalse(observer.isUpdate);		
 	}
 	public void testAddUMLObject(){
-		UMLObject umlObject=new DefaultClassObject(0, 0);
+		UMLObject umlObject=factory.create(0, 0, UMLObjectType.CLASS);
 		core.addUMLObject(umlObject);
 		umlObject=core.getUmlObject(2, 2);
 		assertNotNull(umlObject);		
 	}
 	public void testAddTwoHundrenUMLObjects(){
 		for(int i=0;i<200;i++){
-			UMLObject umlObject=new DefaultClassObject(0, 0);
+			UMLObject umlObject=factory.create(0, 0, UMLObjectType.CLASS);
 			core.addUMLObject(umlObject);
 		}
 		UMLObject umlObject=core.getUmlObject(2, 2);
@@ -54,7 +56,7 @@ public class UMLCoreTest extends GWTTestCase{
 	}
 	public void testGetObjects(){
 		UMLCoreImpl core= new UMLCoreImpl();
-		UMLObject umlObject=new DefaultClassObject(0, 0);
+		UMLObject umlObject=factory.create(0, 0, UMLObjectType.CLASS);
 		core.addUMLObject(umlObject);
 		int layers[]=core.getNotEmptyLayers();
 		umlObject=core.getObjects(layers[0]).get(0);
@@ -64,14 +66,14 @@ public class UMLCoreTest extends GWTTestCase{
 	}
 	public void testIsInit(){
 		UMLCoreImpl core= new UMLCoreImpl();
-		UMLObject umlObject=new DefaultClassObject(0, 0);
+		UMLObject umlObject=factory.create(0, 0, UMLObjectType.CLASS);
 		core.addUMLObject(umlObject);
 		assertNotNull(core.getUmlObject(2, 2));
 		assertNull(core.getUmlObject(1000, 1000));
 	}
 	public void testRemoveUMLObject(){
 		UMLCoreImpl core= new UMLCoreImpl();
-		UMLObject umlObject=new DefaultClassObject(0, 0);
+		UMLObject umlObject=factory.create(0, 0, UMLObjectType.CLASS);
 		core.addUMLObject(umlObject);
 		core.removeUMLObject(umlObject);
 		int layers[]=core.getNotEmptyLayers();

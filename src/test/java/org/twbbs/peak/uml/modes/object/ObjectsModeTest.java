@@ -1,18 +1,24 @@
 package org.twbbs.peak.uml.modes.object;
 
+import org.twbbs.peak.uml.TestElement;
 import org.twbbs.peak.uml.core.UMLCoreImpl;
 import org.twbbs.peak.uml.manage.object.UMLObjectManager;
 import org.twbbs.peak.uml.manage.object.UMLObjectManagerImpl;
 import org.twbbs.peak.uml.object.UMLObject;
 import org.twbbs.peak.uml.object.basic.ClassObject;
 import org.twbbs.peak.uml.object.basic.InterfaceObject;
+import org.twbbs.peak.uml.object.factory.UMLObjectFactory;
 
 import com.google.gwt.junit.client.GWTTestCase;
 
 public class ObjectsModeTest extends GWTTestCase{
+    UMLObjectFactory factory;
+    public ObjectsModeTest() {
+        factory=TestElement.initFactory();
+    }
 	public void testClassMode(){
 		UMLCoreImpl coreImpl=new UMLCoreImpl();
-		UMLObjectManager manager=new UMLObjectManagerImpl(coreImpl);
+		UMLObjectManager manager=new UMLObjectManagerImpl(coreImpl,factory);
 		ObjectsMode mode=new ClassMode(manager);
 		mode.onClick(0, 0);
 		UMLObject object=coreImpl.getUmlObject(1, 1);
@@ -21,7 +27,7 @@ public class ObjectsModeTest extends GWTTestCase{
 	}
 	public void testUseCaseMode(){
 		UMLCoreImpl coreImpl=new UMLCoreImpl();
-		UMLObjectManager manager=new UMLObjectManagerImpl(coreImpl);
+		UMLObjectManager manager=new UMLObjectManagerImpl(coreImpl,factory);
 		ObjectsMode mode=new UseCaseMode(manager);
 		mode.onClick(0, 0);
 		UMLObject object=coreImpl.getUmlObject(1, 1);
@@ -30,7 +36,7 @@ public class ObjectsModeTest extends GWTTestCase{
 	}
 	public void testUnuseMethod(){
 		UMLCoreImpl coreImpl=new UMLCoreImpl();
-		UMLObjectManager manager=new UMLObjectManagerImpl(coreImpl);
+		UMLObjectManager manager=new UMLObjectManagerImpl(coreImpl,factory);
 		ObjectsMode mode=new ClassMode(manager);
 		mode.startDrag(0, 0);
 		mode.onDrag(0, 0);

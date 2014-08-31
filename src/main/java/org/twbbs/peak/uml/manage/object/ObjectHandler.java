@@ -7,21 +7,23 @@ import org.twbbs.peak.uml.core.UMLCore;
 import org.twbbs.peak.uml.object.UMLObject;
 import org.twbbs.peak.uml.object.basic.UMLBasicObject;
 import org.twbbs.peak.uml.object.composite.GroupObject;
-import org.twbbs.peak.uml.object.defaults.DefaultClassObject;
-import org.twbbs.peak.uml.object.defaults.DefaultInterfaceObject;
+import org.twbbs.peak.uml.object.factory.UMLObjectFactory;
+import org.twbbs.peak.uml.object.series.UMLObjectType;
 import org.twbbs.peak.uml.object.state.StateUtility;
 
 public class ObjectHandler {
     private UMLCore umlCore;
-    public ObjectHandler(UMLCore umlCore) {
+    private UMLObjectFactory factory;
+    public ObjectHandler(UMLCore umlCore,UMLObjectFactory factory) {
         this.umlCore=umlCore;
+        this.factory=factory;
     }
     public void createClassObject(int x, int y) {
-        umlCore.addUMLObject(new DefaultClassObject(x,y));
+        umlCore.addUMLObject(factory.create(x, y, UMLObjectType.CLASS));
     }
 
     public void createUseCaseObject(int x, int y) {
-        umlCore.addUMLObject(new DefaultInterfaceObject(x, y));    
+        umlCore.addUMLObject(factory.create(x, y, UMLObjectType.INTERFACE));    
     }
     public List<UMLObject> getAllObjects() {
         List<UMLObject> outList = new ArrayList<UMLObject>();

@@ -1,87 +1,53 @@
 package org.twbbs.peak.uml.portal;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-import org.twbbs.peak.uml.manage.connection.UMLConnectionManager;
-import org.twbbs.peak.uml.manage.object.UMLObjectManager;
 import org.twbbs.peak.uml.modes.UMLModeCallback;
 import org.twbbs.peak.uml.modes.UMLModeSeries;
 import org.twbbs.peak.uml.modes.UmlMode;
-import org.twbbs.peak.uml.modes.line.AssociationLineMode;
-import org.twbbs.peak.uml.modes.line.CompositionLineMode;
-import org.twbbs.peak.uml.modes.line.GeneralizationLineMode;
-import org.twbbs.peak.uml.modes.object.ClassMode;
-import org.twbbs.peak.uml.modes.object.UseCaseMode;
-import org.twbbs.peak.uml.modes.operation.SelectionMode;
 
 public class UMLCorePortalImpl implements UMLCorePortal,UMLModeHandler,UMLModeSubject,UMLModeCallback{
 
-    private UmlMode selectionMode;
-    private UmlMode assocaitionMode;
-    private UmlMode generalizationMode;
-    private UmlMode compostionMode;
-    private UmlMode classMode;
-    private UmlMode useCaseMode;    
     private UmlMode nowMode;
     private List<UMLModeObserver> list;
-    public UMLCorePortalImpl(UMLObjectManager manager,UMLConnectionManager connectionManager) {
-        list=new ArrayList<UMLModeObserver>();
-        selectionMode=new SelectionMode(manager,this);
-        assocaitionMode=new AssociationLineMode(connectionManager);
-        generalizationMode=new GeneralizationLineMode(connectionManager);
-        compostionMode=new CompositionLineMode(connectionManager);
-        classMode=new ClassMode(manager);
-        useCaseMode=new UseCaseMode(manager);
-        nowMode=selectionMode;
-    }
-    
+    private Map<UMLModeSeries,UmlMode> modeMap;
+    public UMLCorePortalImpl() {
+        this.list=new ArrayList<UMLModeObserver>();
+        this.modeMap=new HashMap<UMLModeSeries, UmlMode>();
+    }    
     public void onClick(int x, int y) {
         nowMode.onClick(x, y);
     }
-
     public void startDrag(int x, int y) {
         nowMode.startDrag(x, y);
     }
-
     public void onDrag(int x, int y) {
         nowMode.onDrag(x, y);
     }
-
     public void stopDrag(int x, int y) {
         nowMode.stopDrag(x, y);
     }
     public void changeName(String name) {
         nowMode.changeName(name);
     }
-
     public void group(boolean isGroup) {
         nowMode.group(isGroup);
     }
+    public void addMode(UMLModeSeries name,UmlMode mode){
+        this.modeMap.put(name, mode);
+    }
     public void changeMode(UMLModeSeries mode) {
-        nowMode.modeChanged();
-        switch(mode){
-            case SELECTION_MODE:
-                nowMode=selectionMode;
-                break;
-            case ASSOCAITION_MODE:
-                nowMode=assocaitionMode;
-                break;
-            case GENERALIZATION_MODE:
-                nowMode=generalizationMode;
-                break;
-            case COMPOSTION_MODE:
-                nowMode=compostionMode;
-                break;
-            case CLASS_MODE:
-                nowMode=classMode;
-                break;
-            case USECASE_MODE:
-                nowMode=useCaseMode;
-                break;
-            default:
+        UmlMode getMode = modeMap.get(mode);
+        if(getMode!=null){
+            if(nowMode!=null){
+                nowMode.modeChanged();
+            }
+            nowMode=getMode;        
+            modifyToChangeMode(mode);
         }
-        modifyToChangeMode(mode);
     }
     public void regist(UMLModeObserver observer) {
         list.add(observer);
